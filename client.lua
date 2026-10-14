@@ -1823,7 +1823,8 @@ RegisterNUICallback('useItem', function(slot, cb)
 	cb(1)
 end)
 
--- Lancer une arme (principe de pickle_weaponthrowing, reecrit) : le serveur retire l'arme, le joueur la tient en main
+-- Lancer une arme, d'apres le principe de PickleModifications/pickle_weaponthrowing (code reecrit, pas copie ; animation,
+-- os de la main et orientation du prop repris comme valeurs de jeu) : le serveur retire l'arme, le joueur la tient en main
 -- et choisit son angle (camera) et sa force (clic gauche maintenu puis relache), retour arriere pour la poser a ses pieds.
 -- Le prop physique est synchronise ; le client signale ou il s'est immobilise et le drop y est cree.
 local THROW_MIN_SPEED = 5.0
@@ -1932,9 +1933,8 @@ local function aimThrow(entity)
 	return power
 end
 
-RegisterNUICallback('throwItem', function(slot, cb)
-	cb(1)
-
+---@param slot number
+local function throwWeaponFromSlot(slot)
 	local data = type(slot) == 'number' and PlayerData.inventory[slot]
 
 	if not data or not Items[data.name]?.weapon or thrownProp then return end
@@ -1976,17 +1976,18 @@ RegisterNUICallback('throwItem', function(slot, cb)
 
 		SetEntityHeading(playerPed, heading)
 
-		if pcall(lib.requestAnimDict, 'anim@heists@narcotics@trash') then
-			TaskPlayAnim(playerPed, 'anim@heists@narcotics@trash', 'throw_b', 8.0, 4.0, 900, 48, 0.0, false, false, false)
-			RemoveAnimDict('anim@heists@narcotics@trash')
+		if pcall(lib.requestAnimDict, 'melee@thrown@streamed_core') then
+			TaskPlayAnim(playerPed, 'melee@thrown@streamed_core', 'plyr_takedown_front', -8.0, 8.0, 600, 49, 0.0, false, false, false)
+			RemoveAnimDict('melee@thrown@streamed_core')
 		end
 
-		Wait(300)
+		Wait(550)
 
 		-- L'angle est relu au moment du lacher, pas au debut de l'animation.
 		local velocity = throwVelocity(power)
 
 		DetachEntity(entity, true, true)
+		SetEntityHeading(entity, heading + 90.0)
 		SetEntityNoCollisionEntity(entity, playerPed, true)
 		SetEntityCollision(entity, true, true)
 		FreezeEntityPosition(entity, false)
@@ -2000,9 +2001,22 @@ RegisterNUICallback('throwItem', function(slot, cb)
 	end
 
 	client.player:set('invBusy', false)
+	ClearPedTasks(playerPed)
 	deleteThrownProp()
 	TriggerServerEvent('ox_inventory:throwLanded', landing)
+end
+
+RegisterNUICallback('throwItem', function(slot, cb)
+	cb(1)
+	throwWeaponFromSlot(slot)
 end)
+
+-- Lancer l'arme tenue en main sans passer par l'inventaire (touche a assigner dans les parametres FiveM, aucune par defaut).
+RegisterCommand('throwweapon', function()
+	if currentWeapon?.slot then throwWeaponFromSlot(currentWeapon.slot) end
+end, false)
+
+RegisterKeyMapping('throwweapon', 'Lancer l\'arme en main', 'keyboard', '')
 
 local function giveItemToTarget(serverId, slotId, count)
     if type(slotId) ~= 'number' then return TypeError('slotId', 'number', type(slotId)) end
