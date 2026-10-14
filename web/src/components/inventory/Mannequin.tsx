@@ -6,6 +6,7 @@ import { isEnvBrowser } from '../../utils/misc';
 import { Slot } from '../../typings';
 import ItemIcon from './ItemIcon';
 import { getRarity } from '../../helpers';
+import { imagepath } from '../../store/imagepath';
 
 const toSlot = (eq: EquipmentSlot): Slot | null =>
   eq.item
@@ -27,7 +28,19 @@ const EquipmentCell: React.FC<{ eq: EquipmentSlot }> = ({ eq }) => {
       data-r={slot ? getRarity(slot) : undefined}
       title={eq.item?.label || eq.label}
     >
-      {slot ? <ItemIcon item={slot} /> : eq.icon ? <span className="eq-icon">{eq.icon}</span> : null}
+      {slot ? (
+        <ItemIcon item={slot} />
+      ) : eq.icon ? (
+        <span className="eq-icon">{eq.icon}</span>
+      ) : (
+        <img
+          className="eq-ph"
+          src={`${imagepath}/equip_${eq.id}.png`}
+          alt=""
+          draggable={false}
+          onError={(e) => (e.currentTarget.style.display = 'none')}
+        />
+      )}
       <small>{eq.label}</small>
       {slot && eq.item?.durability !== undefined && (
         <span className="dur">
