@@ -119,6 +119,59 @@ local function closeTrunk()
 	end
 end
 
+-- Ped d'apercu affiche derriere l'UI (zone centrale transparente). Idee reprise du ClonePed d'inventaire de l'ancien
+-- ox_inventory (lsre), reecrite ici. Reglages : distance devant la camera, decalage lateral, hauteur relative a la camera.
+local previewPedOffset = { distance = 3.0, side = 0.0, height = -1.0 }
+local previewPed
+
+local function deletePreviewPed()
+	local ped = previewPed
+	previewPed = nil
+
+	if ped and DoesEntityExist(ped) then
+		DeleteEntity(ped)
+	end
+end
+
+local function createPreviewPed()
+	deletePreviewPed()
+
+	local ped = ClonePed(playerPed, false, false, true)
+	if not ped or ped == 0 then return end
+
+	previewPed = ped
+	SetEntityCollision(ped, false, false)
+	SetEntityInvincible(ped, true)
+	SetBlockingOfNonTemporaryEvents(ped, true)
+	SetPedCanRagdoll(ped, false)
+	FreezeEntityPosition(ped, true)
+
+	CreateThread(function()
+		local nextSync = 0
+
+		while previewPed == ped and DoesEntityExist(ped) do
+			local heading = GetGameplayCamRot(2).z
+			local rad = math.rad(heading)
+			local cam = GetGameplayCamCoord()
+			local fx, fy = -math.sin(rad), math.cos(rad)
+			local d, side = previewPedOffset.distance, previewPedOffset.side
+
+			SetEntityCoordsNoOffset(ped, cam.x + fx * d + fy * side, cam.y + fy * d - fx * side, cam.z + previewPedOffset.height, false, false, false)
+			SetEntityHeading(ped, heading + 180.0)
+
+			-- resynchronise l'apparence avec le vrai ped (tenue, accessoires) ; evite un appel par frame
+			if GetGameTimer() >= nextSync then
+				nextSync = GetGameTimer() + 500
+				ClonePedToTarget(playerPed, ped)
+			end
+
+			Wait(0)
+		end
+
+		if DoesEntityExist(ped) then DeleteEntity(ped) end
+	end)
+end
+
 local CraftingBenches = require 'modules.crafting.client'
 local Vehicles = lib.load('data.vehicles')
 local Inventory = require 'modules.inventory.client'
@@ -294,6 +347,7 @@ function client.openInventory(inv, data)
             rightInventory = currentInventory
         }
     })
+    createPreviewPed()
 
     if inv and not currentInventory.coords and inv ~= 'container' and inv ~= 'glovebox' then
         currentInventory.coords = GetEntityCoords(playerPed)
@@ -352,6 +406,7 @@ RegisterNetEvent('ox_inventory:forceOpenInventory', function(left, right)
 			rightInventory = currentInventory
 		}
 	})
+	createPreviewPed()
 end)
 
 local Animations = lib.load('data.animations')
@@ -897,6 +952,7 @@ function client.closeInventory()
 		invOpen = nil
 		SetNuiFocus(false, false)
 		SetNuiFocusKeepInput(false)
+		deletePreviewPed()
 		Utils.blurOut()
 		closeTrunk()
 		SendNUIMessage({ action = 'closeInventory' })
@@ -1590,6 +1646,7 @@ end)
 
 AddEventHandler('onResourceStop', function(resourceName)
 	if shared.resource == resourceName then
+		deletePreviewPed()
 		client.onLogout()
 	end
 end)
@@ -1618,6 +1675,7 @@ RegisterNetEvent('ox_inventory:viewInventory', function(left, right)
 			rightInventory = currentInventory
 		}
 	})
+	createPreviewPed()
 end)
 
 RegisterNUICallback('uiLoaded', function(_, cb)
