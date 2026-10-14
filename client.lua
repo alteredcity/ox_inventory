@@ -124,6 +124,9 @@ end
 local previewPedOffset = { distance = 3.7, side = 0.0, height = 0.4 }
 local previewPed
 
+---@type number? prop physique d'une arme en cours de lancer
+local thrownProp
+
 local function deletePreviewPed()
 	local ped = previewPed
 	previewPed = nil
@@ -1114,8 +1117,9 @@ end
 ---@param coords vector3
 ---@param tint? number
 ---@param components? string[]
+---@param networked? boolean
 ---@return number
-local function createWeaponProp(hash, coords, tint, components)
+local function createWeaponProp(hash, coords, tint, components, networked)
 	local skinModel = 0
 
 	-- Un skin (VARMOD) remplace tout le modele : il se passe a la creation, pas via GiveWeaponComponentToWeaponObject.
@@ -1144,7 +1148,7 @@ local function createWeaponProp(hash, coords, tint, components)
 		while not HasWeaponAssetLoaded(hash) and GetGameTimer() < timeout do Wait(0) end
 	end
 
-	local entity = CreateWeaponObject(hash, 0, coords.x, coords.y, coords.z, false, 1.0, skinModel)
+	local entity = CreateWeaponObject(hash, 0, coords.x, coords.y, coords.z, networked or false, 1.0, skinModel)
 
 	if tint then SetWeaponObjectTintIndex(entity, tint) end
 
@@ -1226,14 +1230,7 @@ end
 
 RegisterNetEvent('ox_inventory:createDrop', function(dropId, data, owner, slot)
 	if client.drops then
-		if data.delay then
-			-- Drop lance : n'apparait qu'a la fin du vol de l'arme.
-			SetTimeout(data.delay, function()
-				if client.drops then createDrop(dropId, data) end
-			end)
-		else
-			createDrop(dropId, data)
-		end
+		createDrop(dropId, data)
 	end
 
 	if owner == cache.serverId then
@@ -1732,6 +1729,7 @@ end)
 AddEventHandler('onResourceStop', function(resourceName)
 	if shared.resource == resourceName then
 		deletePreviewPed()
+		if thrownProp then Utils.DeleteEntity(thrownProp) end
 		client.onLogout()
 	end
 end)
@@ -1825,62 +1823,93 @@ RegisterNUICallback('useItem', function(slot, cb)
 	cb(1)
 end)
 
--- Lancer une arme depuis l'inventaire : la validation et le retrait se font cote serveur (ox_inventory:throwItem).
-local THROW_DISTANCE = 4.0
+-- Lancer une arme (principe de pickle_weaponthrowing, reecrit) : le serveur retire l'arme, le client lance un prop
+-- physique synchronise dans la direction de la camera, puis signale ou il s'est immobilise (drop cree a cet endroit).
+local THROW_SPEED = 14.0
+local THROW_REST_TIMEOUT = 6000
+
+local function deleteThrownProp()
+	if thrownProp then
+		Utils.DeleteEntity(thrownProp)
+		thrownProp = nil
+	end
+end
+
+local function cameraDirection()
+	local rot = GetGameplayCamRot(2)
+	local pitch, yaw = math.rad(rot.x), math.rad(rot.z)
+	local flat = math.abs(math.cos(pitch))
+
+	return vec3(-math.sin(yaw) * flat, math.cos(yaw) * flat, math.sin(pitch)), rot.z
+end
 
 RegisterNUICallback('throwItem', function(slot, cb)
 	cb(1)
 
 	local data = type(slot) == 'number' and PlayerData.inventory[slot]
 
-	if not data or not Items[data.name]?.weapon then return end
+	if not data or not Items[data.name]?.weapon or thrownProp then return end
 	if cache.vehicle or not canUseItem() then return end
-
-	local origin = GetEntityCoords(playerPed)
-	local target = origin + GetEntityForwardVector(playerPed) * THROW_DISTANCE
-	local found, groundZ = GetGroundZFor_3dCoord(target.x, target.y, target.z + 1.0, false)
-	local coords = vec3(target.x, target.y, found and groundZ or origin.z - 0.9)
 
 	if currentWeapon?.slot == slot then
 		currentWeapon = Weapon.Disarm(currentWeapon)
 	end
 
 	client.closeInventory()
-	Utils.PlayAnim(0, 'pickup_object', 'putdown_low', 5.0, 1.5, 1000, 48, 0.0, 0, 0, 0)
 
-	lib.callback.await('ox_inventory:throwItem', false, slot, coords)
-end)
+	local appearance = lib.callback.await('ox_inventory:throwItem', false, slot)
 
--- Effet visuel d'une arme lancee : joue chez tous les joueurs proches, trajectoire deterministe (aucune physique a synchroniser).
-RegisterNetEvent('ox_inventory:throwEffect', function(from, to, duration, appearance)
-	if source == '' or type(appearance) ~= 'table' or not appearance.model then return end
-	if #(GetEntityCoords(cache.ped) - to) > 100.0 then return end
+	if not appearance then return end
 
-	CreateThread(function()
-		local entity = createWeaponProp(appearance.model, from, appearance.weaponTint, appearance.weaponComponents)
+	local direction, heading = cameraDirection()
 
-		SetEntityCollision(entity, false, false)
-		FreezeEntityPosition(entity, true)
+	SetEntityHeading(playerPed, heading)
 
-		local startTime = GetGameTimer()
-		local arc = 0.6 + #(to - from) * 0.15
+	if pcall(lib.requestAnimDict, 'anim@heists@narcotics@trash') then
+		TaskPlayAnim(playerPed, 'anim@heists@narcotics@trash', 'throw_b', 8.0, 4.0, 900, 48, 0.0, false, false, false)
+		RemoveAnimDict('anim@heists@narcotics@trash')
+	end
 
-		while true do
-			local t = (GetGameTimer() - startTime) / duration
+	Wait(450)
 
-			if t >= 1.0 or not DoesEntityExist(entity) then break end
+	local hand = GetPedBoneCoords(playerPed, 57005, 0.0, 0.0, 0.0)
+	local entity = createWeaponProp(appearance.model, hand, appearance.weaponTint, appearance.weaponComponents, true)
 
-			local x = from.x + (to.x - from.x) * t
-			local y = from.y + (to.y - from.y) * t
-			local z = from.z + (to.z - from.z) * t + arc * 4.0 * t * (1.0 - t)
+	thrownProp = entity
 
-			SetEntityCoordsNoOffset(entity, x, y, z, false, false, false)
-			SetEntityRotation(entity, 0.0, t * 720.0, 0.0, 2, true)
-			Wait(0)
+	SetEntityAsMissionEntity(entity, true, true)
+	SetEntityNoCollisionEntity(entity, playerPed, true)
+	SetEntityCollision(entity, true, true)
+	FreezeEntityPosition(entity, false)
+	SetEntityDynamic(entity, true)
+	ActivatePhysics(entity)
+	SetEntityVelocity(entity, direction.x * THROW_SPEED, direction.y * THROW_SPEED, direction.z * THROW_SPEED + 2.0)
+
+	-- Attend que le prop s'immobilise (ou disparaisse) avant de creer le drop.
+	local start, still = GetGameTimer(), 0
+	local last = hand
+
+	while GetGameTimer() - start < THROW_REST_TIMEOUT and DoesEntityExist(entity) do
+		Wait(50)
+
+		last = GetEntityCoords(entity)
+
+		if GetGameTimer() - start > 500 and GetEntitySpeed(entity) < 0.4 then
+			still += 1
+			if still >= 8 then break end
+		else
+			still = 0
 		end
+	end
 
-		Utils.DeleteEntity(entity)
-	end)
+	local found, groundZ = GetGroundZFor_3dCoord(last.x, last.y, last.z + 0.5, false)
+
+	if found and math.abs(groundZ - last.z) < 1.5 then
+		last = vec3(last.x, last.y, groundZ)
+	end
+
+	deleteThrownProp()
+	TriggerServerEvent('ox_inventory:throwLanded', last)
 end)
 
 local function giveItemToTarget(serverId, slotId, count)

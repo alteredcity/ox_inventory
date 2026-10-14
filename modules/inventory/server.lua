@@ -1590,8 +1590,7 @@ local function setWeaponDropAppearance(item, metadata, dropData)
 	end
 end
 
----@param delay? number ms avant l'affichage cote client (laisse le temps a l'effet de lancer)
-local function CustomDrop(prefix, items, coords, slots, maxWeight, instance, model, delay)
+local function CustomDrop(prefix, items, coords, slots, maxWeight, instance, model)
 	local dropId = generateInvId()
 	local inventory = Inventory.Create(dropId, ('%s %s'):format(prefix, dropId:gsub('%D', '')), 'drop', slots or shared.dropslots, 0, maxWeight or shared.dropweight, false, {})
 
@@ -1611,13 +1610,7 @@ local function CustomDrop(prefix, items, coords, slots, maxWeight, instance, mod
 		setWeaponDropAppearance(Items(inventory.items[first].name), inventory.items[first].metadata, Inventory.Drops[dropId])
 	end
 
-	if delay then
-		local dropData = table.clone(Inventory.Drops[dropId])
-		dropData.delay = delay
-		TriggerClientEvent('ox_inventory:createDrop', -1, dropId, dropData)
-	else
-		TriggerClientEvent('ox_inventory:createDrop', -1, dropId, Inventory.Drops[dropId])
-	end
+	TriggerClientEvent('ox_inventory:createDrop', -1, dropId, Inventory.Drops[dropId])
 
     return dropId
 end
@@ -2614,13 +2607,35 @@ end
 lib.callback.register('ox_inventory:giveItem', giveItem)
 RegisterServerEvent('ox_inventory:giveItem', function(...) giveItem(source, ...) end)
 
--- Lancer une arme : retire l'arme de l'inventaire et cree un drop a l'endroit d'atterrissage (valide cote serveur).
-local THROW_MAX_DISTANCE = 10.0
+-- Lancer une arme (principe de pickle_weaponthrowing, reecrit) : le serveur retire l'arme et attend que le client
+-- signale ou le prop physique s'est immobilise, puis cree le drop a cet endroit. Sans signal, drop a l'origine.
+local THROW_MAX_DISTANCE = 40.0
 local THROW_COOLDOWN = 2000
+local THROW_LANDING_TIMEOUT = 10000
 local lastThrow = {}
+local pendingThrow = {}
 
-lib.callback.register('ox_inventory:throwItem', function(source, slot, coords)
-	if type(slot) ~= 'number' or type(coords) ~= 'vector3' then return false end
+local function finishThrow(source, coords)
+	local pending = pendingThrow[source]
+
+	if not pending then return end
+
+	pendingThrow[source] = nil
+
+	if type(coords) ~= 'vector3' or #(coords - pending.origin) > THROW_MAX_DISTANCE then
+		coords = pending.origin
+	end
+
+	CustomDrop('Lance', { { pending.name, 1, pending.metadata } }, coords)
+
+	if server.loglevel > 0 then
+		lib.logger(pending.owner, 'throwItem', ('"%s" threw 1x %s'):format(pending.label, pending.name))
+	end
+end
+
+---@return table|false appearance
+lib.callback.register('ox_inventory:throwItem', function(source, slot)
+	if type(slot) ~= 'number' or pendingThrow[source] then return false end
 
 	local inventory = Inventory(source)
 
@@ -2635,7 +2650,6 @@ lib.callback.register('ox_inventory:throwItem', function(source, slot, coords)
 
 	if not item or not item.weapon then return false end
 	if Player(source).state.invBusy then return false end
-	if #(GetEntityCoords(inventory.player.ped) - coords) > THROW_MAX_DISTANCE then return false end
 
 	local activeSlots <close> = GetLocks({ ('inventory-%s:slot-%s'):format(inventory.id, slot) })
 
@@ -2643,28 +2657,36 @@ lib.callback.register('ox_inventory:throwItem', function(source, slot, coords)
 
 	lastThrow[source] = now
 
+	local metadata = table.clone(data.metadata)
+
 	if not Inventory.RemoveItem(inventory, item, 1, data.metadata, slot) then return false end
 
-	local origin = GetEntityCoords(inventory.player.ped)
-	local flight = #(origin - coords) * 120 + 400
+	local pending = {
+		name = data.name,
+		metadata = metadata,
+		origin = GetEntityCoords(inventory.player.ped),
+		owner = inventory.owner,
+		label = inventory.label,
+	}
 
-	-- Le drop n'apparait qu'a la fin du vol, l'effet visuel est joue chez tous les joueurs proches.
-	local dropId = CustomDrop('Lance', { { data.name, 1, data.metadata } }, coords, nil, nil, nil, nil, flight)
+	pendingThrow[source] = pending
 
-	if dropId then
-		local appearance = {}
-		setWeaponDropAppearance(item, data.metadata, appearance)
-		TriggerClientEvent('ox_inventory:throwEffect', -1, vec3(origin.x, origin.y, origin.z + 0.4), coords, flight, appearance)
-	end
+	SetTimeout(THROW_LANDING_TIMEOUT, function()
+		if pendingThrow[source] == pending then finishThrow(source) end
+	end)
 
-	if server.loglevel > 0 then
-		lib.logger(inventory.owner, 'throwItem', ('"%s" threw 1x %s'):format(inventory.label, data.name))
-	end
+	local appearance = {}
+	setWeaponDropAppearance(item, metadata, appearance)
 
-	return true
+	return appearance
+end)
+
+RegisterServerEvent('ox_inventory:throwLanded', function(coords)
+	finishThrow(source, coords)
 end)
 
 AddEventHandler('playerDropped', function()
+	finishThrow(source)
 	lastThrow[source] = nil
 end)
 
