@@ -6,7 +6,12 @@ import { isEnvBrowser } from '../../utils/misc';
 import { Slot } from '../../typings';
 import ItemIcon from './ItemIcon';
 import { getRarity } from '../../helpers';
-import { imagepath } from '../../store/imagepath';
+
+// Icones des slots vides : embarquees dans la ressource (le convar inventory:imagepath peut pointer vers un hote externe).
+const equipIconUrl = (id: string) =>
+  isEnvBrowser()
+    ? `images/equip_${id}.png`
+    : `nui://${(window as any).GetParentResourceName?.() ?? 'ox_inventory'}/web/images/equip_${id}.png`;
 
 const toSlot = (eq: EquipmentSlot): Slot | null =>
   eq.item
@@ -35,7 +40,7 @@ const EquipmentCell: React.FC<{ eq: EquipmentSlot }> = ({ eq }) => {
       ) : (
         <img
           className="eq-ph"
-          src={`${imagepath}/equip_${eq.id}.png`}
+          src={equipIconUrl(eq.id)}
           alt=""
           draggable={false}
           onError={(e) => (e.currentTarget.style.display = 'none')}
