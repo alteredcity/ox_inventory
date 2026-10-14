@@ -15,7 +15,7 @@ export const computeFit = (w: number, h: number): Fit => {
   const mode: LayoutMode =
     ar >= MODE_RATIOS.ultra ? 'ultra' : ar >= MODE_RATIOS.wide ? 'wide' : ar >= MODE_RATIOS.mid ? 'mid' : 'narrow';
 
-  return { u, mode, cols: mode === 'ultra' ? 6 : 5, rows: mode === 'narrow' ? 4 : 5 };
+  return { u, mode, cols: 5, rows: mode === 'narrow' ? 4 : 5 };
 };
 
 // Applique la mise a l'echelle : rem sur <html>, mode et nombre de colonnes en attributs / variables CSS.
