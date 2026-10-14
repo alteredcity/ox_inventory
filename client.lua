@@ -1824,10 +1824,12 @@ RegisterNUICallback('useItem', function(slot, cb)
 end)
 
 -- Lancer une arme (principe de pickle_weaponthrowing, reecrit) : le serveur retire l'arme, le joueur la tient en main
--- et choisit son angle (camera, trajectoire affichee), clic gauche pour lancer, retour arriere pour la poser a ses pieds.
+-- et choisit son angle (camera) et sa force (clic gauche maintenu puis relache), retour arriere pour la poser a ses pieds.
 -- Le prop physique est synchronise ; le client signale ou il s'est immobilise et le drop y est cree.
-local THROW_SPEED = 14.0
-local THROW_LIFT = 2.0
+local THROW_MIN_SPEED = 5.0
+local THROW_MAX_SPEED = 18.0
+local THROW_CHARGE_TIME = 1500
+local THROW_LIFT = 0.15 -- part de la vitesse ajoutee vers le haut
 local THROW_AIM_TIMEOUT = 20000
 local THROW_REST_TIMEOUT = 6000
 
@@ -1846,30 +1848,13 @@ local function cameraDirection()
 	return vec3(-math.sin(yaw) * flat, math.cos(yaw) * flat, math.sin(pitch)), rot.z
 end
 
+---@param power number 0 a 1
 ---@return vector3
-local function throwVelocity()
+local function throwVelocity(power)
 	local direction = cameraDirection()
+	local speed = THROW_MIN_SPEED + (THROW_MAX_SPEED - THROW_MIN_SPEED) * power
 
-	return vec3(direction.x * THROW_SPEED, direction.y * THROW_SPEED, direction.z * THROW_SPEED + THROW_LIFT)
-end
-
--- Trajectoire estimee (balistique simple, sans frottements ni collisions) tracee pendant la visee.
-local function drawThrowTrajectory(from)
-	local velocity = throwVelocity()
-	local pos = from
-	local step = 0.05
-
-	for _ = 1, 30 do
-		local nextPos = vec3(pos.x + velocity.x * step, pos.y + velocity.y * step, pos.z + velocity.z * step)
-
-		velocity = vec3(velocity.x, velocity.y, velocity.z - 9.81 * step)
-		DrawLine(pos.x, pos.y, pos.z, nextPos.x, nextPos.y, nextPos.z, 255, 255, 255, 160)
-		pos = nextPos
-
-		local found, groundZ = GetGroundZFor_3dCoord(pos.x, pos.y, pos.z + 0.3, false)
-
-		if found and pos.z <= groundZ then break end
-	end
+	return vec3(direction.x * speed, direction.y * speed, direction.z * speed + speed * THROW_LIFT)
 end
 
 local function groundedCoords(coords)
@@ -1903,13 +1888,15 @@ local function waitForRest(entity, from)
 	return groundedCoords(last)
 end
 
----Phase de visee : renvoie true si le joueur lance, false s'il annule ou ne peut plus.
+---Phase de visee : maintenir le clic gauche charge la force, le relacher lance. Renvoie la force (0 a 1) ou nil si annule.
+---@return number?
 local function aimThrow(entity)
 	local timeout = GetGameTimer() + THROW_AIM_TIMEOUT
+	local chargeStart
 
 	lib.showTextUI(locale('throw_prompt'))
 
-	local thrown = false
+	local power
 
 	while GetGameTimer() < timeout do
 		if PlayerData.dead or cache.vehicle or IsPedRagdoll(playerPed) or not DoesEntityExist(entity) then break end
@@ -1922,21 +1909,27 @@ local function aimThrow(entity)
 		DisableControlAction(0, 257, true)
 		DisablePlayerFiring(cache.playerId, true)
 
-		drawThrowTrajectory(GetEntityCoords(entity))
+		if IsDisabledControlPressed(0, 24) then
+			chargeStart = chargeStart or GetGameTimer()
 
-		if IsDisabledControlJustPressed(0, 24) then
-			thrown = true
-			break
-		elseif IsControlJustPressed(0, 177) then
+			local charge = math.min((GetGameTimer() - chargeStart) / THROW_CHARGE_TIME, 1.0)
+
+			-- Jauge de force uniquement : aucune trajectoire n'est indiquee.
+			DrawRect(0.5, 0.92, 0.12, 0.012, 0, 0, 0, 150)
+			DrawRect(0.5 - 0.06 + 0.06 * charge, 0.92, 0.12 * charge, 0.008, 255, 255, 255, 220)
+		elseif chargeStart then
+			power = math.min((GetGameTimer() - chargeStart) / THROW_CHARGE_TIME, 1.0)
 			break
 		end
+
+		if IsControlJustPressed(0, 177) then break end
 
 		Wait(0)
 	end
 
 	lib.hideTextUI()
 
-	return thrown
+	return power
 end
 
 RegisterNUICallback('throwItem', function(slot, cb)
@@ -1969,16 +1962,16 @@ RegisterNUICallback('throwItem', function(slot, cb)
 	-- Le joueur ne peut ni ouvrir l'inventaire ni tirer pendant la visee ; le verrou est toujours rendu.
 	client.player:set('invBusy', true)
 
-	local ok, thrown = pcall(aimThrow, entity)
+	local ok, power = pcall(aimThrow, entity)
 
 	if not ok then
 		lib.hideTextUI()
-		thrown = false
+		power = nil
 	end
 
 	local landing
 
-	if thrown and DoesEntityExist(entity) then
+	if power and DoesEntityExist(entity) then
 		local _, heading = cameraDirection()
 
 		SetEntityHeading(playerPed, heading)
@@ -1991,7 +1984,7 @@ RegisterNUICallback('throwItem', function(slot, cb)
 		Wait(300)
 
 		-- L'angle est relu au moment du lacher, pas au debut de l'animation.
-		local velocity = throwVelocity()
+		local velocity = throwVelocity(power)
 
 		DetachEntity(entity, true, true)
 		SetEntityNoCollisionEntity(entity, playerPed, true)

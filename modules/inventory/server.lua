@@ -2609,7 +2609,7 @@ RegisterServerEvent('ox_inventory:giveItem', function(...) giveItem(source, ...)
 
 -- Lancer une arme (principe de pickle_weaponthrowing, reecrit) : le serveur retire l'arme et attend que le client
 -- signale ou le prop physique s'est immobilise, puis cree le drop a cet endroit. Sans signal, drop a l'origine.
-local THROW_MAX_DISTANCE = 40.0
+local THROW_MAX_DISTANCE = 60.0
 local THROW_COOLDOWN = 2000
 local THROW_LANDING_TIMEOUT = 40000
 local lastThrow = {}

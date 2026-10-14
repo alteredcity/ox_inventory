@@ -90,5 +90,5 @@
   "open_crafting_bench": "Ouvrir la table de fabrication",
   "not_enough_durability": "%s n'a pas assez de durabilité",
   "storage": "Stockage",
-  "throw_prompt": "[Clic gauche] Lancer  |  [Retour arriere] Poser"
+  "throw_prompt": "[Clic gauche maintenu] Charger, relacher pour lancer  |  [Retour arriere] Poser"
 }

@@ -90,5 +90,5 @@
   "open_crafting_bench": "Open Crafting Bench",
   "not_enough_durability": "%s does not have enough durability",
   "storage": "Storage",
-  "throw_prompt": "[Left click] Throw  |  [Backspace] Put down"
+  "throw_prompt": "[Hold left click] Charge, release to throw  |  [Backspace] Put down"
 }
