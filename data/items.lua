@@ -8243,4 +8243,123 @@ return {
 	['ui_test_weapon'] = { label = 'Test arme', weight = 1000, stack = false, category = 'weapon', rarity = 'rare', durability = true },
 	['ui_test_food'] = { label = 'Test nourriture', weight = 200, category = 'food', degrade = 60 },
 	['ui_test_clothing'] = { label = 'Test vêtement', weight = 400, stack = false, category = 'clothing', rarity = 'uncommon' },
+
+	["phone_black"] = {
+		label = "Black Phone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["beer"] = {
+		label = "Beer",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["phone_green"] = {
+		label = "Green Phone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["phone_orange"] = {
+		label = "Orange Phone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["phone_pink"] = {
+		label = "Pink Phone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["phone_purple"] = {
+		label = "Purple Phone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["phone_red"] = {
+		label = "Red Phone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["phone_yellow"] = {
+		label = "Yellow Phone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["pizza_ham"] = {
+		label = "Pizza Ham",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["coffee"] = {
+		label = "Coffee",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["sandwich"] = {
+		label = "Sandwich",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["taco_chicken"] = {
+		label = "Chicken Taco",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["wine"] = {
+		label = "Wine",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["meth"] = {
+		label = "Meth",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["blackberry_ale"] = {
+		label = "Blackberry Ale",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
+
+	["repairkit"] = {
+		label = "Repair Kit",
+		weight = 3,
+		stack = true,
+		close = true,
+	},
+
+	["phone_blue"] = {
+		label = "Blue Phone",
+		weight = 1,
+		stack = true,
+		close = true,
+	},
 }
