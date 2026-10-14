@@ -21,17 +21,6 @@ export type EquipmentSlot = {
   item?: EquipmentItem | null;
 };
 
-/** Jauge ronde du panneau central (sante, faim...). */
-export type NeedGauge = {
-  id: string;
-  label?: string;
-  /** 0-100 */
-  value: number;
-  color?: string;
-  /** Emoji ou texte court. */
-  icon?: string;
-};
-
 export type Prefs = {
   accent: string;
   /** 0 a 16, en dixiemes de rem. */

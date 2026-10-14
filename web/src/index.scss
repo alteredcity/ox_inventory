@@ -681,31 +681,6 @@ button:disabled {
   gap: 1.4rem;
 }
 
-.needs {
-  display: flex;
-  justify-content: space-around;
-  padding-bottom: 1rem;
-}
-
-.need {
-  width: 4.2rem;
-  height: 4.2rem;
-  border-radius: 50%;
-  border: 0.2rem solid var(--line);
-  display: grid;
-  place-items: center;
-  font-size: 1.5rem;
-  position: relative;
-
-  b {
-    position: absolute;
-    bottom: -1.4rem;
-    font-size: var(--fs-s);
-    font-weight: 400;
-    color: var(--muted);
-  }
-}
-
 .actions {
   display: grid;
   grid-template-columns: 1fr 1fr;

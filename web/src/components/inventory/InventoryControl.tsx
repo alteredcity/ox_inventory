@@ -20,12 +20,11 @@ const formatAmount = (n: number) => (n > 0 ? n.toLocaleString('en-US') : '0');
 const digitsOnly = (s: string) => s.replace(/\D/g, '');
 const countDigitsBefore = (s: string, index: number) => digitsOnly(s.substring(0, index)).length;
 
-// Colonne centrale : mannequin, jauges, boutons d'action et hotbar (slots 1 a 5 du joueur).
+// Colonne centrale : mannequin, boutons d'action et hotbar (slots 1 a 5 du joueur).
 const InventoryControl: React.FC = () => {
   const itemAmount = useAppSelector(selectItemAmount);
   const left = useAppSelector(selectLeftInventory);
   const selected = useAppSelector((state) => state.ui.selected);
-  const needs = useAppSelector((state) => state.ui.needs);
   const settingsOpen = useAppSelector((state) => state.ui.settingsOpen);
   const dispatch = useAppDispatch();
 
@@ -132,16 +131,6 @@ const InventoryControl: React.FC = () => {
       </div>
 
       <div className="panel status">
-        {needs.length > 0 && (
-          <div className="needs">
-            {needs.map((n) => (
-              <div key={n.id} className="need" style={n.color ? { borderColor: n.color } : undefined} title={n.label}>
-                {n.icon}
-                <b>{Math.round(n.value)}%</b>
-              </div>
-            ))}
-          </div>
-        )}
         <div className="actions">
           <input
             className="amount"

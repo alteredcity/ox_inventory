@@ -31,14 +31,6 @@ Champs optionnels, transmis a l'UI par `client.lua` (bloc `ItemData`) :
 
 Si aucun element n'a de `side`, la liste est coupee en deux moities.
 
-## Jauges (event NUI `setNeeds`)
-
-Optionnel ; sans cet event, aucune jauge n'est affichee.
-
-```lua
-{ { id = 'health', label = 'Sante', value = 95, color = '#e0505a', icon = 'H' } }  -- value 0-100
-```
-
 ## Panneau de droite
 
 Titre derive de `inventory.type` (puis du prefixe de `inventory.id`) : `drop`/`newdrop` Sol, `stash`/`container` Coffre, `trunk`/`glovebox` Vehicule, `shop` Boutique, `crafting` Craft. Table dans `src/config/ui.ts`.
