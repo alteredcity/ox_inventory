@@ -150,14 +150,18 @@ local function createPreviewPed()
 		local nextSync = 0
 
 		while previewPed == ped and DoesEntityExist(ped) do
-			local heading = GetGameplayCamRot(2).z
-			local rad = math.rad(heading)
+			-- position fixee dans le repere de la camera (inclinaison comprise), pour un rendu identique quel que soit l'angle
+			local rot = GetGameplayCamRot(2)
+			local heading, pitch = math.rad(rot.z), math.rad(rot.x)
 			local cam = GetGameplayCamCoord()
-			local fx, fy = -math.sin(rad), math.cos(rad)
-			local d, side = previewPedOffset.distance, previewPedOffset.side
+			local cp, sp = math.cos(pitch), math.sin(pitch)
+			local fx, fy, fz = -math.sin(heading) * cp, math.cos(heading) * cp, sp
+			local rx, ry = math.cos(heading), math.sin(heading)
+			local ux, uy, uz = ry * fz, -rx * fz, rx * fy - ry * fx
+			local d, side, h = previewPedOffset.distance, previewPedOffset.side, previewPedOffset.height
 
-			SetEntityCoordsNoOffset(ped, cam.x + fx * d + fy * side, cam.y + fy * d - fx * side, cam.z + previewPedOffset.height, false, false, false)
-			SetEntityHeading(ped, heading + 180.0)
+			SetEntityCoordsNoOffset(ped, cam.x + fx * d + rx * side + ux * h, cam.y + fy * d + ry * side + uy * h, cam.z + fz * d + uz * h, false, false, false)
+			SetEntityHeading(ped, rot.z + 180.0)
 			-- masque le vrai ped (local uniquement, sans effet reseau) pour qu'il ne recouvre pas le clone
 			SetEntityLocallyInvisible(playerPed)
 
