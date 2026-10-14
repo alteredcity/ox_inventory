@@ -1571,7 +1571,27 @@ local function generateInvId(prefix)
 	end
 end
 
-local function CustomDrop(prefix, items, coords, slots, maxWeight, instance, model)
+---Apparence d'une arme au sol : modele, teinte et composants lus dans les metadata de l'item.
+---@param item table?
+---@param metadata table?
+---@param dropData table
+local function setWeaponDropAppearance(item, metadata, dropData)
+	if not item?.weapon then return end
+
+	dropData.isWeapon = true
+	dropData.model = item.hash
+
+	if type(metadata) ~= 'table' then return end
+
+	dropData.weaponTint = metadata.tint
+
+	if metadata.components and next(metadata.components) then
+		dropData.weaponComponents = metadata.components
+	end
+end
+
+---@param delay? number ms avant l'affichage cote client (laisse le temps a l'effet de lancer)
+local function CustomDrop(prefix, items, coords, slots, maxWeight, instance, model, delay)
 	local dropId = generateInvId()
 	local inventory = Inventory.Create(dropId, ('%s %s'):format(prefix, dropId:gsub('%D', '')), 'drop', slots or shared.dropslots, 0, maxWeight or shared.dropweight, false, {})
 
@@ -1585,7 +1605,19 @@ local function CustomDrop(prefix, items, coords, slots, maxWeight, instance, mod
 		model = model,
 	}
 
-	TriggerClientEvent('ox_inventory:createDrop', -1, dropId, Inventory.Drops[dropId])
+	local first = inventory.items and next(inventory.items)
+
+	if not model and first and inventory.items[first] then
+		setWeaponDropAppearance(Items(inventory.items[first].name), inventory.items[first].metadata, Inventory.Drops[dropId])
+	end
+
+	if delay then
+		local dropData = table.clone(Inventory.Drops[dropId])
+		dropData.delay = delay
+		TriggerClientEvent('ox_inventory:createDrop', -1, dropId, dropData)
+	else
+		TriggerClientEvent('ox_inventory:createDrop', -1, dropId, Inventory.Drops[dropId])
+	end
 
     return dropId
 end
@@ -1682,6 +1714,7 @@ local function dropItem(source, playerInventory, fromData, data)
 
 	inventory.coords = data.coords
 	Inventory.Drops[dropId] = {coords = inventory.coords, instance = data.instance}
+	setWeaponDropAppearance(Items(toData.name), toData.metadata, Inventory.Drops[dropId])
 	playerInventory.changed = true
 
 	TriggerClientEvent('ox_inventory:createDrop', -1, dropId, Inventory.Drops[dropId], playerInventory.open and source, slot)
@@ -2612,7 +2645,17 @@ lib.callback.register('ox_inventory:throwItem', function(source, slot, coords)
 
 	if not Inventory.RemoveItem(inventory, item, 1, data.metadata, slot) then return false end
 
-	CustomDrop('Lance', { { data.name, 1, data.metadata } }, coords)
+	local origin = GetEntityCoords(inventory.player.ped)
+	local flight = #(origin - coords) * 120 + 400
+
+	-- Le drop n'apparait qu'a la fin du vol, l'effet visuel est joue chez tous les joueurs proches.
+	local dropId = CustomDrop('Lance', { { data.name, 1, data.metadata } }, coords, nil, nil, nil, nil, flight)
+
+	if dropId then
+		local appearance = {}
+		setWeaponDropAppearance(item, data.metadata, appearance)
+		TriggerClientEvent('ox_inventory:throwEffect', -1, vec3(origin.x, origin.y, origin.z + 0.4), coords, flight, appearance)
+	end
 
 	if server.loglevel > 0 then
 		lib.logger(inventory.owner, 'throwItem', ('"%s" threw 1x %s'):format(inventory.label, data.name))

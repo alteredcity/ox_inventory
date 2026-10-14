@@ -1109,20 +1109,81 @@ local function nearbyDrop(point)
     end
 end
 
+---Cree un objet local a l'apparence de l'arme (teinte, composants, skin luxe).
+---@param hash number
+---@param coords vector3
+---@param tint? number
+---@param components? string[]
+---@return number
+local function createWeaponProp(hash, coords, tint, components)
+	local skinModel = 0
+
+	-- Un skin (VARMOD) remplace tout le modele : il se passe a la creation, pas via GiveWeaponComponentToWeaponObject.
+	if components then
+		for i = 1, #components do
+			local component = Items[components[i]]
+
+			if component?.type == 'skin' and component.client?.component then
+				for j = 1, #component.client.component do
+					if DoesWeaponTakeWeaponComponent(hash, component.client.component[j]) then
+						skinModel = GetWeaponComponentTypeModel(component.client.component[j])
+						break
+					end
+				end
+			end
+
+			if skinModel ~= 0 then break end
+		end
+	end
+
+	if skinModel ~= 0 then
+		lib.requestModel(skinModel)
+	else
+		RequestWeaponAsset(hash, 31, 0)
+		local timeout = GetGameTimer() + 2000
+		while not HasWeaponAssetLoaded(hash) and GetGameTimer() < timeout do Wait(0) end
+	end
+
+	local entity = CreateWeaponObject(hash, 0, coords.x, coords.y, coords.z, false, 1.0, skinModel)
+
+	if tint then SetWeaponObjectTintIndex(entity, tint) end
+
+	if components then
+		for i = 1, #components do
+			local component = Items[components[i]]
+
+			if component?.type ~= 'skin' and component?.client?.component then
+				for j = 1, #component.client.component do
+					if DoesWeaponTakeWeaponComponent(hash, component.client.component[j]) then
+						GiveWeaponComponentToWeaponObject(entity, component.client.component[j])
+					end
+				end
+			end
+		end
+	end
+
+	return entity
+end
+
 ---@param point CPoint
 local function onEnterDrop(point)
 	if not point.instance or point.instance == currentInstance and not point.entity then
 		local model = point.model or client.dropmodel
+		local entity
 
-        -- Prevent breaking inventory on invalid point.model instead use default client.dropmodel
-        if not IsModelValid(model) and not IsModelInCdimage(model) then
-            model = client.dropmodel
-        end
-		lib.requestModel(model)
+		if point.isWeapon then
+			entity = createWeaponProp(model, point.coords, point.weaponTint, point.weaponComponents)
+		else
+			-- Prevent breaking inventory on invalid point.model instead use default client.dropmodel
+			if not IsModelValid(model) and not IsModelInCdimage(model) then
+				model = client.dropmodel
+			end
 
-		local entity = CreateObject(model, point.coords.x, point.coords.y, point.coords.z, false, true, true)
+			lib.requestModel(model)
+			entity = CreateObject(model, point.coords.x, point.coords.y, point.coords.z, false, true, true)
+			SetModelAsNoLongerNeeded(model)
+		end
 
-		SetModelAsNoLongerNeeded(model)
 		PlaceObjectOnGroundProperly(entity)
 		FreezeEntityPosition(entity, true)
 		SetEntityCollision(entity, false, true)
@@ -1146,7 +1207,10 @@ local function createDrop(dropId, data)
 		distance = 16,
 		invId = dropId,
 		instance = data.instance,
-		model = data.model
+		model = data.model,
+		isWeapon = data.isWeapon,
+		weaponTint = data.weaponTint,
+		weaponComponents = data.weaponComponents,
 	})
 
 	if point.model or client.dropprops then
@@ -1162,7 +1226,14 @@ end
 
 RegisterNetEvent('ox_inventory:createDrop', function(dropId, data, owner, slot)
 	if client.drops then
-		createDrop(dropId, data)
+		if data.delay then
+			-- Drop lance : n'apparait qu'a la fin du vol de l'arme.
+			SetTimeout(data.delay, function()
+				if client.drops then createDrop(dropId, data) end
+			end)
+		else
+			createDrop(dropId, data)
+		end
 	end
 
 	if owner == cache.serverId then
@@ -1778,6 +1849,38 @@ RegisterNUICallback('throwItem', function(slot, cb)
 	Utils.PlayAnim(0, 'pickup_object', 'putdown_low', 5.0, 1.5, 1000, 48, 0.0, 0, 0, 0)
 
 	lib.callback.await('ox_inventory:throwItem', false, slot, coords)
+end)
+
+-- Effet visuel d'une arme lancee : joue chez tous les joueurs proches, trajectoire deterministe (aucune physique a synchroniser).
+RegisterNetEvent('ox_inventory:throwEffect', function(from, to, duration, appearance)
+	if source == '' or type(appearance) ~= 'table' or not appearance.model then return end
+	if #(GetEntityCoords(cache.ped) - to) > 100.0 then return end
+
+	CreateThread(function()
+		local entity = createWeaponProp(appearance.model, from, appearance.weaponTint, appearance.weaponComponents)
+
+		SetEntityCollision(entity, false, false)
+		FreezeEntityPosition(entity, true)
+
+		local startTime = GetGameTimer()
+		local arc = 0.6 + #(to - from) * 0.15
+
+		while true do
+			local t = (GetGameTimer() - startTime) / duration
+
+			if t >= 1.0 or not DoesEntityExist(entity) then break end
+
+			local x = from.x + (to.x - from.x) * t
+			local y = from.y + (to.y - from.y) * t
+			local z = from.z + (to.z - from.z) * t + arc * 4.0 * t * (1.0 - t)
+
+			SetEntityCoordsNoOffset(entity, x, y, z, false, false, false)
+			SetEntityRotation(entity, 0.0, t * 720.0, 0.0, 2, true)
+			Wait(0)
+		end
+
+		Utils.DeleteEntity(entity)
+	end)
 end)
 
 local function giveItemToTarget(serverId, slotId, count)
