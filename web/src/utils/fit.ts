@@ -9,8 +9,16 @@ export const setFitOverride = (size: { w: number; h: number } | null) => {
   overrideSize = size;
 };
 
+// Echelle reduite du mode compact (preference joueur, voir utils/prefs.ts) : l'inventaire occupe moins d'ecran.
+export const COMPACT_SCALE = 0.85;
+let compactScale = 1;
+
+export const setCompactFit = (compact: boolean) => {
+  compactScale = compact ? COMPACT_SCALE : 1;
+};
+
 export const computeFit = (w: number, h: number): Fit => {
-  const u = Math.max(MIN_REM_PX, Math.min(w / DESIGN_W, h / DESIGN_H));
+  const u = Math.max(MIN_REM_PX, Math.min(w / DESIGN_W, h / DESIGN_H) * compactScale);
   const ar = w / h;
   const mode: LayoutMode =
     ar >= MODE_RATIOS.ultra ? 'ultra' : ar >= MODE_RATIOS.wide ? 'wide' : ar >= MODE_RATIOS.mid ? 'mid' : 'narrow';

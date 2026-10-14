@@ -286,7 +286,7 @@ button:disabled {
     position: absolute;
     top: 0.3rem;
     left: 0.45rem;
-    right: 0.45rem;
+    right: calc(0.45rem + var(--nb, 0) * 1.6rem);
     font-size: var(--fs-s);
     white-space: nowrap;
     overflow: hidden;
@@ -308,6 +308,38 @@ button:disabled {
     display: flex;
     align-items: center;
     gap: 0.2rem;
+  }
+  .badges {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    display: flex;
+    gap: 0.2rem;
+    z-index: 1;
+  }
+  .badge {
+    min-width: 1.3rem;
+    height: 1.3rem;
+    padding: 0 0.25rem;
+    display: grid;
+    place-items: center;
+    font-style: normal;
+    font-size: var(--fs-s);
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--line);
+    border-radius: 0.4rem;
+
+    &.warn {
+      background: #b9770e;
+      border-color: #f0a030;
+    }
+    &.bad {
+      background: #a93226;
+      border-color: #e74c3c;
+    }
   }
   .cur {
     height: 1.1rem;
@@ -466,6 +498,33 @@ button:disabled {
   }
   .desc-markdown > p {
     margin: 0;
+  }
+  .meta {
+    margin: 0.5rem 0 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.2rem 1.2rem;
+    font-size: var(--fs-s);
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.6rem;
+      border-bottom: 1px solid var(--line);
+      min-width: 0;
+    }
+    dt {
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    dd {
+      margin: 0;
+      color: var(--text);
+      text-align: right;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
   }
 }
 

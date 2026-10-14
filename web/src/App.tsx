@@ -14,7 +14,7 @@ import KeyPress from './components/utils/KeyPress';
 import { mockEvents } from './utils/mockData';
 import { useAppSelector } from './store';
 import { applyPrefs } from './utils/prefs';
-import { applyFit } from './utils/fit';
+import { applyFit, setCompactFit } from './utils/fit';
 import { useEffect } from 'react';
 
 debugData(mockEvents, 300);
@@ -38,7 +38,11 @@ const App: React.FC = () => {
 
   const prefs = useAppSelector((state) => state.ui.prefs);
 
-  useEffect(() => applyPrefs(prefs), [prefs]);
+  useEffect(() => {
+    applyPrefs(prefs);
+    setCompactFit(prefs.compact);
+    applyFit();
+  }, [prefs]);
 
   useEffect(() => {
     applyFit();

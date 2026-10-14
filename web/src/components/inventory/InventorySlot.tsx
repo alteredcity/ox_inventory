@@ -23,6 +23,7 @@ import { closeTooltip, openTooltip } from '../../store/tooltip';
 import { openContextMenu } from '../../store/contextMenu';
 import { hoverSlot, selectSlot } from '../../store/ui';
 import { HOTBAR_SLOTS } from '../../config/ui';
+import { getSlotBadges } from '../../helpers/slotInfo';
 import { useMergeRefs } from '@floating-ui/react';
 import ItemIcon from './ItemIcon';
 
@@ -144,6 +145,10 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
     !canPurchaseItem(item, { type: inventoryType, groups: inventoryGroups }) || !canCraftItem(item, inventoryType);
   const rarity = hasItem ? getRarity(item) : undefined;
   const key = hotkey ?? (inventoryType === InventoryType.PLAYER && item.slot <= HOTBAR_SLOTS ? item.slot : undefined);
+  const badges =
+    isSlotWithItem(item) && !compact && inventoryType !== 'shop' && inventoryType !== 'crafting'
+      ? getSlotBadges(item)
+      : [];
   const classes = ['slot'];
 
   if (!hasItem) classes.push('empty');
@@ -160,6 +165,7 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
       {hasItem && (
         <div
           className="item-slot-wrapper"
+          style={badges.length ? ({ '--nb': badges.length } as React.CSSProperties) : undefined}
           onMouseEnter={() => {
             dispatch(hoverSlot({ inventory: inventoryType, slot: item.slot }));
             timerRef.current = window.setTimeout(() => {
@@ -177,6 +183,15 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
         >
           {!compact && <span className="name">{getItemLabel(item)}</span>}
           <ItemIcon item={item} />
+          {badges.length > 0 && (
+            <span className="badges">
+              {badges.map((b) => (
+                <i key={b.id} className={`badge${b.tone ? ` ${b.tone}` : ''}`} title={b.title}>
+                  {b.glyph}
+                </i>
+              ))}
+            </span>
+          )}
           {item.count ? <span className="q">{item.count.toLocaleString('fr-FR')}x</span> : null}
           {inventoryType === 'shop' && item.price !== undefined && item.price > 0 ? (
             <span className="w price">
