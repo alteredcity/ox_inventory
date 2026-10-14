@@ -158,6 +158,8 @@ local function createPreviewPed()
 
 			SetEntityCoordsNoOffset(ped, cam.x + fx * d + fy * side, cam.y + fy * d - fx * side, cam.z + previewPedOffset.height, false, false, false)
 			SetEntityHeading(ped, heading + 180.0)
+			-- masque le vrai ped (local uniquement, sans effet reseau) pour qu'il ne recouvre pas le clone
+			SetEntityLocallyInvisible(playerPed)
 
 			-- resynchronise l'apparence avec le vrai ped (tenue, accessoires) ; evite un appel par frame
 			if GetGameTimer() >= nextSync then
