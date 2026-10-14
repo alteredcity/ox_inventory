@@ -1190,6 +1190,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_ASSAULTRIFLE_VARMOD_LUXE`,
 					`COMPONENT_ASSAULTSMG_VARMOD_LOWRIDER`,
@@ -1211,6 +1212,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_HEAVYPISTOL_VARMOD_LUXE`,
 					`COMPONENT_SNIPERRIFLE_VARMOD_LUXE`,
@@ -1225,6 +1227,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_ADVANCEDRIFLE_VARMOD_LUXE`,
 					`COMPONENT_APPISTOL_VARMOD_LUXE`,
@@ -1241,6 +1244,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_PISTOL50_VARMOD_LUXE`
 				},
@@ -1253,6 +1257,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_KNUCKLE_VARMOD_BALLAS`
 				},
@@ -1265,6 +1270,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_KNUCKLE_VARMOD_DIAMOND`
 				},
@@ -1277,6 +1283,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_KNUCKLE_VARMOD_DOLLAR`
 				},
@@ -1289,6 +1296,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_KNUCKLE_VARMOD_HATE`
 				},
@@ -1301,6 +1309,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_KNUCKLE_VARMOD_KING`
 				},
@@ -1313,6 +1322,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_KNUCKLE_VARMOD_LOVE`
 				},
@@ -1325,6 +1335,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_KNUCKLE_VARMOD_PIMP`
 				},
@@ -1337,6 +1348,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_KNUCKLE_VARMOD_PLAYER`
 				},
@@ -1349,6 +1361,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_KNUCKLE_VARMOD_VAGOS`
 				},
@@ -1361,6 +1374,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3`
 				},
@@ -1373,6 +1387,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3_01`
 				},
@@ -1385,6 +1400,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3_02`
 				},
@@ -1397,6 +1413,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3_03`
 				},
@@ -1409,6 +1426,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3_04`
 				},
@@ -1421,6 +1439,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3_05`
 				},
@@ -1433,6 +1452,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3_06`
 				},
@@ -1445,6 +1465,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3_07`
 				},
@@ -1457,6 +1478,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3_08`
 				},
@@ -1469,6 +1491,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_BAT_VARMOD_XM3_09`
 				},
@@ -1481,6 +1504,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_REVOLVER_VARMOD_BOSS`,
 					`COMPONENT_SWITCHBLADE_VARMOD_VAR1`
@@ -1494,6 +1518,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_REVOLVER_VARMOD_GOON`,
 					`COMPONENT_SWITCHBLADE_VARMOD_VAR2`
@@ -1507,6 +1532,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_RAYPISTOL_VARMOD_XMAS18`
 				},
@@ -1519,6 +1545,7 @@ return {
 			type = 'skin',
 			weight = 50,
 			client = {
+				varmod = true,
 				component = {
 					`COMPONENT_APPISTOL_VARMOD_SECURITY`,
 					`COMPONENT_MICROSMG_VARMOD_SECURITY`,

@@ -1123,7 +1123,7 @@ local function createWeaponProp(hash, coords, tint, components)
 		for i = 1, #components do
 			local component = Items[components[i]]
 
-			if component?.type == 'skin' and component.client?.component then
+			if component?.client?.varmod and component.client.component then
 				for j = 1, #component.client.component do
 					if DoesWeaponTakeWeaponComponent(hash, component.client.component[j]) then
 						skinModel = GetWeaponComponentTypeModel(component.client.component[j])
@@ -1152,7 +1152,7 @@ local function createWeaponProp(hash, coords, tint, components)
 		for i = 1, #components do
 			local component = Items[components[i]]
 
-			if component?.type ~= 'skin' and component?.client?.component then
+			if component?.client?.component and not component.client.varmod then
 				for j = 1, #component.client.component do
 					if DoesWeaponTakeWeaponComponent(hash, component.client.component[j]) then
 						GiveWeaponComponentToWeaponObject(entity, component.client.component[j])
