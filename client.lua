@@ -121,7 +121,7 @@ end
 
 -- Ped d'apercu affiche derriere l'UI (zone centrale transparente). Idee reprise du ClonePed d'inventaire de l'ancien
 -- ox_inventory (lsre), reecrite ici. Reglages : distance devant la camera, decalage lateral, hauteur relative a la camera.
-local previewPedOffset = { distance = 3.0, side = 0.0, height = -0.6 }
+local previewPedOffset = { distance = 3.7, side = 0.0, height = -0.73 }
 local previewPed
 
 local function deletePreviewPed()
