@@ -121,12 +121,17 @@ end
 
 -- Ped d'apercu affiche derriere l'UI (zone centrale transparente). Idee reprise du ClonePed d'inventaire de l'ancien
 -- ox_inventory (lsre), reecrite ici. Reglages : distance devant la camera, decalage lateral, hauteur relative a la camera.
-local previewPedOffset = { distance = 3.7, side = 0.0, height = -0.25 }
+local previewPedOffset = { distance = 3.7, side = 0.0, height = 0.4 }
 local previewPed
 
 local function deletePreviewPed()
 	local ped = previewPed
 	previewPed = nil
+
+	if ped then
+		DisableIdleCamera(false)
+		SetPedCanPlayAmbientAnims(PlayerPedId(), true)
+	end
 
 	if ped and DoesEntityExist(ped) then
 		DeleteEntity(ped)
@@ -140,6 +145,9 @@ local function createPreviewPed()
 	if not ped or ped == 0 then return end
 
 	previewPed = ped
+	-- evite la camera d'inactivite et les anims ambiantes pendant que l'inventaire est ouvert
+	DisableIdleCamera(true)
+	SetPedCanPlayAmbientAnims(playerPed, false)
 	SetEntityCollision(ped, false, false)
 	SetEntityInvincible(ped, true)
 	SetBlockingOfNonTemporaryEvents(ped, true)
