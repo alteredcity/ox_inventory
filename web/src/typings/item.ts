@@ -9,4 +9,7 @@ export type ItemData = {
   buttons?: string[];
   ammoName?: string;
   image?: string;
+  // Champs decoratifs optionnels fournis par data/items.lua (voir web/UI_CONTRACT.md)
+  category?: string;
+  rarity?: string;
 };

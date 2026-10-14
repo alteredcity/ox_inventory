@@ -11,81 +11,13 @@ import DragPreview from './components/utils/DragPreview';
 import { fetchNui } from './utils/fetchNui';
 import { useDragDropManager } from 'react-dnd';
 import KeyPress from './components/utils/KeyPress';
+import { mockEvents } from './utils/mockData';
+import { useAppSelector } from './store';
+import { applyPrefs } from './utils/prefs';
+import { applyFit } from './utils/fit';
+import { useEffect } from 'react';
 
-debugData([
-  {
-    action: 'setupInventory',
-    data: {
-      leftInventory: {
-        id: 'test',
-        type: 'player',
-        slots: 50,
-        label: 'Bob Smith',
-        weight: 3000,
-        maxWeight: 5000,
-        items: [
-          {
-            slot: 1,
-            name: 'iron',
-            weight: 3000,
-            metadata: {
-              description: `name: Svetozar Miletic  \n Gender: Male`,
-              ammo: 3,
-              mustard: '60%',
-              ketchup: '30%',
-              mayo: '10%',
-            },
-            count: 5,
-          },
-          { slot: 2, name: 'powersaw', weight: 0, count: 1, metadata: { durability: 75 } },
-          { slot: 3, name: 'copper', weight: 100, count: 12, metadata: { type: 'Special' } },
-          {
-            slot: 4,
-            name: 'water',
-            weight: 100,
-            count: 1,
-            metadata: { description: 'Generic item description' },
-          },
-          { slot: 5, name: 'water', weight: 100, count: 1 },
-          {
-            slot: 6,
-            name: 'backwoods',
-            weight: 100,
-            count: 1,
-            metadata: {
-              label: 'Russian Cream',
-              imageurl: 'https://i.imgur.com/2xHhTTz.png',
-            },
-          },
-        ],
-      },
-      rightInventory: {
-        id: 'shop',
-        type: 'crafting',
-        slots: 5000,
-        label: 'Bob Smith',
-        weight: 3000,
-        maxWeight: 5000,
-        items: [
-          {
-            slot: 1,
-            name: 'lockpick',
-            weight: 500,
-            price: 300,
-            ingredients: {
-              iron: 5,
-              copper: 12,
-              powersaw: 0.1,
-            },
-            metadata: {
-              description: 'Simple lockpick that breaks easily and can pick basic door locks',
-            },
-          },
-        ],
-      },
-    },
-  },
-]);
+debugData(mockEvents, 300);
 
 const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -103,6 +35,17 @@ const App: React.FC = () => {
     setImagePath(imagepath);
     dispatch(setupInventory({ leftInventory }));
   });
+
+  const prefs = useAppSelector((state) => state.ui.prefs);
+
+  useEffect(() => applyPrefs(prefs), [prefs]);
+
+  useEffect(() => {
+    applyFit();
+    window.addEventListener('resize', applyFit);
+
+    return () => window.removeEventListener('resize', applyFit);
+  }, []);
 
   fetchNui('uiLoaded', {});
 

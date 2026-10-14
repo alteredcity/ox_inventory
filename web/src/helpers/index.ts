@@ -4,6 +4,7 @@ import { store } from '../store';
 import { Items } from '../store/items';
 import { imagepath } from '../store/imagepath';
 import { fetchNui } from '../utils/fetchNui';
+import { RARITIES, RARITY_ALIASES } from '../config/ui';
 
 export const canPurchaseItem = (item: Slot, inventory: { type: Inventory['type']; groups: Inventory['groups'] }) => {
   if (inventory.type !== 'shop' || !isSlotWithItem(item)) return true;
@@ -160,3 +161,35 @@ export const getItemUrl = (item: string | SlotWithItem) => {
 
   return itemData.image;
 };
+
+// --- Refonte UI : donnees decoratives (rarete, categorie) et formats d'affichage ---
+
+/** Rarete decorative : metadata.rarity prioritaire, sinon valeur par defaut de l'item. undefined = neutre. */
+export const getRarity = (item: Pick<Slot, 'name' | 'metadata'>): string | undefined => {
+  const raw = item.metadata?.rarity ?? (item.name ? Items[item.name]?.rarity : undefined);
+
+  if (typeof raw !== 'string') return;
+
+  const key = RARITY_ALIASES[raw.toLowerCase()] || raw.toLowerCase();
+
+  return RARITIES[key] ? key : undefined;
+};
+
+/** Categorie (onglets) : champ `category` de l'item ; armes reconnues par leur nom a defaut. */
+export const getCategory = (item: Pick<Slot, 'name'>): string | undefined => {
+  if (!item.name) return;
+
+  const category = Items[item.name]?.category;
+
+  if (category) return category;
+
+  return item.name.toUpperCase().startsWith('WEAPON_') ? 'weapon' : undefined;
+};
+
+export const getItemLabel = (item: Pick<Slot, 'name' | 'metadata'>) =>
+  item.metadata?.label || (item.name && Items[item.name]?.label) || item.name || '';
+
+export const formatWeight = (grams: number) =>
+  grams >= 1000
+    ? `${(grams / 1000).toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 2 })} kg`
+    : `${grams.toLocaleString('fr-FR', { maximumFractionDigits: 0 })} g`;

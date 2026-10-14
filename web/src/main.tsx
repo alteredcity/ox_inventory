@@ -8,6 +8,8 @@ import App from './App';
 import './index.scss';
 import { ItemNotificationsProvider } from './components/utils/ItemNotifications';
 import { isEnvBrowser } from './utils/misc';
+import { applyFit } from './utils/fit';
+import { initDevStage } from './utils/devStage';
 
 const root = document.getElementById('root');
 
@@ -18,6 +20,9 @@ if (isEnvBrowser()) {
   root!.style.backgroundRepeat = 'no-repeat';
   root!.style.backgroundPosition = 'center';
 }
+
+applyFit();
+initDevStage(root!);
 
 createRoot(root!).render(
   <React.StrictMode>
