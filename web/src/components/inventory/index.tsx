@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useNuiEvent from '../../hooks/useNuiEvent';
 import InventoryControl from './InventoryControl';
 import InventoryHotbar from './InventoryHotbar';
@@ -19,6 +19,11 @@ import Fade from '../utils/transitions/Fade';
 const Inventory: React.FC = () => {
   const [inventoryVisible, setInventoryVisible] = useState(false);
   const dispatch = useAppDispatch();
+
+  // Les notifications d'objets (portail hors de ce composant) ne s'affichent que inventaire ferme, voir index.scss.
+  useEffect(() => {
+    document.documentElement.dataset.invOpen = String(inventoryVisible);
+  }, [inventoryVisible]);
 
   useNuiEvent<boolean>('setInventoryVisible', setInventoryVisible);
   useNuiEvent<false>('closeInventory', () => {

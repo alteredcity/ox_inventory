@@ -686,6 +686,17 @@ button:disabled {
   &:active {
     transform: none;
   }
+  // inactif tant qu'aucun objet n'est selectionne, mais reste cible de depot (un bouton disabled ne recoit pas le drop)
+  &.off {
+    opacity: 0.55;
+    cursor: default;
+  }
+  &.over,
+  &.over.off {
+    border-color: var(--accent);
+    opacity: 1;
+    background: rgba(77, 163, 255, 0.18);
+  }
 }
 
 .settings {
@@ -991,6 +1002,12 @@ body.inv-dragging {
   bottom: 14rem;
   left: 50%;
   transform: translateX(-50%);
+  pointer-events: none;
+}
+
+// pas de notification par-dessus l'inventaire ouvert
+:root[data-inv-open='true'] .item-notification-container {
+  display: none;
 }
 
 .item-notification-item-box {
@@ -998,6 +1015,9 @@ body.inv-dragging {
   flex: none;
   aspect-ratio: 1;
   cursor: default;
+  background: var(--panel);
+  border: 1px solid var(--accent);
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
 
   .notif-action {
     position: absolute;
@@ -1006,8 +1026,9 @@ body.inv-dragging {
     right: 0.3rem;
     text-align: center;
     text-transform: uppercase;
+    color: var(--accent);
     font-size: var(--fs-s);
-    font-weight: 600;
+    font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

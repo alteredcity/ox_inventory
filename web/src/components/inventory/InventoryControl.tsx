@@ -34,22 +34,25 @@ const InventoryControl: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const cursorRef = useRef<number | null>(null);
 
-  const [, use] = useDrop<DragSource, void, any>(() => ({
+  const [{ isOver: over_use }, use] = useDrop<DragSource, void, any>(() => ({
     accept: 'SLOT',
+    collect: (monitor) => ({ isOver: monitor.isOver() }),
     drop: (source) => {
       source.inventory === 'player' && onUse(source.item);
     },
   }));
 
-  const [, give] = useDrop<DragSource, void, any>(() => ({
+  const [{ isOver: over_give }, give] = useDrop<DragSource, void, any>(() => ({
     accept: 'SLOT',
+    collect: (monitor) => ({ isOver: monitor.isOver() }),
     drop: (source) => {
       source.inventory === 'player' && onGive(source.item);
     },
   }));
 
-  const [, drop] = useDrop<DragSource, void, any>(() => ({
+  const [{ isOver: over_drop }, drop] = useDrop<DragSource, void, any>(() => ({
     accept: 'SLOT',
+    collect: (monitor) => ({ isOver: monitor.isOver() }),
     drop: (source) => {
       source.inventory !== 'shop' && source.inventory !== 'crafting' && onDrop(source);
     },
@@ -140,20 +143,22 @@ const InventoryControl: React.FC = () => {
             onKeyDown={handleKeyDown}
             aria-label="Quantite"
           />
-          <button className="btn" disabled={!target} ref={(el) => void use(el)} onClick={() => target && onUse(target)}>
+          <button
+            className={`btn${target ? '' : ' off'}${over_use ? ' over' : ''}`}
+            ref={(el) => void use(el)}
+            onClick={() => target && onUse(target)}
+          >
             {Locale.ui_use || 'Utiliser'}
           </button>
           <button
-            className="btn"
-            disabled={!target}
+            className={`btn${target ? '' : ' off'}${over_give ? ' over' : ''}`}
             ref={(el) => void give(el)}
             onClick={() => target && onGive(target)}
           >
             {Locale.ui_give || 'Donner'}
           </button>
           <button
-            className="btn"
-            disabled={!target}
+            className={`btn${target ? '' : ' off'}${over_drop ? ' over' : ''}`}
             ref={(el) => void drop(el)}
             onClick={() => target && onDrop({ item: target, inventory: 'player' })}
           >
