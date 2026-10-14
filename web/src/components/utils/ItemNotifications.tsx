@@ -4,9 +4,9 @@ import { TransitionGroup } from 'react-transition-group';
 import useNuiEvent from '../../hooks/useNuiEvent';
 import useQueue from '../../hooks/useQueue';
 import { Locale } from '../../store/locale';
-import { getItemUrl } from '../../helpers';
+import { getItemLabel, getRarity } from '../../helpers';
+import ItemIcon from '../inventory/ItemIcon';
 import { SlotWithItem } from '../../typings';
-import { Items } from '../../store/items';
 import Fade from './transitions/Fade';
 
 interface ItemNotificationProps {
@@ -29,21 +29,11 @@ const ItemNotification = React.forwardRef(
     const slotItem = props.item.item;
 
     return (
-      <div
-        className="item-notification-item-box"
-        style={{
-          backgroundImage: `url(${getItemUrl(slotItem) || 'none'}`,
-          ...props.style,
-        }}
-        ref={ref}
-      >
+      <div className="slot item-notification-item-box" data-r={getRarity(slotItem)} style={props.style} ref={ref}>
         <div className="item-slot-wrapper">
-          <div className="item-notification-action-box">
-            <p>{props.item.text}</p>
-          </div>
-          <div className="inventory-slot-label-box">
-            <div className="inventory-slot-label-text">{slotItem.metadata?.label || Items[slotItem.name]?.label}</div>
-          </div>
+          <span className="notif-action">{props.item.text}</span>
+          <ItemIcon item={slotItem} eager />
+          <span className="notif-label">{getItemLabel(slotItem)}</span>
         </div>
       </div>
     );

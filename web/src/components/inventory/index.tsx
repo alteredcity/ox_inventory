@@ -4,6 +4,8 @@ import InventoryControl from './InventoryControl';
 import InventoryHotbar from './InventoryHotbar';
 import { useAppDispatch } from '../../store';
 import { refreshSlots, setAdditionalMetadata, setupInventory } from '../../store/inventory';
+import { setEquipment, setNeeds } from '../../store/ui';
+import type { EquipmentSlot, NeedGauge } from '../../typings/ui';
 import { useExitListener } from '../../hooks/useExitListener';
 import type { Inventory as InventoryProps } from '../../typings';
 import RightInventory from './RightInventory';
@@ -40,13 +42,19 @@ const Inventory: React.FC = () => {
     dispatch(setAdditionalMetadata(data));
   });
 
+  // Donnees optionnelles fournies par un module serveur (voir web/UI_CONTRACT.md)
+  useNuiEvent<EquipmentSlot[] | null>('setEquipment', (data) => dispatch(setEquipment(data)));
+  useNuiEvent<NeedGauge[]>('setNeeds', (data) => dispatch(setNeeds(data)));
+
   return (
     <>
       <Fade in={inventoryVisible}>
         <div className="inventory-wrapper">
-          <LeftInventory />
-          <InventoryControl />
-          <RightInventory />
+          <div className="wrap">
+            <LeftInventory />
+            <InventoryControl />
+            <RightInventory />
+          </div>
           <Tooltip />
           <InventoryContext />
         </div>

@@ -1,20 +1,32 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { selectItemAmount, setItemAmount } from '../../store/inventory';
+import { selectItemAmount, selectLeftInventory, setItemAmount } from '../../store/inventory';
+import { toggleSettings } from '../../store/ui';
 import { DragSource } from '../../typings';
 import { onUse } from '../../dnd/onUse';
 import { onGive } from '../../dnd/onGive';
+import { onDrop } from '../../dnd/onDrop';
 import { fetchNui } from '../../utils/fetchNui';
 import { Locale } from '../../store/locale';
+import { isSlotWithItem } from '../../helpers';
+import { HOTBAR_SLOTS } from '../../config/ui';
 import UsefulControls from './UsefulControls';
+import Mannequin from './Mannequin';
+import InventorySlot from './InventorySlot';
+import SettingsPopover from './SettingsPopover';
 
 const formatAmount = (n: number) => (n > 0 ? n.toLocaleString('en-US') : '0');
 const digitsOnly = (s: string) => s.replace(/\D/g, '');
 const countDigitsBefore = (s: string, index: number) => digitsOnly(s.substring(0, index)).length;
 
+// Colonne centrale : mannequin, jauges, boutons d'action et hotbar (slots 1 a 5 du joueur).
 const InventoryControl: React.FC = () => {
   const itemAmount = useAppSelector(selectItemAmount);
+  const left = useAppSelector(selectLeftInventory);
+  const selected = useAppSelector((state) => state.ui.selected);
+  const needs = useAppSelector((state) => state.ui.needs);
+  const settingsOpen = useAppSelector((state) => state.ui.settingsOpen);
   const dispatch = useAppDispatch();
 
   const [infoVisible, setInfoVisible] = useState(false);
@@ -35,6 +47,17 @@ const InventoryControl: React.FC = () => {
       source.inventory === 'player' && onGive(source.item);
     },
   }));
+
+  const [, drop] = useDrop<DragSource, void, any>(() => ({
+    accept: 'SLOT',
+    drop: (source) => {
+      source.inventory !== 'shop' && source.inventory !== 'crafting' && onDrop(source);
+    },
+  }));
+
+  // Item selectionne dans le panneau joueur (pour les clics sur Utiliser / Donner / Jeter).
+  const selectedItem = selected && selected.inventory === 'player' ? left.items[selected.slot - 1] : undefined;
+  const target = selectedItem && isSlotWithItem(selectedItem) ? selectedItem : undefined;
 
   const commitValue = (raw: string, cursorIndex: number) => {
     const digitsBefore = countDigitsBefore(raw, cursorIndex);
@@ -78,47 +101,85 @@ const InventoryControl: React.FC = () => {
   }, [value]);
 
   return (
-    <>
+    <section className="center">
       <UsefulControls infoVisible={infoVisible} setInfoVisible={setInfoVisible} />
-      <div className="inventory-control">
-        <div className="inventory-control-wrapper">
+      <div className="panel mq">
+        <div className="head">
+          <h2>Personnage</h2>
+          <span className="weight">{left.label}</span>
+          <span className="head-btns">
+            <button className="icon-btn" title={Locale.ui_usefulcontrols || '?'} onClick={() => setInfoVisible(true)}>
+              ?
+            </button>
+            <button className="icon-btn" title={Locale.ui_close || 'Fermer'} onClick={() => fetchNui('exit')}>
+              {'×'}
+            </button>
+          </span>
+        </div>
+        <Mannequin />
+      </div>
+
+      <div className="panel status">
+        {needs.length > 0 && (
+          <div className="needs">
+            {needs.map((n) => (
+              <div key={n.id} className="need" style={n.color ? { borderColor: n.color } : undefined} title={n.label}>
+                {n.icon}
+                <b>{Math.round(n.value)}%</b>
+              </div>
+            ))}
+          </div>
+        )}
+        <div className="actions">
           <input
-            className="inventory-control-input"
+            className="amount"
             type="text"
             ref={inputRef}
             value={value}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
-            min={0}
+            aria-label="Quantite"
           />
-          <button
-            className="inventory-control-button"
-            ref={(el) => {
-              use(el);
-            }}
-          >
-            {Locale.ui_use || 'Use'}
+          <button className="btn" disabled={!target} ref={(el) => void use(el)} onClick={() => target && onUse(target)}>
+            {Locale.ui_use || 'Utiliser'}
           </button>
           <button
-            className="inventory-control-button"
-            ref={(el) => {
-              give(el);
-            }}
+            className="btn"
+            disabled={!target}
+            ref={(el) => void give(el)}
+            onClick={() => target && onGive(target)}
           >
-            {Locale.ui_give || 'Give'}
+            {Locale.ui_give || 'Donner'}
           </button>
-          <button className="inventory-control-button" onClick={() => fetchNui('exit')}>
-            {Locale.ui_close || 'Close'}
+          <button
+            className="btn"
+            disabled={!target}
+            ref={(el) => void drop(el)}
+            onClick={() => target && onDrop({ item: target, inventory: 'player' })}
+          >
+            {Locale.ui_drop || 'Jeter'}
+          </button>
+          <button className="btn" onClick={() => dispatch(toggleSettings(undefined))}>
+            Reglages
           </button>
         </div>
+        {settingsOpen && <SettingsPopover />}
       </div>
 
-      <button className="useful-controls-button" onClick={() => setInfoVisible(true)}>
-        <svg xmlns="http://www.w3.org/2000/svg" height="2em" viewBox="0 0 524 524">
-          <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z" />
-        </svg>
-      </button>
-    </>
+      <div className="hot">
+        {left.items.slice(0, HOTBAR_SLOTS).map((item) => (
+          <InventorySlot
+            key={`hot-${item.slot}`}
+            item={item}
+            hotkey={item.slot}
+            compact
+            inventoryType={left.type}
+            inventoryGroups={left.groups}
+            inventoryId={left.id}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
 
