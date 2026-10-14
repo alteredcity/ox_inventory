@@ -87,6 +87,7 @@ const player = [
 ];
 
 export const mockEvents: { action: string; data: unknown }[] = [
+  { action: 'setInventoryVisible', data: true },
   {
     action: 'init',
     data: {
