@@ -8,7 +8,7 @@ export default defineConfig({
   publicDir: false,
   build: {
     outDir: 'build',
-    target: 'esnext',
+    target: 'chrome103',
     emptyOutDir: true,
     rolldownOptions: {
       output: {
