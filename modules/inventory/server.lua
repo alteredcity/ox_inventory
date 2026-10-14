@@ -2611,7 +2611,7 @@ RegisterServerEvent('ox_inventory:giveItem', function(...) giveItem(source, ...)
 -- signale ou le prop physique s'est immobilise, puis cree le drop a cet endroit. Sans signal, drop a l'origine.
 local THROW_MAX_DISTANCE = 40.0
 local THROW_COOLDOWN = 2000
-local THROW_LANDING_TIMEOUT = 10000
+local THROW_LANDING_TIMEOUT = 40000
 local lastThrow = {}
 local pendingThrow = {}
 

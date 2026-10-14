@@ -1823,9 +1823,12 @@ RegisterNUICallback('useItem', function(slot, cb)
 	cb(1)
 end)
 
--- Lancer une arme (principe de pickle_weaponthrowing, reecrit) : le serveur retire l'arme, le client lance un prop
--- physique synchronise dans la direction de la camera, puis signale ou il s'est immobilise (drop cree a cet endroit).
+-- Lancer une arme (principe de pickle_weaponthrowing, reecrit) : le serveur retire l'arme, le joueur la tient en main
+-- et choisit son angle (camera, trajectoire affichee), clic gauche pour lancer, retour arriere pour la poser a ses pieds.
+-- Le prop physique est synchronise ; le client signale ou il s'est immobilise et le drop y est cree.
 local THROW_SPEED = 14.0
+local THROW_LIFT = 2.0
+local THROW_AIM_TIMEOUT = 20000
 local THROW_REST_TIMEOUT = 6000
 
 local function deleteThrownProp()
@@ -1841,6 +1844,99 @@ local function cameraDirection()
 	local flat = math.abs(math.cos(pitch))
 
 	return vec3(-math.sin(yaw) * flat, math.cos(yaw) * flat, math.sin(pitch)), rot.z
+end
+
+---@return vector3
+local function throwVelocity()
+	local direction = cameraDirection()
+
+	return vec3(direction.x * THROW_SPEED, direction.y * THROW_SPEED, direction.z * THROW_SPEED + THROW_LIFT)
+end
+
+-- Trajectoire estimee (balistique simple, sans frottements ni collisions) tracee pendant la visee.
+local function drawThrowTrajectory(from)
+	local velocity = throwVelocity()
+	local pos = from
+	local step = 0.05
+
+	for _ = 1, 30 do
+		local nextPos = vec3(pos.x + velocity.x * step, pos.y + velocity.y * step, pos.z + velocity.z * step)
+
+		velocity = vec3(velocity.x, velocity.y, velocity.z - 9.81 * step)
+		DrawLine(pos.x, pos.y, pos.z, nextPos.x, nextPos.y, nextPos.z, 255, 255, 255, 160)
+		pos = nextPos
+
+		local found, groundZ = GetGroundZFor_3dCoord(pos.x, pos.y, pos.z + 0.3, false)
+
+		if found and pos.z <= groundZ then break end
+	end
+end
+
+local function groundedCoords(coords)
+	local found, groundZ = GetGroundZFor_3dCoord(coords.x, coords.y, coords.z + 0.5, false)
+
+	if found and math.abs(groundZ - coords.z) < 1.5 then
+		return vec3(coords.x, coords.y, groundZ)
+	end
+
+	return coords
+end
+
+---@param entity number
+---@return vector3
+local function waitForRest(entity, from)
+	local start, still, last = GetGameTimer(), 0, from
+
+	while GetGameTimer() - start < THROW_REST_TIMEOUT and DoesEntityExist(entity) do
+		Wait(50)
+
+		last = GetEntityCoords(entity)
+
+		if GetGameTimer() - start > 500 and GetEntitySpeed(entity) < 0.4 then
+			still += 1
+			if still >= 8 then break end
+		else
+			still = 0
+		end
+	end
+
+	return groundedCoords(last)
+end
+
+---Phase de visee : renvoie true si le joueur lance, false s'il annule ou ne peut plus.
+local function aimThrow(entity)
+	local timeout = GetGameTimer() + THROW_AIM_TIMEOUT
+
+	lib.showTextUI(locale('throw_prompt'))
+
+	local thrown = false
+
+	while GetGameTimer() < timeout do
+		if PlayerData.dead or cache.vehicle or IsPedRagdoll(playerPed) or not DoesEntityExist(entity) then break end
+
+		DisableControlAction(0, 24, true)
+		DisableControlAction(0, 25, true)
+		DisableControlAction(0, 140, true)
+		DisableControlAction(0, 141, true)
+		DisableControlAction(0, 142, true)
+		DisableControlAction(0, 257, true)
+		DisablePlayerFiring(cache.playerId, true)
+
+		drawThrowTrajectory(GetEntityCoords(entity))
+
+		if IsDisabledControlJustPressed(0, 24) then
+			thrown = true
+			break
+		elseif IsControlJustPressed(0, 177) then
+			break
+		end
+
+		Wait(0)
+	end
+
+	lib.hideTextUI()
+
+	return thrown
 end
 
 RegisterNUICallback('throwItem', function(slot, cb)
@@ -1861,55 +1957,58 @@ RegisterNUICallback('throwItem', function(slot, cb)
 
 	if not appearance then return end
 
-	local direction, heading = cameraDirection()
-
-	SetEntityHeading(playerPed, heading)
-
-	if pcall(lib.requestAnimDict, 'anim@heists@narcotics@trash') then
-		TaskPlayAnim(playerPed, 'anim@heists@narcotics@trash', 'throw_b', 8.0, 4.0, 900, 48, 0.0, false, false, false)
-		RemoveAnimDict('anim@heists@narcotics@trash')
-	end
-
-	Wait(450)
-
-	local hand = GetPedBoneCoords(playerPed, 57005, 0.0, 0.0, 0.0)
-	local entity = createWeaponProp(appearance.model, hand, appearance.weaponTint, appearance.weaponComponents, true)
+	local origin = GetEntityCoords(playerPed)
+	local entity = createWeaponProp(appearance.model, origin, appearance.weaponTint, appearance.weaponComponents, true)
 
 	thrownProp = entity
 
 	SetEntityAsMissionEntity(entity, true, true)
-	SetEntityNoCollisionEntity(entity, playerPed, true)
-	SetEntityCollision(entity, true, true)
-	FreezeEntityPosition(entity, false)
-	SetEntityDynamic(entity, true)
-	ActivatePhysics(entity)
-	SetEntityVelocity(entity, direction.x * THROW_SPEED, direction.y * THROW_SPEED, direction.z * THROW_SPEED + 2.0)
+	SetEntityCollision(entity, false, false)
+	AttachEntityToEntity(entity, playerPed, GetPedBoneIndex(playerPed, 57005), 0.12, 0.02, 0.0, 0.0, 0.0, 0.0, true, true, false, true, 1, true)
 
-	-- Attend que le prop s'immobilise (ou disparaisse) avant de creer le drop.
-	local start, still = GetGameTimer(), 0
-	local last = hand
+	-- Le joueur ne peut ni ouvrir l'inventaire ni tirer pendant la visee ; le verrou est toujours rendu.
+	client.player:set('invBusy', true)
 
-	while GetGameTimer() - start < THROW_REST_TIMEOUT and DoesEntityExist(entity) do
-		Wait(50)
+	local ok, thrown = pcall(aimThrow, entity)
 
-		last = GetEntityCoords(entity)
+	if not ok then
+		lib.hideTextUI()
+		thrown = false
+	end
 
-		if GetGameTimer() - start > 500 and GetEntitySpeed(entity) < 0.4 then
-			still += 1
-			if still >= 8 then break end
-		else
-			still = 0
+	local landing
+
+	if thrown and DoesEntityExist(entity) then
+		local _, heading = cameraDirection()
+
+		SetEntityHeading(playerPed, heading)
+
+		if pcall(lib.requestAnimDict, 'anim@heists@narcotics@trash') then
+			TaskPlayAnim(playerPed, 'anim@heists@narcotics@trash', 'throw_b', 8.0, 4.0, 900, 48, 0.0, false, false, false)
+			RemoveAnimDict('anim@heists@narcotics@trash')
 		end
+
+		Wait(300)
+
+		-- L'angle est relu au moment du lacher, pas au debut de l'animation.
+		local velocity = throwVelocity()
+
+		DetachEntity(entity, true, true)
+		SetEntityNoCollisionEntity(entity, playerPed, true)
+		SetEntityCollision(entity, true, true)
+		FreezeEntityPosition(entity, false)
+		SetEntityDynamic(entity, true)
+		ActivatePhysics(entity)
+		SetEntityVelocity(entity, velocity.x, velocity.y, velocity.z)
+
+		landing = waitForRest(entity, GetEntityCoords(entity))
+	else
+		landing = groundedCoords(GetEntityCoords(playerPed))
 	end
 
-	local found, groundZ = GetGroundZFor_3dCoord(last.x, last.y, last.z + 0.5, false)
-
-	if found and math.abs(groundZ - last.z) < 1.5 then
-		last = vec3(last.x, last.y, groundZ)
-	end
-
+	client.player:set('invBusy', false)
 	deleteThrownProp()
-	TriggerServerEvent('ox_inventory:throwLanded', last)
+	TriggerServerEvent('ox_inventory:throwLanded', landing)
 end)
 
 local function giveItemToTarget(serverId, slotId, count)
