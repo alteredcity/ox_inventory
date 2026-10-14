@@ -8230,4 +8230,17 @@ return {
 			image = 'smokes/redwood_strawberry_chew.webp'
 		}
 	},
+
+	----------------------------------------
+	-- TEST UI (refonte inventaire) : a supprimer apres validation en jeu
+	-- Un item par niveau de rareté + quelques items par onglet. Sans image : teste le placeholder.
+
+	['ui_test_common'] = { label = 'Test commun', weight = 100, category = 'food', description = 'Rareté commune (neutre).' },
+	['ui_test_uncommon'] = { label = 'Test peu commun', weight = 100, rarity = 'uncommon', category = 'food' },
+	['ui_test_rare'] = { label = 'Test rare', weight = 100, rarity = 'rare' },
+	['ui_test_epic'] = { label = 'Test épique', weight = 100, rarity = 'epic' },
+	['ui_test_legendary'] = { label = 'Test légendaire', weight = 100, rarity = 'legendary' },
+	['ui_test_weapon'] = { label = 'Test arme', weight = 1000, stack = false, category = 'weapon', rarity = 'rare', durability = true },
+	['ui_test_food'] = { label = 'Test nourriture', weight = 200, category = 'food', degrade = 60 },
+	['ui_test_clothing'] = { label = 'Test vêtement', weight = 400, stack = false, category = 'clothing', rarity = 'uncommon' },
 }
