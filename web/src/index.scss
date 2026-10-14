@@ -691,6 +691,11 @@ button:disabled {
     opacity: 0.55;
     cursor: default;
   }
+  // un objet du joueur est en cours de glisser : les boutons deviennent des cibles actives
+  &.armed {
+    border-color: rgba(77, 163, 255, 0.7);
+    border-style: dashed;
+  }
   &.over,
   &.over.off {
     border-color: var(--accent);

@@ -34,25 +34,34 @@ const InventoryControl: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
   const cursorRef = useRef<number | null>(null);
 
-  const [{ isOver: over_use }, use] = useDrop<DragSource, void, any>(() => ({
+  const [{ isOver: over_use, dragging: drag_use }, use] = useDrop<DragSource, void, any>(() => ({
     accept: 'SLOT',
-    collect: (monitor) => ({ isOver: monitor.isOver() }),
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      dragging: monitor.getItem()?.inventory === 'player',
+    }),
     drop: (source) => {
       source.inventory === 'player' && onUse(source.item);
     },
   }));
 
-  const [{ isOver: over_give }, give] = useDrop<DragSource, void, any>(() => ({
+  const [{ isOver: over_give, dragging: drag_give }, give] = useDrop<DragSource, void, any>(() => ({
     accept: 'SLOT',
-    collect: (monitor) => ({ isOver: monitor.isOver() }),
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      dragging: monitor.getItem()?.inventory === 'player',
+    }),
     drop: (source) => {
       source.inventory === 'player' && onGive(source.item);
     },
   }));
 
-  const [{ isOver: over_drop }, drop] = useDrop<DragSource, void, any>(() => ({
+  const [{ isOver: over_drop, dragging: drag_drop }, drop] = useDrop<DragSource, void, any>(() => ({
     accept: 'SLOT',
-    collect: (monitor) => ({ isOver: monitor.isOver() }),
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      dragging: monitor.getItem()?.inventory === 'player',
+    }),
     drop: (source) => {
       source.inventory !== 'shop' && source.inventory !== 'crafting' && onDrop(source);
     },
@@ -144,21 +153,21 @@ const InventoryControl: React.FC = () => {
             aria-label="Quantite"
           />
           <button
-            className={`btn${target ? '' : ' off'}${over_use ? ' over' : ''}`}
+            className={`btn${target || drag_use ? '' : ' off'}${drag_use ? ' armed' : ''}${over_use ? ' over' : ''}`}
             ref={(el) => void use(el)}
             onClick={() => target && onUse(target)}
           >
             {Locale.ui_use || 'Utiliser'}
           </button>
           <button
-            className={`btn${target ? '' : ' off'}${over_give ? ' over' : ''}`}
+            className={`btn${target || drag_give ? '' : ' off'}${drag_give ? ' armed' : ''}${over_give ? ' over' : ''}`}
             ref={(el) => void give(el)}
             onClick={() => target && onGive(target)}
           >
             {Locale.ui_give || 'Donner'}
           </button>
           <button
-            className={`btn${target ? '' : ' off'}${over_drop ? ' over' : ''}`}
+            className={`btn${target || drag_drop ? '' : ' off'}${drag_drop ? ' armed' : ''}${over_drop ? ' over' : ''}`}
             ref={(el) => void drop(el)}
             onClick={() => target && onDrop({ item: target, inventory: 'player' })}
           >
