@@ -119,15 +119,6 @@ export const mockEvents: { action: string; data: unknown }[] = [
     },
   },
   {
-    action: 'setNeeds',
-    data: [
-      { id: 'health', label: 'Sante', value: 95, color: '#e0505a', icon: '❤' },
-      { id: 'armor', label: 'Armure', value: 100, color: '#5a8fe0', icon: '\u{1F6E1}' },
-      { id: 'hunger', label: 'Faim', value: 82, color: '#e0a050', icon: '\u{1F374}' },
-      { id: 'thirst', label: 'Soif', value: 74, color: '#50c8e0', icon: '\u{1F4A7}' },
-    ],
-  },
-  {
     action: 'setEquipment',
     data: [
       {
