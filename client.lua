@@ -1754,6 +1754,32 @@ RegisterNUICallback('useItem', function(slot, cb)
 	cb(1)
 end)
 
+-- Lancer une arme depuis l'inventaire : la validation et le retrait se font cote serveur (ox_inventory:throwItem).
+local THROW_DISTANCE = 4.0
+
+RegisterNUICallback('throwItem', function(slot, cb)
+	cb(1)
+
+	local data = type(slot) == 'number' and PlayerData.inventory[slot]
+
+	if not data or not Items[data.name]?.weapon then return end
+	if cache.vehicle or not canUseItem() then return end
+
+	local origin = GetEntityCoords(playerPed)
+	local target = origin + GetEntityForwardVector(playerPed) * THROW_DISTANCE
+	local found, groundZ = GetGroundZFor_3dCoord(target.x, target.y, target.z + 1.0, false)
+	local coords = vec3(target.x, target.y, found and groundZ or origin.z - 0.9)
+
+	if currentWeapon?.slot == slot then
+		currentWeapon = Weapon.Disarm(currentWeapon)
+	end
+
+	client.closeInventory()
+	Utils.PlayAnim(0, 'pickup_object', 'putdown_low', 5.0, 1.5, 1000, 48, 0.0, 0, 0, 0)
+
+	lib.callback.await('ox_inventory:throwItem', false, slot, coords)
+end)
+
 local function giveItemToTarget(serverId, slotId, count)
     if type(slotId) ~= 'number' then return TypeError('slotId', 'number', type(slotId)) end
     if count and type(count) ~= 'number' then return TypeError('count', 'number', type(count)) end

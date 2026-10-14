@@ -52,6 +52,9 @@ const InventoryContext: React.FC = () => {
       case 'drop':
         isSlotWithItem(item) && onDrop({ item: item, inventory: 'player' });
         break;
+      case 'throw':
+        fetchNui('throwItem', item.slot);
+        break;
       case 'remove':
         fetchNui('removeComponent', { component: data?.component, slot: data?.slot });
         break;
@@ -95,6 +98,9 @@ const InventoryContext: React.FC = () => {
         <MenuItem onClick={() => handleClick({ action: 'use' })} label={Locale.ui_use || 'Use'} />
         <MenuItem onClick={() => handleClick({ action: 'give' })} label={Locale.ui_give || 'Give'} />
         <MenuItem onClick={() => handleClick({ action: 'drop' })} label={Locale.ui_drop || 'Drop'} />
+        {item && item.name.toUpperCase().startsWith('WEAPON_') && (
+          <MenuItem onClick={() => handleClick({ action: 'throw' })} label={Locale.ui_throw || 'Lancer'} />
+        )}
         {item && item.metadata?.ammo > 0 && (
           <MenuItem onClick={() => handleClick({ action: 'removeAmmo' })} label={Locale.ui_remove_ammo} />
         )}
