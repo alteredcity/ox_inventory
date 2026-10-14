@@ -6,9 +6,9 @@ import { CATEGORY_TABS, RARITIES } from '../../config/ui';
 import Markdown from '../utils/Markdown';
 import ItemIcon from './ItemIcon';
 
-// Panneau "description" sous la grille du joueur : affiche l'item selectionne (clic sur un slot).
+// Panneau "description" sous la grille du joueur : affiche l'item survole (aucun clic requis).
 const ItemDescription: React.FC = () => {
-  const selected = useAppSelector((state) => state.ui.selected);
+  const selected = useAppSelector((state) => state.ui.hovered);
   const left = useAppSelector((state) => state.inventory.leftInventory);
   const right = useAppSelector((state) => state.inventory.rightInventory);
 
@@ -20,7 +20,7 @@ const ItemDescription: React.FC = () => {
       <div className="desc">
         <div className="big" />
         <div>
-          <p>Selectionnez un objet pour afficher sa description.</p>
+          <p>Survolez un objet pour afficher sa description.</p>
         </div>
       </div>
     );

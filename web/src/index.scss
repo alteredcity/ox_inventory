@@ -4,11 +4,11 @@
 :root {
   --accent: #4da3ff;
   --radius: 0.8rem;
-  --panel: rgba(18, 24, 34, 0.86);
-  --slot: rgba(255, 255, 255, 0.05);
-  --line: rgba(255, 255, 255, 0.11);
+  --panel: rgba(14, 19, 28, 0.94);
+  --slot: rgba(255, 255, 255, 0.08);
+  --line: rgba(255, 255, 255, 0.18);
   --text: #e8edf5;
-  --muted: #8a96a8;
+  --muted: #b4bfcf;
   --r-uncommon: #4cc46a;
   --r-rare: #4d8dff;
   --r-epic: #a35cff;
@@ -315,11 +315,25 @@ button:disabled {
   }
   .k {
     position: absolute;
-    top: 0.2rem;
-    left: 0.35rem;
+    top: 0.25rem;
+    left: 0.25rem;
+    min-width: 1.3rem;
+    height: 1.3rem;
+    padding: 0 0.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-size: var(--fs-s);
-    color: var(--muted);
+    font-weight: 700;
+    color: #fff;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--accent);
+    border-radius: 0.4rem;
+    text-shadow: 0 1px 2px #000;
     z-index: 1;
+  }
+  &.hotkey {
+    border-color: rgba(77, 163, 255, 0.55);
   }
   .dur {
     position: absolute;
@@ -690,6 +704,9 @@ button:disabled {
     min-width: 0;
     max-width: 4.6rem;
     width: auto;
+    background: var(--panel);
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 0.8rem rgba(0, 0, 0, 0.6);
 
     .name,
     .w {
@@ -741,6 +758,11 @@ button:disabled {
   }
   .slot {
     background-color: var(--panel);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.8);
+  }
+  .hot.floating .slot.sel,
+  .hot.floating .slot:not(.empty) {
+    border-width: 2px;
   }
 }
 

@@ -21,7 +21,8 @@ import useNuiEvent from '../../hooks/useNuiEvent';
 import { ItemsPayload } from '../../reducers/refreshSlots';
 import { closeTooltip, openTooltip } from '../../store/tooltip';
 import { openContextMenu } from '../../store/contextMenu';
-import { selectSlot } from '../../store/ui';
+import { hoverSlot, selectSlot } from '../../store/ui';
+import { HOTBAR_SLOTS } from '../../config/ui';
 import { useMergeRefs } from '@floating-ui/react';
 import ItemIcon from './ItemIcon';
 
@@ -142,6 +143,7 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
   const unavailable =
     !canPurchaseItem(item, { type: inventoryType, groups: inventoryGroups }) || !canCraftItem(item, inventoryType);
   const rarity = hasItem ? getRarity(item) : undefined;
+  const key = hotkey ?? (inventoryType === InventoryType.PLAYER && item.slot <= HOTBAR_SLOTS ? item.slot : undefined);
   const classes = ['slot'];
 
   if (!hasItem) classes.push('empty');
@@ -150,19 +152,22 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
   if (isDragging) classes.push('dragging');
   if (unavailable) classes.push('unavailable');
   if (compact) classes.push('compact');
+  if (key !== undefined) classes.push('hotkey');
 
   return (
     <div ref={refs} onContextMenu={handleContext} onClick={handleClick} className={classes.join(' ')} data-r={rarity}>
-      {hotkey !== undefined && <span className="k">{hotkey}</span>}
+      {key !== undefined && <span className="k">{key}</span>}
       {hasItem && (
         <div
           className="item-slot-wrapper"
           onMouseEnter={() => {
+            dispatch(hoverSlot({ inventory: inventoryType, slot: item.slot }));
             timerRef.current = window.setTimeout(() => {
               dispatch(openTooltip({ item, inventoryType }));
             }, 500) as unknown as number;
           }}
           onMouseLeave={() => {
+            dispatch(hoverSlot(null));
             dispatch(closeTooltip());
             if (timerRef.current) {
               clearTimeout(timerRef.current);
