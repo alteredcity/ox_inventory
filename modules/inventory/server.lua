@@ -404,8 +404,9 @@ local Items = require 'modules.items.server'
 ---@param count number
 ---@param metadata any
 ---@param slot number
+---@param silent? boolean masque la notification d'ajout/retrait
 ---@return boolean, string | SlotWithItem | nil
-function Inventory.SetSlot(inv, item, count, metadata, slot)
+function Inventory.SetSlot(inv, item, count, metadata, slot, silent)
 	inv = Inventory(inv) --[[@as OxInventory]]
 
     if not inv?.slots then return false, 'invalid_inventory' end
@@ -425,7 +426,9 @@ function Inventory.SetSlot(inv, item, count, metadata, slot)
 	local newWeight = currentSlot and inv.weight - currentSlot.weight or inv.weight
 
 	if currentSlot and newCount < 1 then
-		TriggerClientEvent('ox_inventory:itemNotify', inv.id, { currentSlot, 'ui_removed', currentSlot.count })
+		if not silent then
+			TriggerClientEvent('ox_inventory:itemNotify', inv.id, { currentSlot, 'ui_removed', currentSlot.count })
+		end
 		currentSlot = nil
 	else
 		currentSlot = {name = item.name, label = item.label, weight = item.weight, slot = slot, count = newCount, description = item.description, metadata = metadata, stack = item.stack, close = item.close}
@@ -433,7 +436,9 @@ function Inventory.SetSlot(inv, item, count, metadata, slot)
 		currentSlot.weight = slotWeight
 		newWeight += slotWeight
 
-		TriggerClientEvent('ox_inventory:itemNotify', inv.id, { currentSlot, count < 0 and 'ui_removed' or 'ui_added', math.abs(count) })
+		if not silent then
+			TriggerClientEvent('ox_inventory:itemNotify', inv.id, { currentSlot, count < 0 and 'ui_removed' or 'ui_added', math.abs(count) })
+		end
 	end
 
 	inv.weight = newWeight
@@ -1143,8 +1148,9 @@ exports('SetMaxWeight', Inventory.SetMaxWeight)
 ---@param metadata? table | string
 ---@param slot? number
 ---@param cb? fun(success?: boolean, response: string|SlotWithItem|nil)
+---@param silent? boolean masque la notification d'ajout
 ---@return boolean? success, string|SlotWithItem|nil response
-function Inventory.AddItem(inv, item, count, metadata, slot, cb)
+function Inventory.AddItem(inv, item, count, metadata, slot, cb, silent)
 	if type(item) ~= 'table' then item = Items(item) end
 
 	if not item then return false, 'invalid_item' end
@@ -1206,7 +1212,7 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 	local toSlotType = type(toSlot)
 
 	if toSlotType == 'number' then
-		Inventory.SetSlot(inv, item, slotCount, slotMetadata, toSlot)
+		Inventory.SetSlot(inv, item, slotCount, slotMetadata, toSlot, silent)
 
 		if inv.player and server.syncInventory then
 			server.syncInventory(inv)
@@ -1231,7 +1237,7 @@ function Inventory.AddItem(inv, item, count, metadata, slot, cb)
 		for i = 1, #toSlot do
 			local data = toSlot[i]
 			added += data.count
-			Inventory.SetSlot(inv, item, data.count, data.metadata, data.slot)
+			Inventory.SetSlot(inv, item, data.count, data.metadata, data.slot, silent)
 			toSlot[i] = { item = inv.items[data.slot], inventory = inv.id }
 		end
 
@@ -1353,8 +1359,9 @@ exports('GetItemSlots', Inventory.GetItemSlots)
 ---@param slot? number
 ---@param ignoreTotal? boolean
 ---@param strict? boolean
+---@param silent? boolean masque la notification de retrait
 ---@return boolean? success, string? response
-function Inventory.RemoveItem(inv, item, count, metadata, slot, ignoreTotal, strict)
+function Inventory.RemoveItem(inv, item, count, metadata, slot, ignoreTotal, strict, silent)
 	if type(item) ~= 'table' then item = Items(item) end
 
 	if not item then return false, 'invalid_item' end
@@ -1397,7 +1404,7 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot, ignoreTotal, str
 
 	if slot and itemSlots[slot] then
 		removed = count
-		local ok, result = Inventory.SetSlot(inv, item, -count, inv.items[slot].metadata, slot)
+		local ok, result = Inventory.SetSlot(inv, item, -count, inv.items[slot].metadata, slot, silent)
 
 		if not ok then
 		    error(('Failed to remove %sx %s from inventory-%s:slot-%s (%s).'):format(count, item.name, inv.id, slot, result))
@@ -1408,14 +1415,16 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot, ignoreTotal, str
 		for k, v in pairs(itemSlots) do
 			if removed < total then
 				if v == count then
-					TriggerClientEvent('ox_inventory:itemNotify', inv.id, { inv.items[k], 'ui_removed', v })
+					if not silent then
+						TriggerClientEvent('ox_inventory:itemNotify', inv.id, { inv.items[k], 'ui_removed', v })
+					end
 
 					removed = total
 					inv.weight -= inv.items[k].weight
 					inv.items[k] = nil
 					slots[#slots+1] = inv.items[k] or k
 				elseif v > count then
-					local ok, result = Inventory.SetSlot(inv, item, -count, inv.items[k].metadata, k)
+					local ok, result = Inventory.SetSlot(inv, item, -count, inv.items[k].metadata, k, silent)
 
 					if not ok then
 					    error(('Failed to remove %sx %s from inventory-%s:slot-%s (%s).'):format(count, item.name, inv.id, k, result))
@@ -1425,7 +1434,9 @@ function Inventory.RemoveItem(inv, item, count, metadata, slot, ignoreTotal, str
 					removed = total
 					count = v - count
 				else
-					TriggerClientEvent('ox_inventory:itemNotify', inv.id, { inv.items[k], 'ui_removed', v })
+					if not silent then
+						TriggerClientEvent('ox_inventory:itemNotify', inv.id, { inv.items[k], 'ui_removed', v })
+					end
 
 					removed = removed + v
 					count = count - v
