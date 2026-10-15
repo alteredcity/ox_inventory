@@ -2011,13 +2011,6 @@ RegisterNUICallback('throwItem', function(slot, cb)
 	throwWeaponFromSlot(slot)
 end)
 
--- Lancer l'arme tenue en main sans passer par l'inventaire (touche a assigner dans les parametres FiveM, aucune par defaut).
-RegisterCommand('throwweapon', function()
-	if currentWeapon?.slot then throwWeaponFromSlot(currentWeapon.slot) end
-end, false)
-
-RegisterKeyMapping('throwweapon', 'Lancer l\'arme en main', 'keyboard', '')
-
 local function giveItemToTarget(serverId, slotId, count)
     if type(slotId) ~= 'number' then return TypeError('slotId', 'number', type(slotId)) end
     if count and type(count) ~= 'number' then return TypeError('count', 'number', type(count)) end
