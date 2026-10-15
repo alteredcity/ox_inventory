@@ -1742,9 +1742,21 @@ end
 
 local GetLocks = require 'modules.locks'
 
+---@param inv OxInventory
+---@param slot any
+---@return boolean
+local function isValidSlot(inv, slot)
+	if type(slot) ~= 'number' or slot % 1 ~= 0 or slot < 1 then return false end
+
+	-- Les slots d'équipement (101+) n'existent que sur les inventaires joueur
+	return slot <= inv.slots or (inv.player ~= nil and slot > 100 and slot <= 100 + shared.equipmentslots)
+end
+
 ---@param source number
 ---@param data SwapSlotData
 lib.callback.register('ox_inventory:swapItems', function(source, data)
+	if type(data) ~= 'table' then return end
+
 	if data.fromType ~= data.toType and data.toType ~= 'player' and data.fromType ~= 'player' then
         Utils.LogExploit(source, 'swapItems', 'Triggered event with invalid data', true)
         return
@@ -1765,6 +1777,11 @@ lib.callback.register('ox_inventory:swapItems', function(source, data)
 	end
 
     if data.toType == 'inspect' or data.fromType == 'inspect' then return end
+
+	if not isValidSlot(fromInventory, data.fromSlot) or (data.toType ~= 'newdrop' and not isValidSlot(toInventory, data.toSlot)) then
+		Utils.LogExploit(source, 'swapItems', 'Triggered event with invalid slot', false)
+		return
+	end
 
     local activeSlots <close> = GetLocks({
        	('inventory-%s:slot-%s'):format(fromInventory.id, data.fromSlot),

@@ -22,6 +22,8 @@ shared = {
     networkdumpsters = GetConvarBool('inventory:networkdumpsters', false)
 }
 
+-- Nombre de slots d'équipement (vêtements) hors grille, numérotés à partir de 101 (13 = vêtements itemclothes, 0 = aucun)
+shared.equipmentslots = GetConvarInt('inventory:equipmentslots', 13)
 shared.dropslots = GetConvarInt('inventory:dropslots', shared.playerslots)
 shared.dropweight = GetConvarInt('inventory:dropweight', shared.playerweight)
 
