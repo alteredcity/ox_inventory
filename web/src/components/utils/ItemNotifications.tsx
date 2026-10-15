@@ -4,6 +4,8 @@ import { TransitionGroup } from 'react-transition-group';
 import useNuiEvent from '../../hooks/useNuiEvent';
 import useQueue from '../../hooks/useQueue';
 import { Locale } from '../../store/locale';
+import { useAppSelector } from '../../store';
+import { selectPrefs } from '../../store/ui';
 import { getItemLabel, getRarity } from '../../helpers';
 import ItemIcon from '../inventory/ItemIcon';
 import { SlotWithItem } from '../../typings';
@@ -47,7 +49,12 @@ export const ItemNotificationsProvider = ({ children }: { children: React.ReactN
     ref: React.RefObject<HTMLDivElement | null>;
   }>();
 
+  const showNotifications = useAppSelector(selectPrefs).itemNotify;
+
   const add = (item: ItemNotificationProps) => {
+    // Preference joueur (reglages) : le serveur envoie toujours, l'UI decide seulement de l'affichage.
+    if (!showNotifications) return;
+
     const ref = React.createRef<HTMLDivElement>();
     const notification = { id: Date.now(), item, ref: ref };
 

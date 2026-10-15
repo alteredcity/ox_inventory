@@ -37,7 +37,7 @@ Titre derive de `inventory.type` (puis du prefixe de `inventory.id`) : `drop`/`n
 
 ## Preferences joueur
 
-Couleur d'accent, arrondi, mode compact : `localStorage` (cle `ox_inventory:ui-prefs`), avec valeurs par defaut si indisponible. Repli KVP seulement si la persistance echoue en jeu.
+Couleur d'accent, arrondi, mode compact, notifications d'objets (affichage seulement, le serveur envoie toujours) : `localStorage` (cle `ox_inventory:ui-prefs`), avec valeurs par defaut si indisponible. Repli KVP seulement si la persistance echoue en jeu.
 
 ## Mode test hors jeu
 

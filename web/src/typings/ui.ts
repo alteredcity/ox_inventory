@@ -26,6 +26,8 @@ export type Prefs = {
   /** 0 a 16, en dixiemes de rem. */
   radius: number;
   compact: boolean;
+  /** Affiche les notifications d'ajout/retrait d'objets (bas de l'ecran). */
+  itemNotify: boolean;
 };
 
 export type SelectedSlot = { inventory: string; slot: number } | null;

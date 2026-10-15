@@ -32,6 +32,14 @@ const SettingsPopover: React.FC = () => {
           onChange={(e) => dispatch(setPrefs({ compact: e.target.checked }))}
         />
       </label>
+      <label>
+        <span>Notifications d'objets</span>
+        <input
+          type="checkbox"
+          checked={prefs.itemNotify}
+          onChange={(e) => dispatch(setPrefs({ itemNotify: e.target.checked }))}
+        />
+      </label>
       <button className="btn" onClick={() => dispatch(setPrefs(DEFAULT_PREFS))}>
         Reinitialiser
       </button>
