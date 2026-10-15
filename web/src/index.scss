@@ -1,5 +1,5 @@
 // Refonte UI d'apres maquette-inventaire-v2 : tout en rem, 1 rem fixe par utils/fit.ts (voir config/ui.ts).
-// Pas de container queries / unites cqw : version de CEF non etablie (cible Vite chrome103).
+// CEF = Chrome 103 (confirme via /json/version) : pas de container queries / unites cqw, :has(), color-mix, dvh (cible Vite chrome103).
 
 :root {
   --accent: #4da3ff;
