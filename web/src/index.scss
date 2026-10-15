@@ -1088,6 +1088,22 @@ body.inv-dragging {
 
 // ---------- transitions ----------
 
+// Bascule du mode compact (voir App.tsx) : le rem racine et l'espacement des grilles s'animent.
+:root[data-fit-anim='true'] {
+  transition: font-size 0.3s ease;
+
+  .grid {
+    transition: gap 0.3s ease;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root[data-fit-anim='true'],
+  :root[data-fit-anim='true'] .grid {
+    transition: none;
+  }
+}
+
 .transition-fade-enter {
   opacity: 0;
 }
