@@ -193,3 +193,20 @@ export const formatWeight = (grams: number) =>
   grams >= 1000
     ? `${(grams / 1000).toLocaleString('fr-FR', { minimumFractionDigits: 1, maximumFractionDigits: 2 })} kg`
     : `${grams.toLocaleString('fr-FR', { maximumFractionDigits: 0 })} g`;
+
+/** Premier numero des slots d'equipement (hors grille). */
+export const EQUIPMENT_FIRST_SLOT = 101;
+
+/** Lit un slot de la grille ou de l'equipement (slot vide `{ slot }` si l'equipement est vide). */
+export const getSlotAt = (inventory: Inventory, slot: number): Slot | undefined =>
+  slot >= EQUIPMENT_FIRST_SLOT ? (inventory.equipment?.[slot] ?? { slot }) : inventory.items[slot - 1];
+
+/** Ecrit un slot de la grille ou de l'equipement. */
+export const setSlotAt = (inventory: Inventory, slot: number, value: Slot) => {
+  if (slot >= EQUIPMENT_FIRST_SLOT) {
+    if (!inventory.equipment) inventory.equipment = {};
+    inventory.equipment[slot] = value;
+  } else {
+    inventory.items[slot - 1] = value;
+  }
+};

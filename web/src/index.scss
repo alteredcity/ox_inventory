@@ -629,6 +629,14 @@ button:disabled {
 
   &.full {
     border-style: solid;
+    cursor: pointer;
+  }
+  &.over {
+    border-style: solid;
+    border-color: var(--accent, currentColor);
+  }
+  &.dragging {
+    opacity: 0.4;
   }
   .eq-ph {
     position: absolute;

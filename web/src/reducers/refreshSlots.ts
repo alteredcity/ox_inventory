@@ -1,5 +1,5 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
-import { itemDurability } from '../helpers';
+import { itemDurability, setSlotAt } from '../helpers';
 import { inventorySlice } from '../store/inventory';
 import { Items } from '../store/items';
 import { InventoryType, Slot, State } from '../typings';
@@ -28,7 +28,7 @@ export const refreshSlotsReducer: CaseReducer<State, PayloadAction<Payload>> = (
           : state.leftInventory;
 
         data.item.durability = itemDurability(data.item.metadata, curTime);
-        targetInventory.items[data.item.slot - 1] = data.item;
+        setSlotAt(targetInventory, data.item.slot, data.item);
       });
 
     // Janky workaround to force a state rerender for crafting inventory to

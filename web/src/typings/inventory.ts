@@ -12,6 +12,8 @@ export type Inventory = {
   type: string;
   slots: number;
   items: Slot[];
+  /** Slots d'equipement (vetements, numeros 101+), hors grille. Joueur uniquement. */
+  equipment?: Record<number, Slot>;
   maxWeight?: number;
   label?: string;
   groups?: Record<string, number>;

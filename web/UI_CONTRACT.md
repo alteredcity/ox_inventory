@@ -29,6 +29,10 @@ Champs optionnels, transmis a l'UI par `client.lua` (bloc `ItemData`) :
 }
 ```
 
+Champ `slot` (optionnel) : numero du slot d'inventaire lie (101+, `inventory:equipmentslots`, 13 par defaut). Une case liee lit l'item reel dans `leftInventory.items` (slot >= 101), est draggable/droppable et passe par `ox_inventory:swapItems` : le serveur (hook itemclothes) reste l'arbitre, un rejet restaure l'etat. Sans `slot`, la case est decorative (`item` seul). `setEquipment` n'est donc plus necessaire : la liste par defaut est deja liee (101 chapeau, 102 masque, 103 lunettes, 104 oreilles, 105 chaine, 106 haut, 107 gilet, 108 bracelet, 109 montre, 110 sac, 111 pantalon, 112 chaussures, 113 gants).
+
+`left.items` doit etre envoye en tableau sequentiel (le client Lua le compacte via `getInventoryList`) pour ne pas produire un objet JSON creux.
+
 Si aucun element n'a de `side`, la liste est coupee en deux moities.
 
 ## Panneau de droite

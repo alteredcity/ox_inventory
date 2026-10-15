@@ -1,4 +1,4 @@
-import { canStack, findAvailableSlot, getTargetInventory, isSlotWithItem } from '../helpers';
+import { canStack, findAvailableSlot, getSlotAt, getTargetInventory, isSlotWithItem } from '../helpers';
 import { validateMove } from '../thunks/validateItems';
 import { store } from '../store';
 import { DragSource, DropTarget, InventoryType, SlotWithItem } from '../typings';
@@ -10,7 +10,7 @@ export const onDrop = (source: DragSource, target?: DropTarget) => {
 
   const { sourceInventory, targetInventory } = getTargetInventory(state, source.inventory, target?.inventory);
 
-  const sourceSlot = sourceInventory.items[source.item.slot - 1] as SlotWithItem;
+  const sourceSlot = getSlotAt(sourceInventory, source.item.slot) as SlotWithItem;
 
   const sourceData = Items[sourceSlot.name];
 
@@ -28,7 +28,7 @@ export const onDrop = (source: DragSource, target?: DropTarget) => {
   }
 
   const targetSlot = target
-    ? targetInventory.items[target.item.slot - 1]
+    ? getSlotAt(targetInventory, target.item.slot)
     : findAvailableSlot(sourceSlot, sourceData, targetInventory.items);
 
   if (targetSlot === undefined) return console.error('Target slot undefined!');

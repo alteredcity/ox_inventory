@@ -1,5 +1,5 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
-import { getTargetInventory } from '../helpers';
+import { getSlotAt, getTargetInventory, setSlotAt } from '../helpers';
 import { Inventory, InventoryType, SlotWithItem, State } from '../typings';
 
 export const stackSlotsReducer: CaseReducer<
@@ -18,22 +18,27 @@ export const stackSlotsReducer: CaseReducer<
 
   const pieceWeight = fromSlot.weight / fromSlot.count;
 
-  targetInventory.items[toSlot.slot - 1] = {
-    ...targetInventory.items[toSlot.slot - 1],
+  setSlotAt(targetInventory, toSlot.slot, {
+    ...getSlotAt(targetInventory, toSlot.slot),
+    slot: toSlot.slot,
     count: toSlot.count + count,
     weight: pieceWeight * (toSlot.count + count),
-  };
+  });
 
   if (fromType === InventoryType.SHOP || fromType === InventoryType.CRAFTING) return;
 
-  sourceInventory.items[fromSlot.slot - 1] =
+  setSlotAt(
+    sourceInventory,
+    fromSlot.slot,
     fromSlot.count - count > 0
       ? {
-          ...sourceInventory.items[fromSlot.slot - 1],
+          ...getSlotAt(sourceInventory, fromSlot.slot),
+          slot: fromSlot.slot,
           count: fromSlot.count - count,
           weight: pieceWeight * (fromSlot.count - count),
         }
       : {
           slot: fromSlot.slot,
-        };
+        }
+  );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAppSelector } from '../../store';
 import { Items } from '../../store/items';
-import { formatWeight, getCategory, getItemLabel, getRarity, isSlotWithItem } from '../../helpers';
+import { formatWeight, getCategory, getItemLabel, getRarity, getSlotAt, isSlotWithItem } from '../../helpers';
 import { getMetadataRows } from '../../helpers/slotInfo';
 import { CATEGORY_TABS, RARITIES } from '../../config/ui';
 import Markdown from '../utils/Markdown';
@@ -15,7 +15,7 @@ const ItemDescription: React.FC = () => {
   const additional = useAppSelector((state) => state.inventory.additionalMetadata);
 
   const inventory = selected ? (selected.inventory === left.type ? left : right) : undefined;
-  const item = selected && inventory ? inventory.items[selected.slot - 1] : undefined;
+  const item = selected && inventory ? getSlotAt(inventory, selected.slot) : undefined;
 
   if (!item || !isSlotWithItem(item)) {
     return (

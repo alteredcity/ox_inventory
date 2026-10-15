@@ -9,7 +9,7 @@ import { onGive } from '../../dnd/onGive';
 import { onDrop } from '../../dnd/onDrop';
 import { fetchNui } from '../../utils/fetchNui';
 import { Locale } from '../../store/locale';
-import { isSlotWithItem } from '../../helpers';
+import { getSlotAt, isSlotWithItem } from '../../helpers';
 import { HOTBAR_SLOTS } from '../../config/ui';
 import UsefulControls from './UsefulControls';
 import Mannequin from './Mannequin';
@@ -67,7 +67,7 @@ const InventoryControl: React.FC = () => {
   }));
 
   // Item selectionne dans le panneau joueur (pour les clics sur Utiliser / Donner / Jeter).
-  const selectedItem = selected && selected.inventory === 'player' ? left.items[selected.slot - 1] : undefined;
+  const selectedItem = selected && selected.inventory === 'player' ? getSlotAt(left, selected.slot) : undefined;
   const target = selectedItem && isSlotWithItem(selectedItem) ? selectedItem : undefined;
 
   const commitValue = (raw: string, cursorIndex: number) => {

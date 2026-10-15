@@ -58,21 +58,22 @@ export const RIGHT_PANEL_ID_PREFIXES: [string, string][] = [
 
 export const HOTBAR_SLOTS = 5;
 
-// Slots d'equipement affiches par defaut (vides). Remplaces par l'event NUI `setEquipment`
-// (voir web/UI_CONTRACT.md). Aucun lien avec un systeme de vetements.
+// Slots d'equipement affiches par defaut, lies aux slots d'inventaire 101+ (itemclothes). Remplaces par
+// l'event NUI `setEquipment` (voir web/UI_CONTRACT.md).
 export const DEFAULT_EQUIPMENT = [
-  { id: 'head', label: 'Chapeau', side: 'left' },
-  { id: 'mask', label: 'Masque', side: 'left' },
-  { id: 'glasses', label: 'Lunettes', side: 'left' },
-  { id: 'ears', label: 'Oreilles', side: 'left' },
-  { id: 'watch', label: 'Montre', side: 'left' },
-  { id: 'bracelet', label: 'Bracelet', side: 'left' },
-  { id: 'top', label: 'Haut', side: 'right' },
-  { id: 'vest', label: 'Gilet', side: 'right' },
-  { id: 'bag', label: 'Sac', side: 'right' },
-  { id: 'chain', label: 'Chaine', side: 'right' },
-  { id: 'legs', label: 'Pantalon', side: 'right' },
-  { id: 'shoes', label: 'Chaussures', side: 'right' },
+  { id: 'head', slot: 101, label: 'Chapeau', side: 'left' },
+  { id: 'mask', slot: 102, label: 'Masque', side: 'left' },
+  { id: 'glasses', slot: 103, label: 'Lunettes', side: 'left' },
+  { id: 'ears', slot: 104, label: 'Oreilles', side: 'left' },
+  { id: 'watch', slot: 109, label: 'Montre', side: 'left' },
+  { id: 'bracelet', slot: 108, label: 'Bracelet', side: 'left' },
+  { id: 'top', slot: 106, label: 'Haut', side: 'right' },
+  { id: 'vest', slot: 107, label: 'Gilet', side: 'right' },
+  { id: 'bag', slot: 110, label: 'Sac', side: 'right' },
+  { id: 'chain', slot: 105, label: 'Chaine', side: 'right' },
+  { id: 'legs', slot: 111, label: 'Pantalon', side: 'right' },
+  { id: 'shoes', slot: 112, label: 'Chaussures', side: 'right' },
+  { id: 'gloves', slot: 113, label: 'Gants', side: 'right' },
 ] as const;
 
 export const PREFS_KEY = 'ox_inventory:ui-prefs';

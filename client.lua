@@ -42,6 +42,18 @@ client.player:set('invBusy', true)
 client.player:set('invHotkeys', false)
 client.player:set('canUseWeapons', false)
 
+-- Liste sequentielle des items du joueur : evite un tableau creux (slots 51-100 vides, 101+ equipement)
+-- que le NUI recevrait en objet JSON plutot qu'en tableau.
+local function getInventoryList()
+	local list, n = {}, 0
+	for _, item in pairs(PlayerData.inventory) do
+		n += 1
+		list[n] = item
+	end
+	table.sort(list, function(a, b) return a.slot < b.slot end)
+	return list
+end
+
 local function canOpenInventory()
     if not PlayerData.loaded then
         return shared.info('cannot open inventory', '(player inventory has not loaded)')
@@ -354,7 +366,7 @@ function client.openInventory(inv, data)
     if client.screenblur then Utils.blurIn() end
 
     currentInventory = right or defaultInventory
-    left.items = PlayerData.inventory
+    left.items = getInventoryList()
     left.groups = PlayerData.groups
 
     SendNUIMessage({
@@ -413,7 +425,7 @@ RegisterNetEvent('ox_inventory:forceOpenInventory', function(left, right)
 
 	currentInventory = right or defaultInventory
 	currentInventory.ignoreSecurityChecks = true
-	left.items = PlayerData.inventory
+	left.items = getInventoryList()
 	left.groups = PlayerData.groups
 
 	SendNUIMessage({
@@ -1485,7 +1497,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 			leftInventory = {
 				id = cache.playerId,
 				slots = shared.playerslots,
-				items = PlayerData.inventory,
+				items = getInventoryList(),
 				maxWeight = shared.playerweight,
 			},
 			imagepath = client.imagepath
@@ -1748,7 +1760,7 @@ RegisterNetEvent('ox_inventory:viewInventory', function(left, right)
 	currentInventory = right or defaultInventory
 	currentInventory.ignoreSecurityChecks = true
     currentInventory.type = 'inspect'
-	left.items = PlayerData.inventory
+	left.items = getInventoryList()
 	left.groups = PlayerData.groups
 
 	SendNUIMessage({

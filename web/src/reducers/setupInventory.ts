@@ -1,7 +1,7 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
-import { getItemData, itemDurability } from '../helpers';
+import { EQUIPMENT_FIRST_SLOT, getItemData, itemDurability } from '../helpers';
 import { Items } from '../store/items';
-import { Inventory, State } from '../typings';
+import { Inventory, Slot, State } from '../typings';
 
 export const setupInventoryReducer: CaseReducer<
   State,
@@ -30,6 +30,17 @@ export const setupInventoryReducer: CaseReducer<
         item.durability = itemDurability(item.metadata, curTime);
         return item;
       }),
+      equipment: Object.values(leftInventory.items).reduce<Record<number, Slot>>((acc, item) => {
+        if (!item?.name || item.slot < EQUIPMENT_FIRST_SLOT) return acc;
+
+        if (typeof Items[item.name] === 'undefined') {
+          getItemData(item.name);
+        }
+
+        item.durability = itemDurability(item.metadata, curTime);
+        acc[item.slot] = item;
+        return acc;
+      }, {}),
     };
 
   if (rightInventory)

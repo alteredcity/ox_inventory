@@ -13,6 +13,8 @@ export type EquipmentItem = {
 
 export type EquipmentSlot = {
   id: string;
+  /** Numero du slot d'inventaire lie (101+). Sans valeur, la case est purement decorative. */
+  slot?: number;
   label: string;
   /** Texte court / emoji affiche quand le slot est vide (optionnel). */
   icon?: string;
