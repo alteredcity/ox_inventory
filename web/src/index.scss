@@ -108,6 +108,20 @@ button:disabled {
   }
 }
 
+.wrap.simple {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'p s'
+    'c c';
+}
+
+.center-simple {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
 :root[data-mode='ultra'] .wrap {
   width: min(138rem, 100%);
 }

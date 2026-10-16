@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import useNuiEvent from '../../hooks/useNuiEvent';
 import InventoryControl from './InventoryControl';
 import InventoryHotbar from './InventoryHotbar';
-import { useAppDispatch } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { fetchNui } from '../../utils/fetchNui';
 import { refreshSlots, setAdditionalMetadata, setupInventory } from '../../store/inventory';
 import { setEquipment } from '../../store/ui';
 import type { EquipmentSlot } from '../../typings/ui';
@@ -19,6 +20,12 @@ import Fade from '../utils/transitions/Fade';
 const Inventory: React.FC = () => {
   const [inventoryVisible, setInventoryVisible] = useState(false);
   const dispatch = useAppDispatch();
+  const simple = useAppSelector((state) => state.ui.prefs.layout) === 'simple';
+
+  // Le clone du ped (rendu par le jeu) n'existe que dans la disposition avec mannequin.
+  useEffect(() => {
+    fetchNui('setPreviewPed', { enabled: !simple });
+  }, [simple, inventoryVisible]);
 
   // Les notifications d'objets (portail hors de ce composant) ne s'affichent que inventaire ferme, voir index.scss.
   useEffect(() => {
@@ -54,7 +61,7 @@ const Inventory: React.FC = () => {
     <>
       <Fade in={inventoryVisible}>
         <div className="inventory-wrapper">
-          <div className="wrap">
+          <div className={`wrap${simple ? ' simple' : ''}`}>
             <LeftInventory />
             <InventoryControl />
             <RightInventory />

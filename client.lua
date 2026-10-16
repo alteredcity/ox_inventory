@@ -135,6 +135,8 @@ end
 -- ox_inventory (lsre), reecrite ici. Reglages : distance devant la camera, decalage lateral, hauteur relative a la camera.
 local previewPedOffset = { distance = 3.7, side = 0.0, height = 0.4 }
 local previewPed
+-- desactive par le joueur (reglage « Simple » de l'UI, callback setPreviewPed)
+local previewEnabled = true
 
 ---@type number? prop physique d'une arme en cours de lancer
 local thrownProp
@@ -155,6 +157,7 @@ end
 
 local function createPreviewPed()
 	deletePreviewPed()
+	if not previewEnabled then return end
 
 	local ped = ClonePed(playerPed, false, false, true)
 	if not ped or ped == 0 then return end
@@ -2124,6 +2127,18 @@ end)
 
 RegisterNUICallback('useButton', function(data, cb)
 	useButton(data.id, data.slot)
+	cb(1)
+end)
+
+RegisterNUICallback('setPreviewPed', function(data, cb)
+	previewEnabled = type(data) ~= 'table' or data.enabled ~= false
+
+	if not previewEnabled then
+		deletePreviewPed()
+	elseif invOpen and not previewPed then
+		createPreviewPed()
+	end
+
 	cb(1)
 end)
 

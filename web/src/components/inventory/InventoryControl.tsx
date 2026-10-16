@@ -112,6 +112,18 @@ const InventoryControl: React.FC = () => {
     cursorRef.current = null;
   }, [value]);
 
+  if (!showMannequin) {
+    // Disposition simple : pas de colonne centrale, seul l'acces aux reglages (et au retour) reste.
+    return (
+      <section className="center-simple">
+        {settingsOpen && <SettingsPopover />}
+        <button className="btn" onClick={() => dispatch(toggleSettings(undefined))}>
+          Reglages
+        </button>
+      </section>
+    );
+  }
+
   return (
     <section className="center">
       <UsefulControls infoVisible={infoVisible} setInfoVisible={setInfoVisible} />
@@ -128,7 +140,7 @@ const InventoryControl: React.FC = () => {
             </button>
           </span>
         </div>
-        {showMannequin && <Mannequin />}
+        <Mannequin />
       </div>
 
       <div className="panel status">
