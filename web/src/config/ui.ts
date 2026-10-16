@@ -76,4 +76,7 @@ export const DEFAULT_EQUIPMENT = [
   { id: 'gloves', slot: 113, label: 'Gants', side: 'right' },
 ] as const;
 
+// Pastilles de couleur d'accent proposees dans les reglages.
+export const THEME_COLORS = ['#ff7a2b', '#3ddc84', '#ff4fd8', '#ff4d4d', '#4da3ff', '#f2f2f2'];
+
 export const PREFS_KEY = 'ox_inventory:ui-prefs';

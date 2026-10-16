@@ -30,6 +30,10 @@ export type Prefs = {
   compact: boolean;
   /** Affiche les notifications d'ajout/retrait d'objets (bas de l'ecran). */
   itemNotify: boolean;
+  /** 'mannequin' : colonne centrale avec le mannequin ; 'simple' : sans mannequin. */
+  layout: 'mannequin' | 'simple';
+  /** Affiche le bloc de description de l'objet sous la grille du joueur. */
+  infoBottom: boolean;
 };
 
 export type SelectedSlot = { inventory: string; slot: number } | null;

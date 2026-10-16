@@ -1,7 +1,12 @@
 import { PREFS_KEY } from '../config/ui';
 import { Prefs } from '../typings/ui';
 
-export const DEFAULT_PREFS: Prefs = { accent: '#4da3ff', radius: 8, compact: false, itemNotify: true };
+export const DEFAULT_PREFS: Prefs = {
+  accent: '#4da3ff', radius: 8, compact: false,
+  itemNotify: true,
+  layout: 'mannequin',
+  infoBottom: true,
+};
 
 // localStorage peut etre indisponible ou vide (fenetre privee, donnees effacees) : toujours avec repli.
 export const loadPrefs = (): Prefs => {
@@ -19,6 +24,8 @@ export const loadPrefs = (): Prefs => {
       radius: Number.isFinite(radius) ? Math.min(16, Math.max(0, radius)) : DEFAULT_PREFS.radius,
       compact: data?.compact === true,
       itemNotify: data?.itemNotify !== false,
+      layout: data?.layout === 'simple' ? 'simple' : 'mannequin',
+      infoBottom: data?.infoBottom !== false,
     };
   } catch {
     return { ...DEFAULT_PREFS };

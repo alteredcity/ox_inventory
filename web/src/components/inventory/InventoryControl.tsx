@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useDrop } from 'react-dnd';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { selectItemAmount, selectLeftInventory, setItemAmount } from '../../store/inventory';
-import { toggleSettings } from '../../store/ui';
+import { selectPrefs, toggleSettings } from '../../store/ui';
 import { DragSource } from '../../typings';
 import { onUse } from '../../dnd/onUse';
 import { onGive } from '../../dnd/onGive';
@@ -26,6 +26,7 @@ const InventoryControl: React.FC = () => {
   const left = useAppSelector(selectLeftInventory);
   const selected = useAppSelector((state) => state.ui.selected);
   const settingsOpen = useAppSelector((state) => state.ui.settingsOpen);
+  const showMannequin = useAppSelector(selectPrefs).layout === 'mannequin';
   const dispatch = useAppDispatch();
 
   const [infoVisible, setInfoVisible] = useState(false);
@@ -127,7 +128,7 @@ const InventoryControl: React.FC = () => {
             </button>
           </span>
         </div>
-        <Mannequin />
+        {showMannequin && <Mannequin />}
       </div>
 
       <div className="panel status">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { selectPrefs, setPrefs } from '../../store/ui';
+import { THEME_COLORS } from '../../config/ui';
 import { DEFAULT_PREFS } from '../../utils/prefs';
 
 // Personnalisation par joueur : couleur d'accent, arrondi, mode compact (localStorage, voir utils/prefs.ts).
@@ -10,10 +11,48 @@ const SettingsPopover: React.FC = () => {
 
   return (
     <div className="settings" role="dialog" aria-label="Reglages">
-      <label>
-        <span>Couleur d'accent</span>
-        <input type="color" value={prefs.accent} onChange={(e) => dispatch(setPrefs({ accent: e.target.value }))} />
-      </label>
+      <div className="set-group">
+        <span>Disposition</span>
+        <div className="seg" role="radiogroup" aria-label="Disposition">
+          <button
+            className={prefs.layout === 'mannequin' ? 'on' : ''}
+            role="radio"
+            aria-checked={prefs.layout === 'mannequin'}
+            onClick={() => dispatch(setPrefs({ layout: 'mannequin' }))}
+          >
+            Avec mannequin
+          </button>
+          <button
+            className={prefs.layout === 'simple' ? 'on' : ''}
+            role="radio"
+            aria-checked={prefs.layout === 'simple'}
+            onClick={() => dispatch(setPrefs({ layout: 'simple' }))}
+          >
+            Simple
+          </button>
+        </div>
+      </div>
+      <div className="set-group">
+        <span>Theme</span>
+        <div className="swatches">
+          {THEME_COLORS.map((color) => (
+            <button
+              key={color}
+              className={`swatch${prefs.accent.toLowerCase() === color ? ' on' : ''}`}
+              style={{ background: color }}
+              title={color}
+              aria-label={color}
+              onClick={() => dispatch(setPrefs({ accent: color }))}
+            />
+          ))}
+          <input
+            type="color"
+            title="Couleur personnalisee"
+            value={prefs.accent}
+            onChange={(e) => dispatch(setPrefs({ accent: e.target.value }))}
+          />
+        </div>
+      </div>
       <label>
         <span>Arrondi</span>
         <input
@@ -30,6 +69,14 @@ const SettingsPopover: React.FC = () => {
           type="checkbox"
           checked={prefs.compact}
           onChange={(e) => dispatch(setPrefs({ compact: e.target.checked }))}
+        />
+      </label>
+      <label>
+        <span>Infos en bas</span>
+        <input
+          type="checkbox"
+          checked={prefs.infoBottom}
+          onChange={(e) => dispatch(setPrefs({ infoBottom: e.target.checked }))}
         />
       </label>
       <label>
