@@ -88,11 +88,6 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
               setTabChanges((n) => n + 1);
             }}
           >
-            {t.svg && (
-              <svg className="ico-fallback" viewBox="0 0 24 24" aria-hidden="true">
-                <path d={t.svg} />
-              </svg>
-            )}
             <i className={`ico-fa ${t.icon}`} aria-hidden="true" />
             {tab === t.id && <span>{t.label}</span>}
           </button>

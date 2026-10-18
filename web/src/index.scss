@@ -217,31 +217,13 @@ button:disabled {
   cursor: pointer;
   transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 
-  // Font Awesome charge (classe fa-on posee par index.html) : icone FA, sinon SVG de repli
   .ico-fa {
-    display: none;
+    display: inline-block;
     width: 1.1rem;
     text-align: center;
     --fa-primary-color: currentColor;
     --fa-secondary-color: currentColor;
     --fa-secondary-opacity: 0.45;
-  }
-  .fa-on & .ico-fa {
-    display: inline-block;
-  }
-  .fa-on & .ico-fallback {
-    display: none;
-  }
-
-  svg {
-    width: 1.1rem;
-    height: 1.1rem;
-    flex: none;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
   }
 
   &:hover {
