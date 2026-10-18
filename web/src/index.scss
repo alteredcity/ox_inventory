@@ -236,15 +236,28 @@ button:disabled {
   flex: 1;
   min-height: 0;
   overflow-y: auto;
-  scrollbar-width: thin;
 
-  &::-webkit-scrollbar {
-    display: block;
-    width: 0.4rem;
+  // Chromium recent : scrollbar-width/color desactivent les pseudo-elements webkit, donc on les
+  // reserve aux moteurs qui les gerent. CEF 103 (FiveM) reste sur les pseudo-elements.
+  @supports (scrollbar-color: auto) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line) transparent;
   }
-  &::-webkit-scrollbar-thumb {
-    background: var(--line);
-    border-radius: 0.2rem;
+  @supports not (scrollbar-color: auto) {
+    &::-webkit-scrollbar {
+      display: block;
+      width: 0.4rem;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--line);
+      border-radius: 0.2rem;
+    }
+    &::-webkit-scrollbar-button {
+      display: none;
+    }
   }
 }
 
