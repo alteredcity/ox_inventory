@@ -12,8 +12,14 @@
 import { isEnvBrowser } from './misc';
 
 const fetch = window.fetch;
+// fetch neutralise (anti-injection), sauf pour le kit Font Awesome qui l'utilise pour charger ses icones
+// (sans cela : "Cannot read properties of undefined (reading 'then')").
+const FONT_AWESOME_HOST = /^https:\/\/[a-z0-9-]+\.fontawesome\.com\//i;
 // @ts-expect-error
-window.fetch = () => {};
+window.fetch = (input?: RequestInfo | URL, init?: RequestInit) => {
+  const url = typeof input === 'string' ? input : input instanceof URL ? input.href : (input as Request | undefined)?.url;
+  return url && FONT_AWESOME_HOST.test(url) ? fetch(input as RequestInfo, init) : undefined;
+};
 // @ts-expect-error
 window.XMLHttpRequest = window.fetch;
 
