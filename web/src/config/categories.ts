@@ -1,6 +1,7 @@
 // Categories par defaut (mode navigateur et repli). En jeu, la liste vient de data/categories.lua
 // (envoyee par client.lua via l'event NUI `setCategories`) : c'est ce fichier-la qu'on edite.
-export type CategoryTab = { id: string; label: string; icon: string };
+/** primary/secondary : couleurs du duotone (theme 'natural'), absentes en theme 'basic'. */
+export type CategoryTab = { id: string; label: string; icon: string; primary?: string; secondary?: string };
 
 export const CATEGORY_TABS: CategoryTab[] = [
   { id: 'all', label: 'Tout', icon: 'fa-solid fa-grid-2' },

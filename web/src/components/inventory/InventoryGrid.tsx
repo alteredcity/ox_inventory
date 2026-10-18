@@ -88,7 +88,15 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
               setTabChanges((n) => n + 1);
             }}
           >
-            <i className={`ico-fa ${t.icon}`} aria-hidden="true" />
+            <i
+              className={`ico-fa ${t.icon}`}
+              style={
+                t.primary
+                  ? ({ '--fa-primary-color': t.primary, '--fa-secondary-color': t.secondary, '--fa-secondary-opacity': 0.85 } as React.CSSProperties)
+                  : undefined
+              }
+              aria-hidden="true"
+            />
             {tab === t.id && <span>{t.label}</span>}
           </button>
         ))}
