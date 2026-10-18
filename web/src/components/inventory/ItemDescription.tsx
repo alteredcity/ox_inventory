@@ -3,7 +3,8 @@ import { useAppSelector } from '../../store';
 import { Items } from '../../store/items';
 import { formatWeight, getCategory, getItemLabel, getRarity, getSlotAt, isSlotWithItem } from '../../helpers';
 import { getMetadataRows } from '../../helpers/slotInfo';
-import { CATEGORY_TABS, RARITIES } from '../../config/ui';
+import { RARITIES } from '../../config/ui';
+import { CATEGORY_TABS } from '../../config/categories';
 import Markdown from '../utils/Markdown';
 import ItemIcon from './ItemIcon';
 

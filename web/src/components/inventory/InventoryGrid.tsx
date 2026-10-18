@@ -4,7 +4,8 @@ import InventorySlot from './InventorySlot';
 import { getCategory, getItemLabel, getTotalWeight, isSlotWithItem } from '../../helpers';
 import { useAppSelector } from '../../store';
 import { useFit } from '../../hooks/useFit';
-import { CATEGORY_TABS, RIGHT_PANEL_ID_PREFIXES, RIGHT_PANEL_TITLES } from '../../config/ui';
+import { RIGHT_PANEL_ID_PREFIXES, RIGHT_PANEL_TITLES } from '../../config/ui';
+import { CATEGORY_TABS } from '../../config/categories';
 
 type Props = {
   inventory: Inventory;
@@ -87,10 +88,12 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
               setTabChanges((n) => n + 1);
             }}
           >
-            <svg className="ico-fallback" viewBox="0 0 24 24" aria-hidden="true">
-              <path d={t.icon} />
-            </svg>
-            <i className={`ico-fa fa-duotone fa-solid fa-${t.fa}`} aria-hidden="true" />
+            {t.svg && (
+              <svg className="ico-fallback" viewBox="0 0 24 24" aria-hidden="true">
+                <path d={t.svg} />
+              </svg>
+            )}
+            <i className={`ico-fa ${t.icon}`} aria-hidden="true" />
             {tab === t.id && <span>{t.label}</span>}
           </button>
         ))}
