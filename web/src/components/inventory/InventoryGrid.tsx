@@ -90,15 +90,18 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
               setTabChanges((n) => n + 1);
             }}
           >
-            <i
-              className={`ico-fa ${natural && t.primary && !t.icon.includes('fa-duotone') ? t.icon.replace('fa-solid', 'fa-duotone fa-solid') : t.icon}`}
-              style={
-                natural && t.primary
-                  ? ({ '--fa-primary-color': t.primary, '--fa-secondary-color': t.secondary, '--fa-secondary-opacity': 0.85 } as React.CSSProperties)
-                  : undefined
-              }
-              aria-hidden="true"
-            />
+            {/* Le kit FA remplace <i> par un <svg> hors de React : on remonte l'element a chaque changement de theme (key). */}
+            <b key={natural ? 'natural' : 'basic'} className="ico-wrap">
+              <i
+                className={`ico-fa ${natural && t.primary && !t.icon.includes('fa-duotone') ? t.icon.replace('fa-solid', 'fa-duotone fa-solid') : t.icon}`}
+                style={
+                  natural && t.primary
+                    ? ({ '--fa-primary-color': t.primary, '--fa-secondary-color': t.secondary, '--fa-secondary-opacity': 0.85 } as React.CSSProperties)
+                    : undefined
+                }
+                aria-hidden="true"
+              />
+            </b>
             {tab === t.id && <span>{t.label}</span>}
           </button>
         ))}

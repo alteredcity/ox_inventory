@@ -217,6 +217,11 @@ button:disabled {
   cursor: pointer;
   transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 
+  .ico-wrap {
+    display: inline-flex;
+    font-weight: inherit;
+  }
+
   .ico-fa {
     display: inline-block;
     width: 1.1rem;
