@@ -1507,6 +1507,9 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 		}
 	})
 
+	-- Categories d'objets (onglets) : data/categories.lua, modifiable sans recompiler l'UI
+	SendNUIMessage({ action = 'setCategories', data = lib.load('data.categories') })
+
 	PlayerData.loaded = true
 
 	if not client.disablesetupnotification then

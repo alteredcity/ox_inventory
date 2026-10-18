@@ -5,7 +5,6 @@ import { getCategory, getItemLabel, getTotalWeight, isSlotWithItem } from '../..
 import { useAppSelector } from '../../store';
 import { useFit } from '../../hooks/useFit';
 import { RIGHT_PANEL_ID_PREFIXES, RIGHT_PANEL_TITLES } from '../../config/ui';
-import { CATEGORY_TABS } from '../../config/categories';
 
 type Props = {
   inventory: Inventory;
@@ -29,6 +28,7 @@ const fmtKg = (grams: number) => (grams / 1000).toLocaleString('fr-FR', { maximu
 
 const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
   const isBusy = useAppSelector((state) => state.inventory.isBusy);
+  const categories = useAppSelector((state) => state.ui.categories);
   const [tab, setTab] = useState('all');
   const [query, setQuery] = useState('');
   // Compteur de changements d'onglet : remonte la grille pour rejouer l'animation d'entree (pas a l'ouverture).
@@ -76,7 +76,7 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
         <i style={{ width: `${inventory.maxWeight ? Math.min(100, (weight / inventory.maxWeight) * 100) : 0}%` }} />
       </div>
       <div className="tools">
-        {(variant === 'player' ? CATEGORY_TABS : CATEGORY_TABS.slice(0, 1)).map((t) => (
+        {(variant === 'player' ? categories : categories.slice(0, 1)).map((t) => (
           <button
             key={t.id}
             className={`tab${tab === t.id ? ' on' : ''}`}

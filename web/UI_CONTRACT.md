@@ -8,7 +8,7 @@ Champs optionnels, transmis a l'UI par `client.lua` (bloc `ItemData`) :
 
 | Champ      | Role                                                                                          |
 | ---------- | --------------------------------------------------------------------------------------------- |
-| `category` | Onglet du panneau joueur : `weapon`, `food`, `medical`, `drugs`, `tech`, `tools`, `material`, `clothing`, `papers`, `misc` (extensible, voir `src/config/categories.ts`) |
+| `category` | Onglet du panneau joueur : `weapon`, `food`, `medical`, `drugs`, `tech`, `tools`, `material`, `clothing`, `papers`, `misc` (extensible, voir `data/categories.lua`) |
 | `rarity`   | Rarete decorative : `uncommon`, `rare`, `epic`, `legendary` ; absent ou `common` = neutre     |
 
 - `metadata.rarity` d'un slot surcharge `rarity` de l'item.

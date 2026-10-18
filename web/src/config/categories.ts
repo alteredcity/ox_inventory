@@ -1,15 +1,5 @@
-// Categories d'objets : onglets du panneau joueur et libelle dans la description d'un objet.
-//
-// Pour ajouter ou modifier une categorie :
-//   1. une ligne ici ({ id, label, icon })
-//   2. `category = '<id>'` sur les items concernes dans data/items.lua
-//   3. `npm run build` dans web/
-//
-// - id    : valeur du champ `category` de l'item (l'entree 'all' = onglet sans filtre, a garder en premier)
-// - label : texte affiche (onglet actif, infobulle, description de l'objet)
-// - icon  : classes Font Awesome du kit charge dans web/index.html, ex. 'fa-solid fa-gun'.
-//           Le duotone ('fa-duotone fa-solid fa-gun') n'est dispo que si le kit l'inclut.
-// - svg   : optionnel, trace SVG (viewBox 24) affiche si le kit Font Awesome ne charge pas.
+// Categories par defaut (mode navigateur et repli). En jeu, la liste vient de data/categories.lua
+// (envoyee par client.lua via l'event NUI `setCategories`) : c'est ce fichier-la qu'on edite.
 export type CategoryTab = { id: string; label: string; icon: string; svg?: string };
 
 export const CATEGORY_TABS: CategoryTab[] = [

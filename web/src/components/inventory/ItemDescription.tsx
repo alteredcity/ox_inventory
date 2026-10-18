@@ -4,13 +4,13 @@ import { Items } from '../../store/items';
 import { formatWeight, getCategory, getItemLabel, getRarity, getSlotAt, isSlotWithItem } from '../../helpers';
 import { getMetadataRows } from '../../helpers/slotInfo';
 import { RARITIES } from '../../config/ui';
-import { CATEGORY_TABS } from '../../config/categories';
 import Markdown from '../utils/Markdown';
 import ItemIcon from './ItemIcon';
 
 // Panneau "description" sous la grille du joueur : affiche l'item survole (aucun clic requis).
 const ItemDescription: React.FC = () => {
   const selected = useAppSelector((state) => state.ui.hovered);
+  const categories = useAppSelector((state) => state.ui.categories);
   const left = useAppSelector((state) => state.inventory.leftInventory);
   const right = useAppSelector((state) => state.inventory.rightInventory);
   const additional = useAppSelector((state) => state.inventory.additionalMetadata);
@@ -35,7 +35,7 @@ const ItemDescription: React.FC = () => {
   const parts = [
     item.weight > 0 ? formatWeight(item.weight) : null,
     item.durability !== undefined ? `etat ${Math.trunc(item.durability)}%` : null,
-    category ? CATEGORY_TABS.find((t) => t.id === category)?.label || category : null,
+    category ? categories.find((t) => t.id === category)?.label || category : null,
   ].filter(Boolean);
 
   const rows = getMetadataRows(item, additional);
