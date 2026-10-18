@@ -28,7 +28,14 @@ export const CATEGORY_TABS: { id: string; label: string }[] = [
   { id: 'all', label: 'Tout' },
   { id: 'weapon', label: 'Armes' },
   { id: 'food', label: 'Nourriture' },
+  { id: 'medical', label: 'Sante' },
+  { id: 'drugs', label: 'Drogues' },
+  { id: 'tech', label: 'Tech' },
+  { id: 'tools', label: 'Equipement' },
+  { id: 'material', label: 'Materiaux' },
   { id: 'clothing', label: 'Vetements' },
+  { id: 'papers', label: 'Papiers' },
+  { id: 'misc', label: 'Divers' },
 ];
 
 // Titre du panneau de droite d'apres le type de l'inventaire (cote Lua : modules/inventory/server.lua).
