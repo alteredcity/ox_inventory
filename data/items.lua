@@ -73,6 +73,7 @@ return {
 	--Tablets
 
 	["ypad"] = {
+		category = 'tech',
 		label   = "Ypad",
 		weight  = 500,
 		stack   = false,
@@ -83,6 +84,7 @@ return {
 		},
 	},
 	["cosmic_tab"] = {
+		category = 'tech',
 		label   = "Cosmic Ytab",
 		weight  = 500,
 		stack   = false,
@@ -93,6 +95,7 @@ return {
 		},
 	},
 	["tablet"] = {
+		category = 'tech',
 		label   = "Tablette (ADMIN)",
 		weight  = 500,
 		stack   = false,
@@ -106,6 +109,7 @@ return {
 	--Phone
 
 	["phone"] = {
+		category = 'tech',
 		label = "Téléphone (ADMIN ONLY)",
 		weight = 100,
 		stack = false,
@@ -123,6 +127,7 @@ return {
 		}
 	},
 	["yphone"] = {
+		category = 'tech',
 		label = "YPhone",
 		weight = 100,
 		stack = false,
@@ -139,6 +144,7 @@ return {
 		}
 	},
 	["yphone_natural"] = {
+		category = 'tech',
 		label = "YPhone Natural",
 		weight = 100,
 		stack = false,
@@ -155,6 +161,7 @@ return {
 		}
 	},
 	["yphone_black"] = {
+		category = 'tech',
 		label = "YPhone Black",
 		weight = 100,
 		stack = false,
@@ -171,6 +178,7 @@ return {
 		}
 	},
 	["yphone_white"] = {
+		category = 'tech',
 		label = "YPhone White",
 		weight = 100,
 		stack = false,
@@ -187,6 +195,7 @@ return {
 		}
 	},
 	["yphone_blue"] = {
+		category = 'tech',
 		label = "Yphone Blue",
 		weight = 100,
 		stack = false,
@@ -203,6 +212,7 @@ return {
 		}
 	},
 	["yflipphone"] = {
+		category = 'tech',
 		label = "YFlip",
 		weight = 100,
 		stack = false,
@@ -219,6 +229,7 @@ return {
 		}
 	},
 	["yflip_mint"] = {
+		category = 'tech',
 		label = "YFlip Mint",
 		weight = 100,
 		stack = false,
@@ -235,6 +246,7 @@ return {
 		}
 	},
 	["yflip_gold"] = {
+		category = 'tech',
 		label = "YFlip Gold",
 		weight = 100,
 		stack = false,
@@ -251,6 +263,7 @@ return {
 		}
 	},
 	["yflip_graphite"] = {
+		category = 'tech',
 		label = "YFlip Graphite",
 		weight = 100,
 		stack = false,
@@ -267,6 +280,7 @@ return {
 		}
 	},
 	["yflip_lavender"] = {
+		category = 'tech',
 		label = "YFlip Lavender",
 		weight = 100,
 		stack = false,
@@ -283,6 +297,7 @@ return {
 		}
 	},
 	["y24_black"] = {
+		category = 'tech',
 		label = "Y24 Black",
 		weight = 100,
 		stack = false,
@@ -299,6 +314,7 @@ return {
 		}
 	},
 	["y24_silver"] = {
+		category = 'tech',
 		label = "Y24 Silver",
 		weight = 100,
 		stack = false,
@@ -315,6 +331,7 @@ return {
 		}
 	},
 	["y24_violet"] = {
+		category = 'tech',
 		label = "Y24 Violet",
 		weight = 100,
 		stack = false,
@@ -331,6 +348,7 @@ return {
 		}
 	},
 	["y24_yellow"] = {
+		category = 'tech',
 		label = "Y24 Yellow",
 		weight = 100,
 		stack = false,
@@ -347,6 +365,7 @@ return {
 		}
 	},
 	["yfold_black"] = {
+		category = 'tech',
 		label = "YFold Black",
 		weight = 100,
 		stack = false,
@@ -363,6 +382,7 @@ return {
 		}
 	},
 	["yphone_fold_black"] = {
+		category = 'tech',
 		label = "YPhone Fold Black",
 		weight = 100,
 		stack = false,
@@ -380,6 +400,7 @@ return {
 	},
 
 	["yboomer_black"] = {
+		category = 'tech',
 		label = "Boomer Phone",
 		weight = 100,
 		stack = false,
@@ -402,6 +423,7 @@ return {
 	--Hopital
 
 	['ergotrate'] = {
+		category = 'medical',
 		label = "Ergotrate",
 		description = "Vous croyez que je connais tous les médicaments ?",
 		weight = 10,
@@ -412,6 +434,7 @@ return {
 	},
 
 	['bandage'] = {
+		category = 'medical',
 		label = 'Bandage',
 		weight = 115,
 		close = true,
@@ -427,6 +450,7 @@ return {
 	},
 
 	["codeine"] = {
+		category = 'medical',
 		label = "Codéine",
 		weight = 1,
 		stack = true,
@@ -437,6 +461,7 @@ return {
 	},
 
 	['bloodsample'] = {
+		category = 'medical',
 		label = "Échantillon sanguin",
 		client = {
 			image = 'medical/bloodsample_1.webp'
@@ -444,6 +469,7 @@ return {
 	},
 
 	['ifak'] = {
+		category = 'medical',
 		label = 'trousse de secours',
 		weight = 200,
 		close = true,
@@ -454,6 +480,7 @@ return {
 	},
 
 	['painkillers'] = {
+		category = 'medical',
 		label = 'Antidouleurs',
 		weight = 0,
 		close = true,
@@ -464,6 +491,7 @@ return {
 	},
 
 	['temporary_tourniquet'] = {
+		category = 'medical',
 		label = 'Garrot Temporaire',
 		weight = 10,
 		close = true,
@@ -475,6 +503,7 @@ return {
 	},
 
 	['pager'] = {
+		category = 'tech',
 		label = 'Bipeur',
 		weight = 10,
 		close = true,
@@ -485,6 +514,7 @@ return {
 	},
 
 	['tourniquet'] = {
+		category = 'medical',
 		label = 'Garrot',
 		weight = 10,
 		close = true,
@@ -495,6 +525,7 @@ return {
 	},
 
 	['field_dressing'] = {
+		category = 'medical',
 		label = 'Pansement de Terrain',
 		weight = 10,
 		close = true,
@@ -505,6 +536,7 @@ return {
 	},
 
 	['elastic_bandage'] = {
+		category = 'clothing',
 		label = 'Bandage Élastique',
 		weight = 10,
 		close = true,
@@ -515,6 +547,7 @@ return {
 	},
 
 	['quick_clot'] = {
+		category = 'medical',
 		label = 'Hémostatique Rapide',
 		weight = 10,
 		close = true,
@@ -525,6 +558,7 @@ return {
 	},
 
 	['packing_bandage'] = {
+		category = 'medical',
 		label = 'Bandage Compressif',
 		weight = 10,
 		close = true,
@@ -535,6 +569,7 @@ return {
 	},
 
 	['sewing_kit'] = {
+		category = 'medical',
 		label = 'Kit de Couture',
 		weight = 10,
 		close = true,
@@ -545,6 +580,7 @@ return {
 	},
 
 	['epinephrine'] = {
+		category = 'misc',
 		label = 'Épinéphrine',
 		weight = 10,
 		close = true,
@@ -556,6 +592,7 @@ return {
 	},
 
 	['morphine'] = {
+		category = 'medical',
 		label = 'Morphine',
 		weight = 10,
 		close = true,
@@ -567,6 +604,7 @@ return {
 	},
 
 	['blood250ml'] = {
+		category = 'medical',
 		label = 'Poche de Sang 250ml',
 		weight = 10,
 		close = true,
@@ -577,6 +615,7 @@ return {
 	},
 
 	['blood500ml'] = {
+		category = 'medical',
 		label = 'Poche de Sang 500ml',
 		weight = 10,
 		close = true,
@@ -587,6 +626,7 @@ return {
 	},
 
 	['saline250ml'] = {
+		category = 'medical',
 		label = 'Solution Saline 250ml',
 		weight = 10,
 		close = true,
@@ -597,6 +637,7 @@ return {
 	},
 
 	['saline500ml'] = {
+		category = 'medical',
 		label = 'Solution Saline 500ml',
 		weight = 10,
 		close = true,
@@ -608,6 +649,7 @@ return {
 
 	--revivekit et medikit même item ?
 	['revivekit'] = {
+		category = 'medical',
 		label = 'Kit de Réanimation d\'Urgence',
 		weight = 10,
 		close = true,
@@ -618,6 +660,7 @@ return {
 	},
 
 	["medikit"] = {
+		category = 'medical',
 		label = "Medikit",
 		weight = 2,
 		stack = true,
@@ -628,6 +671,7 @@ return {
 	},
 
 	['stretcher'] = {
+		category = 'medical',
 		label = 'Civière',
 		weight = 1000,
 		close = true,
@@ -638,6 +682,7 @@ return {
 	},
 
 	['wheelchair'] = {
+		category = 'medical',
 		label = 'Fauteuil Roulant',
 		weight = 1000,
 		close = true,
@@ -648,6 +693,7 @@ return {
 	},
 
 	['crutch'] = {
+		category = 'medical',
 		label = 'Béquille',
 		weight = 1000,
 		close = true,
@@ -658,6 +704,7 @@ return {
 	},
 
 	['bodybag'] = {
+		category = 'tools',
 		label = 'Sac Mortuaire',
 		weight = 1000,
 		close = true,
@@ -668,6 +715,7 @@ return {
 	},
 
 	['ecg'] = {
+		category = 'medical',
 		label = 'ECG',
 		weight = 200,
 		close = true,
@@ -679,6 +727,7 @@ return {
 	},
 
 	['tylenol'] = {
+		category = 'medical',
 		label = 'Tylenol',
 		weight = 1,
 		stack = true,
@@ -690,6 +739,7 @@ return {
 	},
 
 	['peptobismol'] = {
+		category = 'medical',
 		label = 'Pepto-Bismol',
 		weight = 1,
 		stack = true,
@@ -701,6 +751,7 @@ return {
 	},
 
 	['loperamide'] = {
+		category = 'medical',
 		label = 'Loperamide',
 		weight = 1,
 		stack = true,
@@ -713,6 +764,7 @@ return {
 	},
 
 	['aspirin'] = {
+		category = 'medical',
 		label = 'Aspirine',
 		weight = 1,
 		stack = true,
@@ -724,6 +776,7 @@ return {
 	},
 
 	['ibuprofen'] = {
+		category = 'medical',
 		label = 'Ibuprofen',
 		weight = 1,
 		stack = true,
@@ -735,6 +788,7 @@ return {
 	},
 
 	['dramamine'] = {
+		category = 'medical',
 		label = 'Dramamine',
 		weight = 1,
 		stack = true,
@@ -746,6 +800,7 @@ return {
 	},
 
 	['covidvaccine'] = {
+		category = 'medical',
 		label = 'Vaccin COVID',
 		weight = 1,
 		stack = true,
@@ -757,6 +812,7 @@ return {
 	},
 
 	['doxycycline'] = {
+		category = 'medical',
 		label = 'Doxycycline',
 		weight = 1,
 		stack = true,
@@ -768,6 +824,7 @@ return {
 	},
 
 	['azithromycin'] = {
+		category = 'medical',
 		label = 'Azithromycin',
 		weight = 1,
 		stack = true,
@@ -779,6 +836,7 @@ return {
 	},
 
 	['acyclovir'] = {
+		category = 'drugs',
 		label = 'Acyclovir',
 		weight = 1,
 		stack = true,
@@ -794,6 +852,7 @@ return {
 	--Cartes et document
 
 	['debitcard_personal'] = {
+		category = 'papers',
 		label = 'Carte de Débit Personnelle',
 		stack = false,
 		weight = 10,
@@ -805,6 +864,7 @@ return {
 	},
 
 	['debitcard_shared'] = {
+		category = 'papers',
 		label = 'Carte de Débit Partagée',
 		stack = false,
 		weight = 10,
@@ -816,6 +876,7 @@ return {
 	},
 
 	['debitcard_business'] = {
+		category = 'papers',
 		label = 'Carte de Débit Professionnelle',
 		stack = false,
 		weight = 10,
@@ -827,6 +888,7 @@ return {
 	},
 
 	["driver_license"] = {
+		category = 'misc',
 		label = "Permis de conduire",
 		weight = 0,
 		stack = false,
@@ -837,6 +899,7 @@ return {
 	},
 
 	['rentalpapers'] = {
+		category = 'papers',
 		label = "Contrat de location de véhicule",
 		weight = 0,
 		stack = false,
@@ -848,6 +911,7 @@ return {
 	},
 
 	["pearlscard"] = {
+		category = 'papers',
 		label = "Carte de membre Complex Fat",
 		stack = true,
 		close = true,
@@ -857,6 +921,7 @@ return {
 	},
 
 	["cooler_bag"] = {
+		category = 'misc',
 		label = "Glacière de pêche",
 		weight = 2000, -- poids à vide (le contenu s'ajoute)
 		stack = false, -- obligatoire pour un conteneur (id unique)
@@ -869,6 +934,7 @@ return {
 	},
 
 	['lawyerpass'] = {
+		category = 'misc',
 		label = 'Licence d\'avocat',
 		weight = 0,
 		stack = false,
@@ -880,6 +946,7 @@ return {
 	},
 
 	["security_card_04"] = {
+		category = 'papers',
 		label = "Carte noire",
 		description = "Une simple carte sur laquelle on peut apercevoir un texte s'effacer jour après jour....",
 		degrade = 10080,
@@ -893,6 +960,7 @@ return {
 	--Casino
 
 	['casino_chips'] = {
+		category = 'misc',
 		label = "Jeton",
 		client = {
 			image = 'activities/casino_chips.webp'
@@ -904,6 +972,7 @@ return {
 	--Matériaux
 
 	['powder'] = {
+		category = 'misc',
 		label = 'Poudre révélatrice',
 
 		weight = 50,
@@ -914,6 +983,7 @@ return {
 	},
 
 	["ammonium_nitrate"] = {
+		category = 'drugs',
 		label = "Nitrate d'ammonium",
 		weight = 1,
 		stack = true,
@@ -924,6 +994,7 @@ return {
 	},
 
 	["hydrogen"] = {
+		category = 'drugs',
 		label = "Hydrogène",
 		weight = 1,
 		stack = true,
@@ -934,6 +1005,7 @@ return {
 	},
 
 	["pseudoefedrine"] = {
+		category = 'medical',
 		label = "Pseudoefedrine",
 		weight = 1,
 		stack = true,
@@ -944,6 +1016,7 @@ return {
 	},
 
 	["red_sulfur"] = {
+		category = 'drugs',
 		label = "Souffre rouge",
 		weight = 1,
 		stack = true,
@@ -954,6 +1027,7 @@ return {
 	},
 
 	["oxygen"] = {
+		category = 'medical',
 		label = "Oxygène",
 		weight = 1,
 		stack = true,
@@ -964,6 +1038,7 @@ return {
 	},
 
 	["sodium_hydroxide"] = {
+		category = 'material',
 		label = "Hydroxide de sodium",
 		weight = 1,
 		stack = true,
@@ -974,6 +1049,7 @@ return {
 	},
 
 	['potassium_nitrate'] = {
+		category = 'material',
 		label = "Nitrate de potassium",
 		stack = true,
 		weight = 75,
@@ -983,6 +1059,7 @@ return {
 	},
 
 	['coal'] = {
+		category = 'material',
 		label = "Charbon",
 		stack = true,
 		weight = 5,
@@ -992,6 +1069,7 @@ return {
 	},
 
 	['sulfur'] = {
+		category = 'material',
 		label = "Souffre",
 		stack = true,
 		weight = 5,
@@ -1001,6 +1079,7 @@ return {
 	},
 
 	["carbon"] = {
+		category = 'material',
 		label = "Carbone",
 		weight = 1,
 		stack = true,
@@ -1011,6 +1090,7 @@ return {
 	},
 
 	["muriatic_acid"] = {
+		category = 'drugs',
 		label = "Acide muriatique",
 		weight = 1,
 		stack = true,
@@ -1021,6 +1101,7 @@ return {
 	},
 
 	["nitrogen"] = {
+		category = 'material',
 		label = "Nitrogène",
 		weight = 1,
 		stack = true,
@@ -1031,6 +1112,7 @@ return {
 	},
 
 	["liquid_sulfur"] = {
+		category = 'drugs',
 		label = "Souffre liquide",
 		weight = 1,
 		stack = true,
@@ -1041,6 +1123,7 @@ return {
 	},
 
 	["stone"] = {
+		category = 'material',
 		label = "Pierre",
 		weight = 1,
 		stack = true,
@@ -1051,6 +1134,7 @@ return {
 	},
 
 	["washed_stone"] = {
+		category = 'material',
 		label = "Pierre lavée",
 		weight = 1,
 		stack = true,
@@ -1061,6 +1145,7 @@ return {
 	},
 
 	["diamond"] = {
+		category = 'misc',
 		label = "Diamant",
 		weight = 1,
 		stack = true,
@@ -1081,6 +1166,7 @@ return {
 	-- },
 
 	["iron"] = {
+		category = 'material',
 		label = "Fer",
 		weight = 1,
 		stack = true,
@@ -1091,6 +1177,7 @@ return {
 	},
 
 	['ironplate'] = {
+		category = 'material',
 		label = 'Plaque de fer',
 		weight = 100,
 		stack = true,
@@ -1101,6 +1188,7 @@ return {
 	},
 
 	["gold"] = {
+		category = 'material',
 		label = "Or",
 		weight = 1,
 		stack = true,
@@ -1111,6 +1199,7 @@ return {
 	},
 
 	["aluminum"] = {
+		category = 'material',
 		label = "Aluminium",
 		stack = true,
 		close = true,
@@ -1121,6 +1210,7 @@ return {
 	},
 
 	["brass"] = {
+		category = 'material',
 		label = "Laiton",
 		stack = true,
 		close = true,
@@ -1131,6 +1221,7 @@ return {
 	},
 
 	["steel"] = {
+		category = 'material',
 		label = "Acier",
 		stack = true,
 		close = true,
@@ -1141,6 +1232,7 @@ return {
 	},
 
 	["wood"] = {
+		category = 'material',
 		label = "Bois",
 		weight = 1,
 		stack = true,
@@ -1151,6 +1243,7 @@ return {
 	},
 
 	["packaged_plank"] = {
+		category = 'material',
 		label = "Planche de bois",
 		weight = 1,
 		stack = true,
@@ -1161,6 +1254,7 @@ return {
 	},
 
 	["cutted_wood"] = {
+		category = 'material',
 		label = "Bois Coupé",
 		weight = 1,
 		stack = true,
@@ -1171,6 +1265,7 @@ return {
 	},
 
 	["rubber"] = {
+		category = 'material',
 		label = "Caoutchouc",
 		stack = true,
 		close = true,
@@ -1181,6 +1276,7 @@ return {
 	},
 
 	["plastic"] = {
+		category = 'material',
 		label = "Plastique",
 		stack = true,
 		close = true,
@@ -1191,6 +1287,7 @@ return {
 	},
 
 	["wool"] = {
+		category = 'material',
 		label = "Laine",
 		weight = 1,
 		stack = true,
@@ -1201,6 +1298,7 @@ return {
 	},
 
 	["glassplate"] = {
+		category = 'material',
 		label = "Vitre",
 		stack = true,
 		close = true,
@@ -1211,6 +1309,7 @@ return {
 	},
 
 	["essence"] = {
+		category = 'material',
 		label = "Essence",
 		weight = 1,
 		stack = true,
@@ -1221,6 +1320,7 @@ return {
 	},
 
 	["gazbottle"] = {
+		category = 'misc',
 		label = "Bouteille de gaz",
 		weight = 2,
 		stack = true,
@@ -1231,6 +1331,7 @@ return {
 	},
 
 	["petrol"] = {
+		category = 'tools',
 		label = "Pétrole",
 		weight = 1,
 		stack = true,
@@ -1241,6 +1342,7 @@ return {
 	},
 
 	["petrol_raffin"] = {
+		category = 'tools',
 		label = "Pétrole raffiné",
 		weight = 1,
 		stack = true,
@@ -1255,6 +1357,7 @@ return {
 	--Drogues
 
 	['drugbags'] = {
+		category = 'misc',
 		label = "Sachet vide",
 		weight = 10,
 		client = {
@@ -1263,6 +1366,7 @@ return {
 	},
 
 	["drug_ecstasy"] = {
+		category = 'drugs',
 		label = "Ecstasy",
 		weight = 1,
 		stack = true,
@@ -1273,6 +1377,7 @@ return {
 	},
 
 	["drug_lean"] = {
+		category = 'drugs',
 		label = "Lean",
 		weight = 1,
 		stack = true,
@@ -1283,6 +1388,7 @@ return {
 	},
 
 	["drug_lsd"] = {
+		category = 'drugs',
 		label = "LSD",
 		weight = 1,
 		stack = true,
@@ -1293,6 +1399,7 @@ return {
 	},
 
 	["badlsdtab"] = {
+		category = 'drugs',
 		label = "Carton de LSD",
 		close = true,
 		buttons = {
@@ -1309,6 +1416,7 @@ return {
 	},
 
 	["lysergic_acid"] = {
+		category = 'material',
 		label = "Acide lysergique",
 		weight = 2,
 		client = {
@@ -1317,6 +1425,7 @@ return {
 	},
 
 	["lsd_crystal"] = {
+		category = 'drugs',
 		label = "Cristal de LSD",
 		weight = 10,
 		client = {
@@ -1325,6 +1434,7 @@ return {
 	},
 
 	["blank_blotter"] = {
+		category = 'drugs',
 		label = "Buvard vierge",
 		client = {
 			image = 'illegal/blank_blotter.webp'
@@ -1332,6 +1442,7 @@ return {
 	},
 
 	["lsdtab"] = {
+		category = 'drugs',
 		label = "Carton de LSD",
 		close = true,
 		client = {
@@ -1350,6 +1461,7 @@ return {
 	},
 
 	["drug_meth"] = {
+		category = 'drugs',
 		label = "Meth",
 		weight = 1,
 		stack = true,
@@ -1360,6 +1472,7 @@ return {
 	},
 
 	["opium"] = {
+		category = 'drugs',
 		label = "Opium",
 		weight = 1,
 		stack = true,
@@ -1370,6 +1483,7 @@ return {
 	},
 
 	["cocaine"] = {
+		category = 'drugs',
 		label = "Cocaine",
 		weight = 1,
 		stack = true,
@@ -1380,6 +1494,7 @@ return {
 	},
 
 	["weed_cbd"] = {
+		category = 'drugs',
 		label = "Weed CBD",
 		stack = true,
 		close = true,
@@ -1390,6 +1505,7 @@ return {
 	},
 
 	["green_gelato_cannabis"] = {
+		category = 'food',
 		label = "Green Gelato Cannabis",
 		weight = 1,
 		stack = true,
@@ -1400,6 +1516,7 @@ return {
 	},
 
 	["marijuana"] = {
+		category = 'drugs',
 		label = "Marijuana",
 		weight = 2,
 		stack = true,
@@ -1410,6 +1527,7 @@ return {
 	},
 
 	["cannabis"] = {
+		category = 'drugs',
 		label = "Cannabis",
 		weight = 3,
 		stack = true,
@@ -1420,6 +1538,7 @@ return {
 	},
 
 	['empty-battery'] = {
+		category = 'tools',
 		label = "Batterie vide",
 		weight = 700,
 		client = {
@@ -1428,6 +1547,7 @@ return {
 	},
 
 	['chemical_kit'] = {
+		category = 'material',
 		label = "Kit de chimie",
 		weight = 1000,
 		client = {
@@ -1436,6 +1556,7 @@ return {
 	},
 
 	["cocaine_uncut"] = {
+		category = 'drugs',
 		label = "Pâte à coca",
 		stack = true,
 		close = true,
@@ -1447,6 +1568,7 @@ return {
 	},
 
 	["cocaine_cut"] = {
+		category = 'drugs',
 		label = "Cocaïne préparée",
 		stack = true,
 		close = true,
@@ -1457,6 +1579,7 @@ return {
 	},
 
 	["meth_grey"] = {
+		category = 'drugs',
 		label = "Pochon de meth",
 		weight = 5,
 		buttons = {
@@ -1473,6 +1596,7 @@ return {
 	},
 
 	["meth_green"] = {
+		category = 'drugs',
 		label = "Pochon de meth",
 		weight = 5,
 		buttons = {
@@ -1489,6 +1613,7 @@ return {
 	},
 
 	["meth_blue"] = {
+		category = 'drugs',
 		label = "Pochon de meth",
 		weight = 5,
 		buttons = {
@@ -1505,6 +1630,7 @@ return {
 	},
 
 	["coke10g"] = {
+		category = 'drugs',
 		label = "Pochon de coke",
 		weight = 10,
 		buttons = {
@@ -1521,6 +1647,7 @@ return {
 	},
 
 	["weed_hybrid"] = {
+		category = 'drugs',
 		label = "Pochon de cbd",
 		weight = 5,
 		buttons = {
@@ -1537,6 +1664,7 @@ return {
 	},
 
 	["weed-baggie1g"] = {
+		category = 'drugs',
 		label = "Pochon de cbd",
 		stack = true,
 		close = true,
@@ -1555,6 +1683,7 @@ return {
 	},
 
 	["weed-baggie5g"] = {
+		category = 'drugs',
 		label = "Pochon de cbd",
 		stack = true,
 		close = true,
@@ -1573,6 +1702,7 @@ return {
 	},
 
 	["weed-baggie10g"] = {
+		category = 'drugs',
 		label = "Pochon de cbd",
 		stack = true,
 		close = true,
@@ -1591,6 +1721,7 @@ return {
 	},
 
 	["weed-baggie20g"] = {
+		category = 'drugs',
 		label = "Pochon de cbd",
 		stack = true,
 		close = true,
@@ -1609,6 +1740,7 @@ return {
 	},
 
 	["weed_pochon_sativa_1g"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1626,6 +1758,7 @@ return {
 	},
 
 	["weed_pochon_sativa_5g"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1643,6 +1776,7 @@ return {
 	},
 
 	["weed_pochon_sativa_3g"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1660,6 +1794,7 @@ return {
 	},
 
 	["weed_pochon_sativa_10g"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1677,6 +1812,7 @@ return {
 	},
 
 	["weed_pochon_sativa_20"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1694,6 +1830,7 @@ return {
 	},
 
 	["weed_pochon_indica_1g"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1711,6 +1848,7 @@ return {
 	},
 
 	["weed_pochon_indica_5g"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1728,6 +1866,7 @@ return {
 	},
 
 	["weed_pochon_indica_3g"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1745,6 +1884,7 @@ return {
 	},
 
 	["weed_pochon_indica_10g"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1762,6 +1902,7 @@ return {
 	},
 
 	["weed_pochon_indica_20"] = {
+		category = 'drugs',
 		label = "Pochon de weed",
 		stack = true,
 		close = true,
@@ -1779,6 +1920,7 @@ return {
 	},
 
 	["ls-papers"] = {
+		category = 'drugs',
 		label = "Feuille à rouler",
 		stack = true,
 		close = true,
@@ -1789,6 +1931,7 @@ return {
 	},
 
 	["joint"] = {
+		category = 'drugs',
 		label = "Joint CBD Pre-roll",
 		stack = true,
 		close = true,
@@ -1799,6 +1942,7 @@ return {
 	},
 
 	["weed_gelato"] = {
+		category = 'food',
 		label = "Gummies HHC",
 		weight = 8,
 		--degrade =7200,
@@ -1810,6 +1954,7 @@ return {
 	},
 
 	["sativa_joint"] = {
+		category = 'drugs',
 		label = "Joint Sativa Pre-roll",
 		stack = true,
 		close = true,
@@ -1820,6 +1965,7 @@ return {
 	},
 
 	["weed_pooch1"] = {
+		category = 'drugs',
 		label = "Weed Sativa",
 		stack = true,
 		close = true,
@@ -1830,6 +1976,7 @@ return {
 	},
 
 	["weed_leaf"] = {
+		category = 'drugs',
 		label = "Weed indica",
 		stack = true,
 		close = true,
@@ -1840,6 +1987,7 @@ return {
 	},
 
 	["coca_leaf"] = {
+		category = 'drugs',
 		label = "Feuille de coca",
 		stack = true,
 		close = true,
@@ -1850,6 +1998,7 @@ return {
 	},
 
 	["joint_skunk"] = {
+		category = 'drugs',
 		label = "Joint Indica Pre-roll",
 		stack = true,
 		close = true,
@@ -1860,6 +2009,7 @@ return {
 	},
 
 	["cakegreen"] = {
+		category = 'food',
 		label = "Space Cake",
 		stack = false,
 		close = true,
@@ -1870,6 +2020,7 @@ return {
 	},
 
 	["weedabsinthe"] = {
+		category = 'food',
 		label = "Absinthe",
 		--degrade =10080,
 		stack = false,
@@ -1880,6 +2031,7 @@ return {
 	},
 
 	["thuyone"] = {
+		category = 'material',
 		label = "Thuyone",
 		stack = true,
 		close = true,
@@ -1890,6 +2042,7 @@ return {
 	},
 
 	["anis"] = {
+		category = 'material',
 		label = "Anis",
 		stack = true,
 		close = true,
@@ -1900,6 +2053,7 @@ return {
 	},
 
 	["peacewater2"] = {
+		category = 'food',
 		label = "Boisson énergisante CBD",
 		--degrade =20160,
 		stack = false,
@@ -1910,6 +2064,7 @@ return {
 	},
 
 	["taurine"] = {
+		category = 'material',
 		label = "Taurine",
 		weihtght = 90,
 		--degrade =20160,
@@ -1944,6 +2099,7 @@ return {
 	-- },
 
 	['gold_bracelet'] = {
+		category = 'misc',
 		label = 'Bracelet en or',
 
 		weight = 25,
@@ -1954,6 +2110,7 @@ return {
 	},
 
 	['gold_watch'] = {
+		category = 'misc',
 		label = 'Montre en or',
 		weight = 75,
 		stack = true,
@@ -1963,6 +2120,7 @@ return {
 	},
 
 	['loot_bag'] = {
+		category = 'misc',
 		label = 'Grand sac',
 
 		weight = 50,
@@ -1973,6 +2131,7 @@ return {
 	},
 
 	['necklace'] = {
+		category = 'misc',
 		label = 'Collier',
 		weight = 15,
 		stack = true,
@@ -1982,6 +2141,7 @@ return {
 	},
 
 	["clothe"] = {
+		category = 'clothing',
 		label = "Vêtement",
 		weight = 125,
 		stack = true,
@@ -1992,6 +2152,7 @@ return {
 	},
 
 	["fabric"] = {
+		category = 'material',
 		label = "Tissu",
 		weight = 125,
 		stack = true,
@@ -2002,6 +2163,7 @@ return {
 	},
 
 	['fakeshirt'] = {
+		category = 'clothing',
 		label = 'Contrefaçon',
 		weight = 125,
 		stack = true,
@@ -2012,6 +2174,7 @@ return {
 	},
 
 	['panties'] = {
+		category = 'clothing',
 		label = 'Culotte',
 		weight = 10,
 		consume = 0,
@@ -2025,6 +2188,7 @@ return {
 	},
 
 	['armour'] = {
+		category = 'weapon',
 		label = 'Gilet pareballe',
 		weight = 3000,
 		stack = false,
@@ -2044,6 +2208,7 @@ return {
 	-- },
 
 	['shoebox'] = {
+		category = 'misc',
 		label = 'Boîte à chaussures',
 
 		weight = 350,
@@ -2058,6 +2223,7 @@ return {
 	--Mécano
 
 	['nitrous'] = {
+		category = 'tools',
 		label = "Nitro",
 		close = true,
 		client = {
@@ -2066,6 +2232,7 @@ return {
 	},
 
 	['scrapmetal'] = {
+		category = 'material',
 		label = 'Morceau de métal',
 		weight = 80,
 		client = {
@@ -2074,6 +2241,7 @@ return {
 	},
 
 	['body_repair_kit'] = {
+		category = 'tools',
 		label = "Kit de carroserie",
 		weight = 775,
 		client = {
@@ -2082,6 +2250,7 @@ return {
 	},
 
 	['mechanickit'] = {
+		category = 'tools',
 		label = "Kit de réparation",
 		weight = 775,
 		client = {
@@ -2090,6 +2259,7 @@ return {
 	},
 
 	["brake_parts_a"] = {
+		category = 'tools',
 		label = "Reprog. freins niveau 1",
 		stack = true,
 		close = true,
@@ -2104,6 +2274,7 @@ return {
 	},
 
 	["brake_parts_b"] = {
+		category = 'tools',
 		label = "Reprog. freins niveau 2",
 		stack = true,
 		close = true,
@@ -2118,6 +2289,7 @@ return {
 	},
 
 	["brake_parts_c"] = {
+		category = 'tools',
 		label = "Reprog. freins niveau 3",
 		stack = true,
 		close = true,
@@ -2132,6 +2304,7 @@ return {
 	},
 
 	["engine_parts_a"] = {
+		category = 'tools',
 		label = "Reprog. moteur niveau 1",
 		stack = true,
 		close = true,
@@ -2146,6 +2319,7 @@ return {
 	},
 
 	["engine_parts_b"] = {
+		category = 'tools',
 		label = "Reprog. moteur niveau 2",
 		stack = true,
 		close = true,
@@ -2160,6 +2334,7 @@ return {
 	},
 
 	["engine_parts_c"] = {
+		category = 'tools',
 		label = "Reprog. moteur niveau 3",
 		stack = true,
 		close = true,
@@ -2174,6 +2349,7 @@ return {
 	},
 
 	["engine_parts_d"] = {
+		category = 'tools',
 		label = "Reprog. moteur niveau 4",
 		stack = true,
 		close = true,
@@ -2188,6 +2364,7 @@ return {
 	},
 
 	["engine_parts_x"] = {
+		category = 'tools',
 		label = "Reprog. moteur niveau 5",
 		stack = true,
 		close = true,
@@ -2202,6 +2379,7 @@ return {
 	},
 
 	["transmission_parts_a"] = {
+		category = 'tools',
 		label = "Reprog. transmission niveau 1",
 		stack = true,
 		close = true,
@@ -2216,6 +2394,7 @@ return {
 	},
 
 	["transmission_parts_b"] = {
+		category = 'tools',
 		label = "Reprog. transmission niveau 2",
 		stack = true,
 		close = true,
@@ -2230,6 +2409,7 @@ return {
 	},
 
 	["transmission_parts_c"] = {
+		category = 'tools',
 		label = "Reprog. transmission niveau 3",
 		stack = true,
 		close = true,
@@ -2244,6 +2424,7 @@ return {
 	},
 
 	["suspension1"] = {
+		category = 'tools',
 		label = "Suspensions niveau 1",
 		stack = true,
 		close = true,
@@ -2258,6 +2439,7 @@ return {
 	},
 
 	["suspension2"] = {
+		category = 'tools',
 		label = "Suspensions niveau 2",
 		stack = true,
 		close = true,
@@ -2272,6 +2454,7 @@ return {
 	},
 
 	["suspension3"] = {
+		category = 'tools',
 		label = "Suspensions niveau 3",
 		stack = true,
 		close = true,
@@ -2286,6 +2469,7 @@ return {
 	},
 
 	["suspension4"] = {
+		category = 'tools',
 		label = "Suspensions niveau 4",
 		stack = true,
 		close = true,
@@ -2300,6 +2484,7 @@ return {
 	},
 
 	["turbo"] = {
+		category = 'tools',
 		label = "Turbo",
 		stack = true,
 		close = true,
@@ -2313,6 +2498,7 @@ return {
 	},
 
 	["carotool"] = {
+		category = 'tools',
 		label = "Outils",
 		weight = 2,
 		stack = true,
@@ -2323,6 +2509,7 @@ return {
 	},
 
 	["fixkit"] = {
+		category = 'tools',
 		label = "Kit de réparation",
 		weight = 3,
 		stack = true,
@@ -2333,6 +2520,7 @@ return {
 	},
 
 	["fixtool"] = {
+		category = 'tools',
 		label = "Outils de réparation",
 		weight = 2,
 		stack = true,
@@ -2343,6 +2531,7 @@ return {
 	},
 
 	["blowpipe"] = {
+		category = 'tools',
 		label = "Chalumeau",
 		weight = 2,
 		stack = true,
@@ -2353,6 +2542,7 @@ return {
 	},
 
 	["carokit"] = {
+		category = 'tools',
 		label = "Kit carrosserie",
 		weight = 3,
 		stack = true,
@@ -2367,6 +2557,7 @@ return {
 	--Cigarettes
 
 	["redw"] = {
+		category = 'drugs',
 		label = "Paquet de cigarettes Redwood",
 		weight = 35,
 		stack = false,
@@ -2377,6 +2568,7 @@ return {
 	},
 
 	["redwcig"] = {
+		category = 'drugs',
 		label = "Cigarette Redwood",
 		weight = 1,
 		stack = true,
@@ -2387,6 +2579,7 @@ return {
 	},
 
 	["lighter"] = {
+		category = 'misc',
 		label = "Briquet",
 		weight = 20,
 		stack = true,
@@ -2397,6 +2590,7 @@ return {
 	},
 
 	["liquid"] = {
+		category = 'tech',
 		label = "Liquide pour cigarette électronique",
 		weight = 115,
 		stack = true,
@@ -2407,6 +2601,7 @@ return {
 	},
 
 	["cubancigar"] = {
+		category = 'drugs',
 		label = "Cigare cubain",
 		weight = 15,
 		stack = true,
@@ -2417,6 +2612,7 @@ return {
 	},
 
 	["davidoffcigar"] = {
+		category = 'drugs',
 		label = "Cigare Davidoff",
 		weight = 15,
 		stack = true,
@@ -2431,6 +2627,7 @@ return {
 	--Divers
 
 	['watercan'] = {
+		category = 'material',
 		label = 'Arrosoir',
 		weight = 250,
 		stack = true,
@@ -2441,6 +2638,7 @@ return {
 	},
 
 	['fertilizer'] = {
+		category = 'material',
 		label = 'Engrais',
 		weight = 250,
 		stack = true,
@@ -2451,6 +2649,7 @@ return {
 	},
 
 	["uvlight"] = {
+		category = 'tools',
 		label = "Lampe UV",
 		stack = true,
 		close = true,
@@ -2461,6 +2660,7 @@ return {
 	},
 
 	["sieve"] = {
+		category = 'tools',
 		label = "Tamis",
 		stack = true,
 		close = true,
@@ -2471,6 +2671,7 @@ return {
 	},
 
 	['alcotester'] = {
+		category = 'tech',
 		label = 'Éthylotest',
 		stack = false,
 		close = true,
@@ -2481,6 +2682,7 @@ return {
 	},
 
 	["condom"] = {
+		category = 'misc',
 		label = "Préservatif",
 		weight = 10,
 		--degrade =44640,
@@ -2494,6 +2696,7 @@ return {
 	},
 
 	['house_locator'] = {
+		category = 'tech',
 		label = 'Localisateur',
 		weight = 250,
 		stack = true,
@@ -2503,6 +2706,7 @@ return {
 	},
 
 	['notepad'] = {
+		category = 'papers',
 		label = 'Bloc-notes',
 		weight = 60,
 		stack = true,
@@ -2512,6 +2716,7 @@ return {
 	},
 
 	['pencil'] = {
+		category = 'misc',
 		label = 'Crayon',
 		weight = 5,
 		stack = true,
@@ -2521,6 +2726,7 @@ return {
 	},
 
 	["handcuffs"] = {
+		category = 'tools',
 		label = "Menottes",
 		stack = true,
 		close = true,
@@ -2531,6 +2737,7 @@ return {
 	},
 
 	['shampoo'] = {
+		category = 'misc',
 		label = 'Shampoing',
 		weight = 250,
 		stack = true,
@@ -2540,6 +2747,7 @@ return {
 	},
 
 	['soap'] = {
+		category = 'misc',
 		label = 'Savon',
 		weight = 150,
 		stack = true,
@@ -2549,6 +2757,7 @@ return {
 	},
 
 	['toothpaste2'] = {
+		category = 'medical',
 		label = 'Dentifrice',
 		weight = 120,
 		stack = true,
@@ -2560,6 +2769,7 @@ return {
 	},
 
 	['skull'] = {
+		category = 'misc',
 		label = 'Crâne artistique',
 		weight = 95,
 		stack = true,
@@ -2569,6 +2779,7 @@ return {
 	},
 
 	['hack_laptop'] = {
+		category = 'drugs',
 		label = 'Ordinateur pirate',
 
 		weight = 3500,
@@ -2579,6 +2790,7 @@ return {
 	},
 
 	['laptop'] = {
+		category = 'tech',
 		label = 'Ordinateur portable',
 
 		weight = 3500,
@@ -2589,6 +2801,7 @@ return {
 	},
 
 	['printer'] = {
+		category = 'tech',
 		label = 'Imprimante',
 
 		weight = 8500,
@@ -2599,6 +2812,7 @@ return {
 	},
 
 	['npc_phone'] = {
+		category = 'tech',
 		label = 'Téléphone',
 
 		weight = 200,
@@ -2610,6 +2824,7 @@ return {
 	},
 
 	['monitor'] = {
+		category = 'tech',
 		label = 'Écran',
 
 		weight = 2750,
@@ -2620,6 +2835,7 @@ return {
 	},
 
 	['television'] = {
+		category = 'tech',
 		label = 'Télévision',
 
 		weight = 35000,
@@ -2630,6 +2846,7 @@ return {
 	},
 
 	['flat_television'] = {
+		category = 'tech',
 		label = 'Écran plat',
 
 		weight = 15000,
@@ -2640,6 +2857,7 @@ return {
 	},
 
 	['radio_alarm'] = {
+		category = 'tech',
 		label = 'Radio réveil',
 
 		weight = 200,
@@ -2650,6 +2868,7 @@ return {
 	},
 
 	['fan'] = {
+		category = 'misc',
 		label = 'Ventilateur',
 
 		weight = 2500,
@@ -2660,6 +2879,7 @@ return {
 	},
 
 	['dj_deck'] = {
+		category = 'tech',
 		label = 'Platine DJ',
 
 		weight = 8000,
@@ -2670,6 +2890,7 @@ return {
 	},
 
 	['console'] = {
+		category = 'misc',
 		label = 'Console',
 
 		weight = 3250,
@@ -2680,6 +2901,7 @@ return {
 	},
 
 	['boombox'] = {
+		category = 'misc',
 		label = 'Boombox',
 		description = "Un bon modèle rétro comme on en fait plus !",
 		weight = 2000,
@@ -2690,6 +2912,7 @@ return {
 	},
 
 	['coffemachine'] = {
+		category = 'misc',
 		label = 'Cafetière',
 
 		weight = 2500,
@@ -2700,6 +2923,7 @@ return {
 	},
 
 	['tapeplayer'] = {
+		category = 'tech',
 		label = 'Chaîne hifi',
 
 		weight = 4500,
@@ -2710,6 +2934,7 @@ return {
 	},
 
 	['hairdryer'] = {
+		category = 'tools',
 		label = 'Sèche-cheveux',
 
 		weight = 500,
@@ -2720,6 +2945,7 @@ return {
 	},
 
 	['j_phone'] = {
+		category = 'tech',
 		label = 'Téléphone',
 
 		weight = 200,
@@ -2730,6 +2956,7 @@ return {
 	},
 
 	['sculpture'] = {
+		category = 'misc',
 		label = 'Sculpture',
 
 		weight = 55,
@@ -2740,6 +2967,7 @@ return {
 	},
 
 	['toiletry'] = {
+		category = 'misc',
 		label = 'Produit de beauté',
 
 		weight = 150,
@@ -2750,6 +2978,7 @@ return {
 	},
 
 	['pogo'] = {
+		category = 'misc',
 		label = 'Œuvre d\'art',
 
 		weight = 155,
@@ -2761,6 +2990,7 @@ return {
 
 
 	['parachute'] = {
+		category = 'clothing',
 		label = 'Parachute',
 		weight = 8000,
 		stack = false,
@@ -2772,6 +3002,7 @@ return {
 	},
 
 	['lockpick'] = {
+		category = 'tools',
 		label = 'Crochet',
 		weight = 160,
 		client = {
@@ -2781,6 +3012,7 @@ return {
 	},
 
 	['money'] = {
+		category = 'misc',
 		label = 'Argent liquide',
 		client = {
 			image = 'money/money.webp'
@@ -2788,6 +3020,7 @@ return {
 	},
 
 	['black_money'] = {
+		category = 'misc',
 		label = "Argent liquide",
 		client = {
 			image = 'money/black_money.webp'
@@ -2795,6 +3028,7 @@ return {
 	},
 
 	["radio"] = {
+		category = 'tech',
 		label = "Radio",
 		weight = 100,
 		stack = false,
@@ -2809,6 +3043,7 @@ return {
 	},
 
 	['umbrella'] = {
+		category = 'misc',
 		label = "Parapluie",
 		weight = 835,
 		client = {
@@ -2817,6 +3052,7 @@ return {
 	},
 
 	['fossil'] = {
+		category = 'misc',
 		label = "Fossile",
 		weight = 80,
 		client = {
@@ -2824,6 +3060,7 @@ return {
 		}
 	},
 	['paperbag'] = {
+		category = 'misc',
 		label = 'Sac en papier',
 		weight = 1,
 		stack = false,
@@ -2835,6 +3072,7 @@ return {
 	},
 
 	['box'] = {
+		category = 'misc',
 		label = "Boîte en carton",
 		weight = 245,
 		client = {
@@ -2843,6 +3081,7 @@ return {
 	},
 
 	['plasticbag'] = {
+		category = 'drugs',
 		label = "Sac Plastique",
 		weight = 15,
 		client = {
@@ -2851,7 +3090,7 @@ return {
 		}
 	},
 
-	['book'] = { -- book2, romantic_book, cookbook
+	['book'] = { category = 'papers', -- book2, romantic_book, cookbook
 		label = "Livre",
 		weight = 450,
 		client = {
@@ -2860,6 +3099,7 @@ return {
 	},
 
 	['plastic_bottle'] = {
+		category = 'material',
 		label = "Bouteille en plastique",
 		weight = 45,
 		client = {
@@ -2868,6 +3108,7 @@ return {
 	},
 
 	['trash_paper'] = {
+		category = 'material',
 		label = "Déchet",
 		weight = 80,
 		client = {
@@ -2876,6 +3117,7 @@ return {
 	},
 
 	['garbage'] = {
+		category = 'material',
 		label = 'Ordure',
 		client = {
 			image = 'garbage/garbagebag.webp'
@@ -2883,6 +3125,7 @@ return {
 	},
 
 	["james_fishingrod"] = {
+		category = 'misc',
 		label = "Canne à pêche",
 		stack = false,
 		close = true,
@@ -2894,6 +3137,7 @@ return {
 	},
 
 	["keyhouse"] = {
+		category = 'papers',
 		label = "Clé de maison",
 		client = {
 			image = 'keys/keyhouse.webp'
@@ -2901,6 +3145,7 @@ return {
 	},
 
 	["labkey"] = {
+		category = 'papers',
 		label = "Clé de chambre",
 		stack = true,
 		close = true,
@@ -2910,6 +3155,7 @@ return {
 	},
 
 	["vehiclekeys"] = {
+		category = 'papers',
 		label = "Clé de voiture",
 		weight = 15,
 		stack = false,
@@ -2921,6 +3167,7 @@ return {
 	},
 
 	['adminvehiclekey'] = {
+		category = 'papers',
 		label = 'Clé admin',
 		weight = 0,
 		stack = false,
@@ -2932,6 +3179,7 @@ return {
 	},
 
 	['plate'] = {
+		category = 'tools',
 		label = 'Plaque d\'immatriculation',
 		weight = 250,
 		stack = true,
@@ -2943,6 +3191,7 @@ return {
 	},
 
 	['carlockpick'] = {
+		category = 'tools',
 		label = 'Crochet pour voiture',
 		weight = 100,
 		stack = true,
@@ -2954,6 +3203,7 @@ return {
 	},
 
 	['screwdriver'] = {
+		category = 'tools',
 		label = 'Tournevis',
 		weight = 500,
 		stack = true,
@@ -2965,6 +3215,7 @@ return {
 	},
 
 	['vehiclegps'] = {
+		category = 'tools',
 		label = 'Tracker GPS',
 		weight = 500,
 		stack = true,
@@ -2976,6 +3227,7 @@ return {
 	},
 
 	['vehicletracker'] = {
+		category = 'tech',
 		label = 'Traqueur de véhicule',
 		weight = 500,
 		stack = true,
@@ -2987,6 +3239,7 @@ return {
 	},
 
 	['caradvancedlockpick'] = {
+		category = 'tools',
 		label = 'Crochet avancé',
 		weight = 100,
 		stack = true,
@@ -2998,6 +3251,7 @@ return {
 	},
 
 	["gps"] = {
+		category = 'tech',
 		label = "GPS",
 		client = {
 			image = 'tech/gps.webp',
@@ -3016,6 +3270,7 @@ return {
 	},
 
 	["moneycase"] = {
+		category = 'misc',
 		label = "Malette d'argent",
 		stack = true,
 		weight = 1000,
@@ -3025,6 +3280,7 @@ return {
 	},
 
 	['lightning_unicorn'] = {
+		category = 'food',
 		label = "Lightning Unicorn",
 		weight = 250,
 		--degrade =14400,
@@ -3041,6 +3297,7 @@ return {
 
 	--Illégal
 	['laundry_coin'] = {
+		category = 'misc',
 		label = "Jeton de laverie",
 		weight = 2,
 		stack = true,
@@ -3051,6 +3308,7 @@ return {
 	},
 
 	['heist_usb_black'] = {
+		category = 'tech',
 		label = "Clé USB",
 		description = 'Contient le programme "laundryblackout.exe"',
 		stack = false,
@@ -3061,6 +3319,7 @@ return {
 	},
 
 	['goldbar'] = {
+		category = 'material',
 		label = "Lingot d'or",
 		client = {
 			image = 'mining/goldbar.webp'
@@ -3071,6 +3330,7 @@ return {
 	--à Trier
 
 	["cement"] = {
+		category = 'material',
 		label = "Ciment",
 		weight = 5000,
 		stack = true,
@@ -3082,6 +3342,7 @@ return {
 	},
 
 	["expensive_sneakers"] = {
+		category = 'misc',
 		label = "Baskets de luxe",
 		weight = 1000,
 		stack = true,
@@ -3092,6 +3353,7 @@ return {
 	},
 
 	["expensive_bag"] = {
+		category = 'misc',
 		label = "Sac de luxe",
 		weight = 1000,
 		stack = true,
@@ -3116,6 +3378,7 @@ return {
 	-- },
 
 	["stolen_weapon_case"] = {
+		category = 'weapon',
 		label = "Valise d'armes volée",
 		weight = 2000,
 		stack = true,
@@ -3131,6 +3394,7 @@ return {
 	},
 
 	["stolen_bag"] = {
+		category = 'misc',
 		label = "Sac volé",
 		weight = 2000,
 		stack = true,
@@ -3145,6 +3409,7 @@ return {
 	},
 
 	['ys_sim_card'] = {
+		category = 'tech',
 		label = 'Carte SIM',
 		stack = false,
 		weight = 10,
@@ -3155,6 +3420,7 @@ return {
 	},
 
 	["hat"] = {
+		category = 'clothing',
 		label = "Chapeau",
 		stack = false,
 		close = true,
@@ -3164,6 +3430,7 @@ return {
 	},
 
 	["mask"] = {
+		category = 'clothing',
 		label = "Masque",
 		stack = false,
 		close = true,
@@ -3173,6 +3440,7 @@ return {
 	},
 
 	["glasses"] = {
+		category = 'clothing',
 		label = "Lunettes",
 		stack = false,
 		close = true,
@@ -3182,6 +3450,7 @@ return {
 	},
 
 	["earrings"] = {
+		category = 'clothing',
 		label = "Accessoire d'oreilles",
 		stack = false,
 		close = true,
@@ -3191,6 +3460,7 @@ return {
 	},
 
 	["chain"] = {
+		category = 'clothing',
 		label = "Chaine",
 		stack = false,
 		close = true,
@@ -3200,6 +3470,7 @@ return {
 	},
 
 	["bracelet"] = {
+		category = 'clothing',
 		label = "Bracelet",
 		stack = false,
 		close = true,
@@ -3209,6 +3480,7 @@ return {
 	},
 
 	["watch"] = {
+		category = 'clothing',
 		label = "Montre",
 		stack = false,
 		close = true,
@@ -3218,6 +3490,7 @@ return {
 	},
 
 	["bag"] = {
+		category = 'clothing',
 		label = "Sac",
 		stack = false,
 		close = true,
@@ -3227,6 +3500,7 @@ return {
 	},
 
 	["torso"] = {
+		category = 'clothing',
 		label = "Haut",
 		stack = false,
 		close = true,
@@ -3236,6 +3510,7 @@ return {
 	},
 
 	["pants"] = {
+		category = 'clothing',
 		label = "Pantalon",
 		stack = false,
 		close = true,
@@ -3245,6 +3520,7 @@ return {
 	},
 
 	["shoes"] = {
+		category = 'clothing',
 		label = "Chaussures",
 		stack = false,
 		close = true,
@@ -3254,6 +3530,7 @@ return {
 	},
 
 	["bproof"] = {
+		category = 'clothing',
 		label = "Gilet pareballe",
 		stack = false,
 		close = true,
@@ -3263,6 +3540,7 @@ return {
 	},
 
 	["decals"] = {
+		category = 'clothing',
 		label = "Décalque",
 		stack = false,
 		close = true,
@@ -3272,6 +3550,7 @@ return {
 	},
 
 	["alive_chicken"] = {
+		category = 'material',
 		label = "Poulet vivant",
 		weight = 1,
 		stack = true,
@@ -3279,6 +3558,7 @@ return {
 	},
 
 	["slaughtered_chicken"] = {
+		category = 'material',
 		label = "Poulet abattu",
 		weight = 1,
 		stack = true,
@@ -3286,6 +3566,7 @@ return {
 	},
 
 	["packaged_chicken"] = {
+		category = 'material',
 		label = "Filet de poulet",
 		weight = 1,
 		stack = true,
@@ -3293,6 +3574,7 @@ return {
 	},
 
 	["water"] = {
+		category = 'food',
 		label = "Eau",
 		weight = 1,
 		stack = true,
@@ -3303,6 +3585,7 @@ return {
 	},
 
 	["bread"] = {
+		category = 'food',
 		label = "Pain",
 		weight = 1,
 		stack = true,
@@ -3313,6 +3596,7 @@ return {
 	},
 
 	["fish"] = {
+		category = 'food',
 		label = "Poisson",
 		weight = 1,
 		stack = true,
@@ -3320,6 +3604,7 @@ return {
 	},
 
 	['police_stormram'] = {
+		category = 'tools',
 		label = 'Bélier d\'intervention',
 		weight = 18000,
 		stack = false,
@@ -3332,6 +3617,7 @@ return {
 	},
 
 	['housing_key'] = {
+		category = 'papers',
 		label = 'Clé de propriété',
 		weight = 50,
 		stack = false,
@@ -3345,6 +3631,7 @@ return {
 	},
 
 	['key_wax'] = {
+		category = 'papers',
 		label = 'Cire à empreinte de clé',
 		description =
 		'Utilisez ceci pour prendre l\'empreinte de clés. L\'empreinte est le processus de création d\'une copie de clé en la pressant dans la cire.',
@@ -3357,6 +3644,7 @@ return {
 	},
 
 	['key_wax_used'] = {
+		category = 'papers',
 		label = 'Cire à empreinte utilisée',
 		description =
 		'Utilisez ceci pour prendre l\'empreinte de clés. L\'empreinte est le processus de création d\'une copie de clé en la pressant dans la cire.',
@@ -3370,6 +3658,7 @@ return {
 	},
 
 	['drawpaper'] = {
+		category = 'papers',
 		label = 'Post-it',
 		weight = 100,
 		stack = false,
@@ -3382,6 +3671,7 @@ return {
 	},
 
 	['bottle_cap'] = {
+		category = 'misc',
 		label = 'Capsule',
 		weight = 0,
 		stack = true,
@@ -3392,6 +3682,7 @@ return {
 
 	},
 	['cardboard_bed'] = {
+		category = 'misc',
 		label = 'Lit carton',
 		weight = 1,
 		stack = false,
@@ -3402,6 +3693,7 @@ return {
 
 	},
 	['hobo_gloves'] = {
+		category = 'clothing',
 		label = 'Gants de Hobo',
 		weight = 1,
 		stack = false,
@@ -3411,6 +3703,7 @@ return {
 		}
 	},
 	['hobo_tent'] = {
+		category = 'misc',
 		label = 'Tente de Hobo',
 		weight = 10000,
 		stack = false,
@@ -3420,6 +3713,7 @@ return {
 		}
 	},
 	['begging_sign'] = {
+		category = 'misc',
 		label = 'Pour mangé sivouplé',
 		weight = 1,
 		stack = true,
@@ -3429,6 +3723,7 @@ return {
 		}
 	},
 	['medical_care_package'] = {
+		category = 'medical',
 		label = 'Kit Médical de Secours',
 		weight = 10000,
 		stack = false,
@@ -3438,6 +3733,7 @@ return {
 		}
 	},
 	['rat_treats'] = {
+		category = 'material',
 		label = 'Friandises pour Rats',
 		weight = 1,
 		stack = true,
@@ -3447,6 +3743,7 @@ return {
 		}
 	},
 	['racoon_treats'] = {
+		category = 'material',
 		label = 'Friandises pour Ratons-Laveurs',
 		weight = 1,
 		stack = true,
@@ -3456,6 +3753,7 @@ return {
 		}
 	},
 	['rat_bait'] = {
+		category = 'material',
 		label = 'Appât à Rats',
 		weight = 1,
 		stack = true,
@@ -3465,6 +3763,7 @@ return {
 		}
 	},
 	['hobo_crown'] = {
+		category = 'clothing',
 		label = 'Couronne de Hobo',
 		weight = 500,
 		stack = false,
@@ -3474,6 +3773,7 @@ return {
 		}
 	},
 	['sleeping_bag'] = {
+		category = 'misc',
 		label = 'Sac de Couchage',
 		weight = 2000,
 		stack = false,
@@ -3483,6 +3783,7 @@ return {
 		}
 	},
 	['hobo_bottle'] = {
+		category = 'misc',
 		label = 'Eau croupie',
 		weight = 500,
 		stack = false,
@@ -3493,6 +3794,7 @@ return {
 		}
 	},
 	['ration_pack'] = {
+		category = 'food',
 		label = 'Pack de Rations',
 		weight = 1500,
 		stack = false,
@@ -3502,6 +3804,7 @@ return {
 		}
 	},
 	['wooden_junk'] = {
+		category = 'material',
 		label = 'Débris de bois',
 		weight = 100,
 		stack = true,
@@ -3511,6 +3814,7 @@ return {
 		}
 	},
 	['copper_junk'] = {
+		category = 'material',
 		label = 'Débris de cuivre',
 		weight = 100,
 		stack = true,
@@ -3520,6 +3824,7 @@ return {
 		}
 	},
 	['scrap_junk'] = {
+		category = 'material',
 		label = 'Ferraille',
 		weight = 100,
 		stack = true,
@@ -3529,6 +3834,7 @@ return {
 		}
 	},
 	['cloth_junk'] = {
+		category = 'material',
 		label = 'Chiffons',
 		weight = 100,
 		stack = true,
@@ -3538,6 +3844,7 @@ return {
 		}
 	},
 	['plastic_junk'] = {
+		category = 'material',
 		label = 'Débris plastique',
 		weight = 100,
 		stack = true,
@@ -3547,6 +3854,7 @@ return {
 		}
 	},
 	['electronic_junk'] = {
+		category = 'tech',
 		label = 'Déchets électroniques',
 		weight = 100,
 		stack = true,
@@ -3556,6 +3864,7 @@ return {
 		}
 	},
 	['broken_phone'] = {
+		category = 'tech',
 		label = 'Téléphone cassé',
 		weight = 300,
 		stack = true,
@@ -3565,6 +3874,7 @@ return {
 		}
 	},
 	['food_waste'] = {
+		category = 'material',
 		label = 'Déchets alimentaires',
 		weight = 100,
 		stack = true,
@@ -3574,6 +3884,7 @@ return {
 		}
 	},
 	['medical_waste'] = {
+		category = 'material',
 		label = 'Déchets médicaux',
 		weight = 100,
 		stack = true,
@@ -3583,6 +3894,7 @@ return {
 		}
 	},
 	['paper_junk'] = {
+		category = 'material',
 		label = 'Vieux papiers',
 		weight = 100,
 		stack = true,
@@ -3592,6 +3904,7 @@ return {
 		}
 	},
 	['glass_junk'] = {
+		category = 'material',
 		label = 'Débris de verre',
 		weight = 100,
 		stack = true,
@@ -3601,6 +3914,7 @@ return {
 		}
 	},
 	['rabies_shot'] = {
+		category = 'material',
 		label = 'Vaccin antirabique',
 		weight = 100,
 		stack = true,
@@ -3610,6 +3924,7 @@ return {
 		}
 	},
 	['tetanus_shot'] = {
+		category = 'medical',
 		label = 'Vaccin antitétanique',
 		weight = 100,
 		stack = true,
@@ -3619,6 +3934,7 @@ return {
 		}
 	},
 	['meat_rat'] = {
+		category = 'material',
 		label = 'Viande de rat',
 		weight = 100,
 		stack = true,
@@ -3631,6 +3947,7 @@ return {
 	},
 
 	['skin-rat'] = {
+		category = 'material',
 		label = 'Peau de rat',
 		weight = 70,
 		stack = true,
@@ -3643,6 +3960,7 @@ return {
 	},
 
 	['racoon_meat'] = {
+		category = 'material',
 		label = 'Viande de raton laveur',
 		weight = 150, -- Plus lourd qu'un rat
 		stack = true,
@@ -3654,6 +3972,7 @@ return {
 	},
 
 	['racoon_skin'] = {
+		category = 'material',
 		label = 'Fourrure de raton laveur',
 		weight = 120, -- Plus lourde qu'une peau de rat
 		stack = true,
@@ -3665,6 +3984,7 @@ return {
 	},
 
 	['outfitbag'] = {
+		category = 'misc',
 		label = 'Sac de vêtements',
 		weight = 450,
 		stack = true,
@@ -3676,6 +3996,7 @@ return {
 	},
 
 	['id_card'] = {
+		category = 'papers',
 		label = "Carte d'identité",
 		weight = 5,
 		stack = false,
@@ -3684,6 +4005,7 @@ return {
 		}
 	},
 	['driving_license'] = {
+		category = 'papers',
 		label = 'Permis de conduire',
 		weight = 5,
 		stack = false,
@@ -3692,6 +4014,7 @@ return {
 		}
 	},
 	['flying_license'] = {
+		category = 'papers',
 		label = 'Licence de vol',
 		weight = 5,
 		stack = false,
@@ -3700,6 +4023,7 @@ return {
 		}
 	},
 	['boat_license'] = {
+		category = 'papers',
 		label = 'Permis de navigation',
 		weight = 5,
 		stack = false,
@@ -3708,6 +4032,7 @@ return {
 		}
 	},
 	['weapon_license'] = {
+		category = 'misc',
 		label = "Permis de port d'armes",
 		weight = 5,
 		stack = false,
@@ -3716,6 +4041,7 @@ return {
 		}
 	},
 	['police_badge'] = {
+		category = 'papers',
 		label = 'Badge LSPD',
 		weight = 5,
 		stack = false,
@@ -3724,6 +4050,7 @@ return {
 		}
 	},
 	['sheriff_badge'] = {
+		category = 'papers',
 		label = 'Badge BCSO',
 		weight = 5,
 		stack = false,
@@ -3732,6 +4059,7 @@ return {
 		}
 	},
 	['fib_badge'] = {
+		category = 'papers',
 		label = 'Badge FIB',
 		weight = 5,
 		stack = false,
@@ -3740,6 +4068,7 @@ return {
 		}
 	},
 	['electronics'] = {
+		category = 'tech',
 		label = 'Pièces électroniques',
 		weight = 100,
 		stack = true,
@@ -3751,6 +4080,7 @@ return {
 	},
 
 	['paper'] = {
+		category = 'papers',
 		label = 'Papier',
 		weight = 10,
 		stack = true,
@@ -3762,6 +4092,7 @@ return {
 	},
 
 	['compost'] = {
+		category = 'material',
 		label = 'Compost',
 		weight = 100,
 		stack = true,
@@ -3773,6 +4104,7 @@ return {
 	},
 
 	['copper'] = {
+		category = 'material',
 		label = 'Plaque de cuivre',
 		weight = 100,
 		stack = true,
@@ -3784,6 +4116,7 @@ return {
 	},
 
 	['rccar'] = {
+		category = 'tech',
 		label   = 'RC Car',
 		weight  = 2000,
 		stack   = false,
@@ -3795,6 +4128,7 @@ return {
 	},
 
 	['420-bar'] = {
+		category = 'food',
 		label = 'Canna Choc',
 		stack = false,
 		usetime = 1500,
@@ -3805,6 +4139,7 @@ return {
 	},
 
 	["aguafresca"] = {
+		category = 'food',
 		label = "Agua fresca pastèque",
 		weight = 330,
 		--degrade =14400,
@@ -3816,6 +4151,7 @@ return {
 	},
 
 	["aguafreslemon"] = {
+		category = 'food',
 		label = "Agua fresca citron",
 		weight = 330,
 		--degrade =14400,
@@ -3827,6 +4163,7 @@ return {
 	},
 
 	["aguamelon"] = {
+		category = 'food',
 		label = "Agua fresca melon",
 		weight = 330,
 		--degrade =14400,
@@ -3838,6 +4175,7 @@ return {
 	},
 
 	["ak47_blueprint"] = {
+		category = 'misc',
 		label = "Blueprint",
 		description = "Il s'agit du plan d'assemblage d'un fusil d'assaut",
 		client = {
@@ -3846,6 +4184,7 @@ return {
 	},
 
 	["ak47body"] = {
+		category = 'weapon',
 		label = "Armature fusil d'assaut",
 		stack = true,
 		close = true,
@@ -3856,6 +4195,7 @@ return {
 	},
 
 	["amaretti"] = {
+		category = 'food',
 		label = "Amaretto",
 		weight = 1000,
 		--degrade =10080,
@@ -3868,6 +4208,7 @@ return {
 	},
 
 	['ambeer'] = {
+		category = 'food',
 		label = 'Bière A.M 33cl',
 		stack = false,
 		close = true,
@@ -3878,6 +4219,7 @@ return {
 	},
 
 	['apple'] = {
+		category = 'food',
 		label = 'Pomme',
 		stack = true,
 		close = true,
@@ -3887,6 +4229,7 @@ return {
 	},
 
 	["arma_armacaopistola"] = {
+		category = 'weapon',
 		label = "Crosse pistolet",
 		stack = true,
 		close = true,
@@ -3897,6 +4240,7 @@ return {
 	},
 
 	["arma_cano"] = {
+		category = 'weapon',
 		label = "Canon pistolet",
 		stack = true,
 		close = true,
@@ -3907,6 +4251,7 @@ return {
 	},
 
 	['at_muzzle_squared_result'] = {
+		category = 'weapon',
 		label = "Compensateur",
 		weight = 560,
 		client = {
@@ -3915,6 +4260,7 @@ return {
 	},
 
 	["avocado"] = {
+		category = 'material',
 		label = "Avocat",
 		weight = 300,
 		-- degrade =4320,
@@ -3926,6 +4272,7 @@ return {
 	},
 
 	["avocado_salad"] = {
+		category = 'food',
 		label = "La Ensalada avocado",
 		--degrade =14400,
 		stack = false,
@@ -3936,6 +4283,7 @@ return {
 	},
 
 	["b52"] = {
+		category = 'food',
 		label = "COCKTAIL B52",
 		--degrade =14400,
 		stack = false,
@@ -3946,6 +4294,7 @@ return {
 	},
 
 	['bacon'] = {
+		category = 'material',
 		label = 'Bacon',
 		weight = 200,
 		--degrade =4320,
@@ -3956,6 +4305,7 @@ return {
 	},
 
 	["baileys"] = {
+		category = 'food',
 		label = "Baileys",
 		weight = 1000,
 		--degrade =10080,
@@ -3967,6 +4317,7 @@ return {
 	},
 
 	["basil"] = {
+		category = 'material',
 		label = "Basilic",
 		weight = 20,
 		--degrade =10080,
@@ -3979,6 +4330,7 @@ return {
 	},
 
 	["bcoffeeglass"] = {
+		category = 'misc',
 		label = "Mug en verre",
 		stack = true,
 		close = true,
@@ -3989,6 +4341,7 @@ return {
 	},
 
 	["bcream"] = {
+		category = 'material',
 		label = "Crème fraîche",
 		weight = 200,
 		--degrade =4320,
@@ -4000,6 +4353,7 @@ return {
 	},
 
 	["beef"] = {
+		category = 'material',
 		label = "Boeuf",
 		weight = 350,
 		--degrade =4320,
@@ -4011,6 +4365,7 @@ return {
 	},
 
 	["bhighcoffeeglasscup"] = {
+		category = 'food',
 		label = "Verre vide",
 		stack = true,
 		close = true,
@@ -4021,6 +4376,7 @@ return {
 	},
 
 	["bitecookies"] = {
+		category = 'food',
 		label = "Cookies",
 		--degrade =7200,
 		stack = false,
@@ -4031,6 +4387,7 @@ return {
 	},
 
 	["bitesalad"] = {
+		category = 'food',
 		label = "Salavocat",
 		--degrade =14400,
 		stack = false,
@@ -4041,6 +4398,7 @@ return {
 	},
 
 	['bleuterd'] = {
+		category = 'food',
 		label = 'Bleuterd Champagne',
 		weight = 750,
 		stack = false,
@@ -4052,6 +4410,7 @@ return {
 	},
 
 	["blueberry"] = {
+		category = 'material',
 		label = "Myrtille",
 		weight = 10,
 		--degrade =4320,
@@ -4063,6 +4422,7 @@ return {
 	},
 
 	["bolchips"] = {
+		category = 'food',
 		label = "Paquet de chips",
 		--degrade =1440,
 		close = true,
@@ -4072,6 +4432,7 @@ return {
 	},
 
 	["bolpistache"] = {
+		category = 'material',
 		label = "Bol de pistache",
 		--degrade =1440,
 		close = true,
@@ -4081,6 +4442,7 @@ return {
 	},
 
 	['book2'] = {
+		category = 'papers',
 		label = "Livre",
 		weight = 450,
 		client = {
@@ -4089,6 +4451,7 @@ return {
 	},
 
 	["bregularcup"] = {
+		category = 'food',
 		label = "Cup pour bubble tea",
 		stack = true,
 		close = true,
@@ -4099,6 +4462,7 @@ return {
 	},
 
 	["brussian"] = {
+		category = 'food',
 		label = "Russe blanc",
 		--degrade =14400,
 		stack = false,
@@ -4109,11 +4473,13 @@ return {
 	},
 
 	['burger'] = {
+		category = 'food',
 		label = 'Burger',
 		weight = 225,
 	},
 
 	["burgerbun2"] = {
+		category = 'food',
 		label = "Pain burger",
 		weight = 20,
 		--degrade =10080,
@@ -4126,6 +4492,7 @@ return {
 	},
 
 	["burrito_poiv"] = {
+		category = 'food',
 		label = "Burrito poivron",
 		--degrade =14400,
 		stack = false,
@@ -4136,6 +4503,7 @@ return {
 	},
 
 	["burritobeef"] = {
+		category = 'food',
 		label = "Burrito boeuf",
 		--degrade =14400,
 		stack = false,
@@ -4146,6 +4514,7 @@ return {
 	},
 
 	["burritochick"] = {
+		category = 'food',
 		label = "Burrito poulet ",
 		--degrade =14400,
 		stack = false,
@@ -4156,6 +4525,7 @@ return {
 	},
 
 	["burritomushroom"] = {
+		category = 'food',
 		label = "Burrito champignon",
 		--degrade =14400,
 		stack = false,
@@ -4166,6 +4536,7 @@ return {
 	},
 
 	["burritopork"] = {
+		category = 'food',
 		label = "Burrito porc",
 		--degrade =14400,
 		stack = false,
@@ -4176,6 +4547,7 @@ return {
 	},
 
 	["burritotomato"] = {
+		category = 'food',
 		label = "Burrito tomato",
 		--degrade =14400,
 		stack = false,
@@ -4186,6 +4558,7 @@ return {
 	},
 
 	["butter"] = {
+		category = 'material',
 		label = "Beurre",
 		weight = 250,
 		--degrade =10080,
@@ -4197,6 +4570,7 @@ return {
 	},
 
 	["carano_beer"] = {
+		category = 'food',
 		label = "Bière Carano",
 		--degrade =20160,
 		stack = false,
@@ -4207,6 +4581,7 @@ return {
 	},
 
 	["champagne"] = {
+		category = 'food',
 		label = "Champagne 75cl",
 		--degrade =20160,
 		stack = false,
@@ -4217,6 +4592,7 @@ return {
 	},
 
 	["champignon"] = {
+		category = 'material',
 		label = "Champignon",
 		weight = 200,
 		--degrade =4320,
@@ -4228,6 +4604,7 @@ return {
 	},
 
 	['chaser'] = {
+		category = 'food',
 		label = 'Barre choco Chaser',
 		weight = 70,
 		--degrade =7200,
@@ -4240,6 +4617,7 @@ return {
 	},
 
 	["cheddar2"] = {
+		category = 'material',
 		label = "Cheddar",
 		weight = 150,
 		--degrade =4320,
@@ -4251,6 +4629,7 @@ return {
 	},
 
 	['cherenkov-vodka'] = {
+		category = 'food',
 		label = 'Bouteille de vodka 70cl',
 		weight = 700,
 		stack = false,
@@ -4262,6 +4641,7 @@ return {
 	},
 
 	["chicken_strips_raw"] = {
+		category = 'material',
 		label = "Filet de poulet",
 		weight = 1000,
 		--degrade =4320,
@@ -4273,6 +4653,7 @@ return {
 	},
 
 	["chicken_wings_raw"] = {
+		category = 'material',
 		label = "Ailes de poulet",
 		weight = 1000,
 		--degrade =4320,
@@ -4283,6 +4664,7 @@ return {
 	},
 
 	["chickenbaconranch"] = {
+		category = 'food',
 		label = "Chickensoul",
 		--degrade =14400,
 		stack = false,
@@ -4293,6 +4675,7 @@ return {
 	},
 
 	["chillypepper"] = {
+		category = 'material',
 		label = "Piment",
 		weight = 2,
 		--degrade =4320,
@@ -4304,6 +4687,7 @@ return {
 	},
 
 	["citronvert"] = {
+		category = 'material',
 		label = "Citron vert",
 		--degrade =4320,
 		stack = true,
@@ -4315,6 +4699,7 @@ return {
 	},
 
 	["classictuna"] = {
+		category = 'food',
 		label = "DickThon",
 		--degrade =14400,
 		stack = false,
@@ -4325,6 +4710,7 @@ return {
 	},
 
 	["cockmolotov"] = {
+		category = 'food',
 		label = "Cocktail MOLOTOV",
 		--degrade =14400,
 		stack = false,
@@ -4335,6 +4721,7 @@ return {
 	},
 
 	["cocktail-1"] = {
+		category = 'food',
 		label = "Golem",
 		--degrade =14400,
 		stack = false,
@@ -4345,6 +4732,7 @@ return {
 	},
 
 	["cocktail_cubalibre"] = {
+		category = 'food',
 		label = "Lisa Simpson",
 		--degrade =14400,
 		stack = false,
@@ -4355,6 +4743,7 @@ return {
 	},
 
 	["cocktail_mojito"] = {
+		category = 'food',
 		label = "Virgin Mojito",
 		--degrade =14400,
 		stack = false,
@@ -4365,6 +4754,7 @@ return {
 	},
 
 	["cocktailglass"] = {
+		category = 'food',
 		label = "Verre à cocktail",
 		weight = 280,
 		stack = true,
@@ -4375,6 +4765,7 @@ return {
 	},
 
 	["cocktailpine"] = {
+		category = 'food',
 		label = "Bahama Mamas",
 		--degrade =14400,
 		stack = false,
@@ -4386,6 +4777,7 @@ return {
 	},
 
 	['coffe'] = {
+		category = 'food',
 		label = 'Café',
 		weight = 330,
 		--degrade =20160,
@@ -4397,6 +4789,7 @@ return {
 	},
 
 	["coffee_frappuccino"] = {
+		category = 'food',
 		label = "Frappuccino",
 		stack = true,
 		close = true,
@@ -4416,6 +4809,7 @@ return {
 	},
 
 	["cointreau"] = {
+		category = 'food',
 		label = "Cointreau",
 		weight = 1000,
 		--degrade =10080,
@@ -4427,6 +4821,7 @@ return {
 	},
 
 	['cola'] = {
+		category = 'food',
 		label = 'E-Cola',
 		weight = 330,
 		--degrade =20160,
@@ -4437,6 +4832,7 @@ return {
 	},
 
 	['cookbook'] = {
+		category = 'papers',
 		label = "Livre de Cuisine",
 		weight = 680,
 		client = {
@@ -4445,6 +4841,7 @@ return {
 	},
 
 	["cookies"] = {
+		category = 'food',
 		label = "Boîte de cookies",
 		weight = 200,
 		--degrade =7200,
@@ -4463,6 +4860,7 @@ return {
 	},
 
 	["coriandre"] = {
+		category = 'material',
 		label = "Coriandre",
 		weight = 20,
 		--degrade =10080,
@@ -4474,6 +4872,7 @@ return {
 	},
 
 	['costa_del_perro'] = {
+		category = 'food',
 		label = 'Costa Del Perro',
 		weight = 750,
 		--degrade =20160,
@@ -4485,6 +4884,7 @@ return {
 	},
 
 	['crack'] = {
+		category = 'drugs',
 		label = 'Crack',
 		client = {
 			image = 'drugs/crack.webp'
@@ -4492,6 +4892,7 @@ return {
 	},
 
 	["cranberryjuice1"] = {
+		category = 'food',
 		label = "Jus de Cranberry",
 		weight = 1000,
 		--degrade =20160,
@@ -4504,6 +4905,7 @@ return {
 	},
 
 	["crevette"] = {
+		category = 'material',
 		label = "Crevette",
 		weight = 30,
 		--degrade =4320,
@@ -4515,6 +4917,7 @@ return {
 	},
 
 	["cucumberseeds"] = {
+		category = 'material',
 		label = "Graine de Concombre",
 		stack = true,
 		close = true,
@@ -4525,6 +4928,7 @@ return {
 	},
 
 	["cupcakebite"] = {
+		category = 'food',
 		label = "Boîte de cupcakes",
 		weight = 440,
 		--degrade =7200,
@@ -4543,6 +4947,7 @@ return {
 	},
 
 	["dbcocktail"] = {
+		category = 'food',
 		label = "Virgin sex on the beach",
 		--degrade =14400,
 		stack = false,
@@ -4553,6 +4958,7 @@ return {
 	},
 
 	["drygrapes"] = {
+		category = 'material',
 		label = "Raisin Sec",
 		weight = 125,
 		--degrade =10080,
@@ -4564,6 +4970,7 @@ return {
 	},
 
 	['dusche'] = {
+		category = 'food',
 		label = 'Bière Dusche Gold 33cl',
 		stack = false,
 		close = true,
@@ -4574,6 +4981,7 @@ return {
 	},
 
 	['earings'] = {
+		category = 'misc',
 		label = 'Paire de boucles d\'oreilles',
 
 		weight = 5,
@@ -4584,6 +4992,7 @@ return {
 	},
 
 	['eg_champagne'] = {
+		category = 'food',
 		label = 'Bouteille de champagne 75cl',
 		stack = false,
 		close = true,
@@ -4595,6 +5004,7 @@ return {
 	},
 
 	["eg_ramen"] = {
+		category = 'food',
 		label = "Uwu Ramen",
 		--degrade =14400,
 		stack = false,
@@ -4605,6 +5015,7 @@ return {
 	},
 
 	["eg_red-wine-bottle"] = {
+		category = 'food',
 		label = "Vin rouge 75cl",
 		--degrade =20160,
 		stack = false,
@@ -4615,6 +5026,7 @@ return {
 	},
 
 	["eg_white-wine-bottle"] = {
+		category = 'food',
 		label = "Vin blanc 75cl",
 		--degrade =20160,
 		stack = false,
@@ -4625,6 +5037,7 @@ return {
 	},
 
 	['egg'] = {
+		category = 'food',
 		label = 'Oeuf',
 		weight = 60,
 		--degrade =4320,
@@ -4636,6 +5049,7 @@ return {
 	},
 
 	["eggs2"] = {
+		category = 'material',
 		label = "Oeufs",
 		weight = 360,
 		--degrade =4320,
@@ -4649,6 +5063,7 @@ return {
 	},
 
 	['energy_drink'] = {
+		category = 'food',
 		label = 'Boisson énergisante',
 		weight = 500,
 		--degrade =20160,
@@ -4660,6 +5075,7 @@ return {
 	},
 
 	["epice"] = {
+		category = 'material',
 		label = "Épices",
 		weight = 200,
 		--degrade =10080,
@@ -4672,6 +5088,7 @@ return {
 	},
 
 	['fishsticks'] = {
+		category = 'material',
 		label = 'Fish Sticks',
 		weight = 350,
 		-- degrade =7200,
@@ -4689,6 +5106,7 @@ return {
 	},
 
 	["flour1"] = {
+		category = 'material',
 		label = "Farine",
 		--degrade =10080,
 		stack = true,
@@ -4701,6 +5119,7 @@ return {
 	},
 
 	['flute_glass'] = {
+		category = 'misc',
 		label = 'Flûte à champagne',
 		weight = 200,
 		stack = false,
@@ -4711,6 +5130,7 @@ return {
 	},
 
 	["food_bag"] = {
+		category = 'misc',
 		label = "Commande à livrer",
 		client = {
 			image = 'containers/food_bag.webp'
@@ -4718,6 +5138,7 @@ return {
 	},
 
 	['frozenburger'] = {
+		category = 'material',
 		label = 'Burger Surgelés',
 		weight = 400,
 		--degrade =10080,
@@ -4735,6 +5156,7 @@ return {
 	},
 
 	['frozenpizzacheese'] = {
+		category = 'material',
 		label = 'Pizza surgelée 4 fromages',
 		weight = 800,
 		-- degrade =10080,
@@ -4753,6 +5175,7 @@ return {
 	},
 
 	['frozenpizzamargherita'] = {
+		category = 'material',
 		label = 'Pizza surgelée jambon-emmental',
 		weight = 800,
 		-- degrade =10080,
@@ -4772,6 +5195,7 @@ return {
 	},
 
 	['frozenpizzapeperoni'] = {
+		category = 'material',
 		label = 'Pizza surgelée chorizo',
 		weight = 800,
 		--degrade =10080,
@@ -4790,6 +5214,7 @@ return {
 	},
 
 	['fruitbasket'] = {
+		category = 'food',
 		label = 'Panier à fruit',
 		weight = 250,
 		stack = true,
@@ -4800,6 +5225,7 @@ return {
 	},
 
 	['fruitcrate'] = {
+		category = 'food',
 		label = 'Caisse à fruit',
 		weight = 250,
 		stack = false,
@@ -4810,6 +5236,7 @@ return {
 	},
 
 	["galliano"] = {
+		category = 'food',
 		label = "Galliano",
 		weight = 1000,
 		--degrade =10080,
@@ -4821,6 +5248,7 @@ return {
 	},
 
 	["gelatine"] = {
+		category = 'material',
 		label = "Gélatine",
 		stack = true,
 		close = true,
@@ -4832,6 +5260,7 @@ return {
 	},
 
 	['gin1'] = {
+		category = 'food',
 		label = 'Bouteille de gin 70cl',
 		weight = 750,
 		stack = false,
@@ -4843,6 +5272,7 @@ return {
 	},
 
 	["glassbottle"] = {
+		category = 'misc',
 		label = "Bouteille en verre vide 75cl",
 		weight = 1000,
 		stack = true,
@@ -4854,6 +5284,7 @@ return {
 	},
 
 	["goodbread"] = {
+		category = 'material',
 		label = "Pain à croq'",
 		weight = 10,
 		--degrade =10080,
@@ -4865,6 +5296,7 @@ return {
 	},
 
 	["grape"] = {
+		category = 'food',
 		label = "Raisin rouge",
 		weight = 120,
 		--degrade =4320,
@@ -4876,6 +5308,7 @@ return {
 	},
 
 	["guacamole"] = {
+		category = 'material',
 		label = "Guacamole",
 		weight = 80,
 		--degrade =10080,
@@ -4887,6 +5320,7 @@ return {
 	},
 
 	["hawk"] = {
+		category = 'material',
 		label = "Tomahawk",
 		stack = true,
 		close = true,
@@ -4898,6 +5332,7 @@ return {
 	},
 
 	["hotchocolate"] = {
+		category = 'food',
 		label = "Uwu Choco",
 		--degrade =14400,
 		stack = false,
@@ -4908,6 +5343,7 @@ return {
 	},
 
 	['hotdog'] = {
+		category = 'food',
 		label = 'Hotdog',
 		weight = 120,
 		--degrade =20160,
@@ -4917,6 +5353,7 @@ return {
 	},
 
 	['hotdog4'] = {
+		category = 'food',
 		label = 'Hotdogs surgelés',
 		weight = 240,
 		-- degrade =10080,
@@ -4934,6 +5371,7 @@ return {
 	},
 
 	["hunting-meat"] = {
+		category = 'material',
 		label = " T-bone",
 		stack = true,
 		close = true,
@@ -4945,6 +5383,7 @@ return {
 	},
 
 	["ice"] = {
+		category = 'food',
 		label = "Glace",
 		weight = 1,
 		stack = true,
@@ -4955,6 +5394,7 @@ return {
 	},
 
 	["icedtea"] = {
+		category = 'food',
 		label = "Thé glacé",
 		--degrade =20160,
 		close = true,
@@ -4964,6 +5404,7 @@ return {
 	},
 
 	["ingredient_meatduck"] = {
+		category = 'material',
 		label = "Magret de Canard",
 		weight = 200,
 		--degrade =4320,
@@ -4975,6 +5416,7 @@ return {
 	},
 
 	["ingredients_milk"] = {
+		category = 'material',
 		label = "Lait",
 		weight = 1000,
 		--degrade =10080,
@@ -4986,6 +5428,7 @@ return {
 	},
 
 	["italian_bmt"] = {
+		category = 'food',
 		label = "Salamissionnaire",
 		--degrade =14400,
 		stack = false,
@@ -4996,6 +5439,7 @@ return {
 	},
 
 	["jagerbomb"] = {
+		category = 'food',
 		label = "Jammer bomb",
 		--degrade =14400,
 		stack = false,
@@ -5006,6 +5450,7 @@ return {
 	},
 
 	["jagercerbere"] = {
+		category = 'food',
 		label = "Jammer Heister 70cl",
 		weight = 1000,
 		--degrade =20160,
@@ -5017,6 +5462,7 @@ return {
 	},
 
 	["jarritosfraise"] = {
+		category = 'food',
 		label = "Jarritos fraise",
 		--degrade =20160,
 		stack = false,
@@ -5027,6 +5473,7 @@ return {
 	},
 
 	["jarritosmandarin"] = {
+		category = 'food',
 		label = "Jarritos mandarine",
 		--degrade =20160,
 		stack = false,
@@ -5037,6 +5484,7 @@ return {
 	},
 
 	["jarritosmango"] = {
+		category = 'food',
 		label = "Jarritos mangue",
 		--degrade =20160,
 		stack = false,
@@ -5047,6 +5495,7 @@ return {
 	},
 
 	["jolly_ranchers"] = {
+		category = 'food',
 		label = "Jolly Ranchers",
 		weight = 1,
 		stack = true,
@@ -5057,6 +5506,7 @@ return {
 	},
 
 	['juiceJarApple'] = {
+		category = 'food',
 		label = 'Jus de pomme 1L',
 		weight = 1000,
 		--degrade =20160,
@@ -5074,6 +5524,7 @@ return {
 	},
 
 	['juiceJarGrape'] = {
+		category = 'food',
 		label = 'Jus de raisin 1L',
 		weight = 1000,
 		--degrade =20160,
@@ -5091,6 +5542,7 @@ return {
 	},
 
 	['juice_b'] = {
+		category = 'food',
 		label = 'Jus d\'ananas 1L',
 		weight = 1000,
 		--degrade =20160,
@@ -5108,6 +5560,7 @@ return {
 	},
 
 	['juicejarorange'] = {
+		category = 'food',
 		label = 'Jus d\'orange 1L',
 		weight = 1000,
 		--degrade =20160,
@@ -5125,6 +5578,7 @@ return {
 	},
 
 	["lemon"] = {
+		category = 'food',
 		label = "Citron",
 		weight = 120,
 		--degrade =4320,
@@ -5136,6 +5590,7 @@ return {
 	},
 
 	["limonade"] = {
+		category = 'food',
 		label = "Limonade",
 		weight = 1000,
 		--degrade =20160,
@@ -5156,6 +5611,7 @@ return {
 	},
 
 	["liqueurcafe"] = {
+		category = 'food',
 		label = "Liqueur de café",
 		weight = 1000,
 		--degrade =10080,
@@ -5167,6 +5623,7 @@ return {
 	},
 
 	["longe"] = {
+		category = 'material',
 		label = "Longe de porc",
 		stack = true,
 		search = "longe",
@@ -5176,6 +5633,7 @@ return {
 	},
 
 	["marinade"] = {
+		category = 'material',
 		label = "Marinade",
 		weight = 80,
 		--degrade =10080,
@@ -5187,6 +5645,7 @@ return {
 	},
 
 	["marshmellow"] = {
+		category = 'material',
 		label = "Guimauve",
 		weight = 5,
 		--degrade =7200,
@@ -5198,6 +5657,7 @@ return {
 	},
 
 	['martini1'] = {
+		category = 'food',
 		label = 'Bouteille de martini 70cl',
 		stack = false,
 		close = true,
@@ -5208,6 +5668,7 @@ return {
 	},
 
 	["mead_peach"] = {
+		category = 'food',
 		label = "Liqueur de pêche",
 		weight = 1000,
 		--degrade =10080,
@@ -5220,6 +5681,7 @@ return {
 	},
 
 	["meat2"] = {
+		category = 'material',
 		label = "Filet mignon",
 		stack = true,
 		close = true,
@@ -5231,6 +5693,7 @@ return {
 	},
 
 	["melon"] = {
+		category = 'material',
 		label = "Melon",
 		weight = 600,
 		--degrade =4320,
@@ -5242,6 +5705,7 @@ return {
 	},
 
 	['metalspring'] = {
+		category = 'tools',
 		label = "Ressort",
 		weight = 30,
 		client = {
@@ -5251,6 +5715,7 @@ return {
 	},
 
 	['meteorite'] = {
+		category = 'food',
 		label = 'Barre choco Meteorite',
 		weight = 70,
 		--degrade =7200,
@@ -5263,6 +5728,7 @@ return {
 	},
 
 	["mex_burger"] = {
+		category = 'food',
 		label = "Burger Mexicain",
 		--degrade =14400,
 		stack = false,
@@ -5273,6 +5739,7 @@ return {
 	},
 
 	["milkbucket"] = {
+		category = 'material',
 		label = "Seau de lait",
 		--degrade =4320,
 		stack = false,
@@ -5282,6 +5749,7 @@ return {
 	},
 
 	["mint"] = {
+		category = 'food',
 		label = "Feuille de menthe",
 		weight = 20,
 		--degrade =10080,
@@ -5294,6 +5762,7 @@ return {
 	},
 
 	["money_ink_set"] = {
+		category = 'misc',
 		label = "Colorant alimentaire",
 		stack = true,
 		close = true,
@@ -5302,6 +5771,7 @@ return {
 	},
 
 	["morceau_chocolat"] = {
+		category = 'material',
 		label = "Morceaux de chocolat",
 		weight = 20,
 		--degrade =10080,
@@ -5313,6 +5783,7 @@ return {
 	},
 
 	['mount_whiskey'] = {
+		category = 'food',
 		label = 'The Mount Whiskey',
 		weight = 1000,
 		--degrade =20160,
@@ -5324,6 +5795,7 @@ return {
 	},
 
 	['mustard'] = {
+		category = 'material',
 		label = 'Moutarde',
 		weight = 500,
 		client = {
@@ -5337,6 +5809,7 @@ return {
 	},
 
 	["nachos"] = {
+		category = 'food',
 		label = "Nachos Cheddar",
 		--degrade =14400,
 		stack = false,
@@ -5347,6 +5820,7 @@ return {
 	},
 
 	["nachosguaca"] = {
+		category = 'food',
 		label = "Nachos Guacamole",
 		--degrade =14400,
 		stack = false,
@@ -5357,6 +5831,7 @@ return {
 	},
 
 	["nachossalsa"] = {
+		category = 'food',
 		label = "Nachos Salsa",
 		--degrade =14400,
 		stack = false,
@@ -5368,6 +5843,7 @@ return {
 	},
 
 	['nogo_vodka'] = {
+		category = 'food',
 		label = 'Nogo Vodka',
 		weight = 700,
 		--degrade =20160,
@@ -5379,6 +5855,7 @@ return {
 	},
 
 	["noodlebeef"] = {
+		category = 'food',
 		label = "Nouilles instantanées boeuf",
 		stack = true,
 		close = true,
@@ -5399,6 +5876,7 @@ return {
 	},
 
 	["noodlechicken"] = {
+		category = 'food',
 		label = "Nouilles instantanées poulet",
 		stack = true,
 		close = true,
@@ -5419,6 +5897,7 @@ return {
 	},
 
 	["noodleseafood"] = {
+		category = 'food',
 		label = "Nouilles instantanées crabe",
 		stack = true,
 		close = true,
@@ -5439,6 +5918,7 @@ return {
 	},
 
 	["nori"] = {
+		category = 'food',
 		label = "Feuille de nori",
 		weight = 10,
 		--degrade =10080,
@@ -5450,6 +5930,7 @@ return {
 	},
 
 	["np_vodka"] = {
+		category = 'food',
 		label = "Vodka",
 		weight = 1000,
 		--degrade =10080,
@@ -5462,6 +5943,7 @@ return {
 	},
 
 	["onion"] = {
+		category = 'material',
 		label = "Oignon",
 		weight = 100,
 		-- degrade =4320,
@@ -5474,6 +5956,7 @@ return {
 	},
 
 	["onionseeds"] = {
+		category = 'material',
 		label = "Graine d'oignon",
 		stack = true,
 		close = true,
@@ -5484,6 +5967,7 @@ return {
 	},
 
 	["opmcocktail"] = {
+		category = 'food',
 		label = "Sex on the beach",
 		--degrade =14400,
 		stack = false,
@@ -5494,6 +5978,7 @@ return {
 	},
 
 	['orange'] = {
+		category = 'food',
 		label = 'Orange',
 		weight = 200,
 		--degrade =4320,
@@ -5505,6 +5990,7 @@ return {
 	},
 
 	["peppero"] = {
+		category = 'material',
 		label = "Poivron",
 		weight = 150,
 		--degrade =4320,
@@ -5516,6 +6002,7 @@ return {
 	},
 
 	["pinksprinkledonut"] = {
+		category = 'food',
 		label = "Donut à la fraise",
 		--degrade =7200,
 		stack = false,
@@ -5526,6 +6013,7 @@ return {
 	},
 
 	['piswasser'] = {
+		category = 'food',
 		label = 'Bière Pride Pißwasser 33cl',
 		weight = 330,
 		stack = false,
@@ -5537,6 +6025,7 @@ return {
 	},
 
 	['pizza'] = {
+		category = 'food',
 		label = "Part de pizza",
 		weight = 75,
 		client = {
@@ -5545,6 +6034,7 @@ return {
 	},
 
 	["pmozzarella"] = {
+		category = 'material',
 		label = "Mozzarella",
 		weight = 125,
 		--degrade =4320,
@@ -5556,6 +6046,7 @@ return {
 	},
 
 	["pork_flank"] = {
+		category = 'material',
 		label = "Flanc de porc",
 		stack = true,
 		search = "pork",
@@ -5565,6 +6056,7 @@ return {
 	},
 
 	["pork_rib"] = {
+		category = 'material',
 		label = "Rib de porc",
 		stack = true,
 		search = "pork",
@@ -5575,6 +6067,7 @@ return {
 	},
 
 	["potato"] = {
+		category = 'material',
 		label = "Pomme de terre",
 		weight = 145,
 		description = "Aussi sale que ... heu bon laissez tomber",
@@ -5587,6 +6080,7 @@ return {
 	},
 
 	["primadonna"] = {
+		category = 'food',
 		label = "Vin rosé 75cl",
 		--degrade =20160,
 		stack = false,
@@ -5597,6 +6091,7 @@ return {
 	},
 
 	["purplevodka"] = {
+		category = 'food',
 		label = "Vodka bonbon 70cl",
 		weight = 1000,
 		--degrade =20160,
@@ -5608,6 +6103,7 @@ return {
 	},
 
 	["quesadillachick"] = {
+		category = 'food',
 		label = "Quesadillas au poulet",
 		--degrade =14400,
 		stack = false,
@@ -5618,6 +6114,7 @@ return {
 	},
 
 	["quesadillapoivron"] = {
+		category = 'food',
 		label = "Quesadillas aux poivrons",
 		--degrade =14400,
 		stack = false,
@@ -5628,6 +6125,7 @@ return {
 	},
 
 	['raine'] = {
+		category = 'food',
 		label = 'Eau gazeuze',
 		weight = 500,
 		--degrade =20160,
@@ -5638,6 +6136,7 @@ return {
 	},
 
 	["raisin"] = {
+		category = 'material',
 		label = "Raisin noir",
 		stack = true,
 		--degrade =4320,
@@ -5649,6 +6148,7 @@ return {
 	},
 
 	["raw_lard"] = {
+		category = 'material',
 		label = "Lard de porc",
 		stack = true,
 		search = "lard",
@@ -5658,6 +6158,7 @@ return {
 	},
 
 	["raw_pork"] = {
+		category = 'material',
 		label = "Tranche de porc",
 		weight = 100,
 		--degrade =4320,
@@ -5671,6 +6172,7 @@ return {
 	},
 
 	["rawsugar"] = {
+		category = 'material',
 		label = "Sucre de canne",
 		weight = 10,
 		--degrade =10080,
@@ -5683,6 +6185,7 @@ return {
 	},
 
 	["redbeans"] = {
+		category = 'material',
 		label = "Haricot rouge",
 		weight = 25,
 		--degrade =10080,
@@ -5694,6 +6197,7 @@ return {
 	},
 
 	["redgull"] = {
+		category = 'food',
 		label = "RedGull",
 		weight = 250,
 		-- degrade =20160,
@@ -5706,6 +6210,7 @@ return {
 	},
 
 	["redwine"] = {
+		category = 'food',
 		label = "vin rouge de luxe 75cl",
 		--degrade =20160,
 		stack = false,
@@ -5716,6 +6221,7 @@ return {
 	},
 
 	['rhum1'] = {
+		category = 'food',
 		label = 'Bouteille de rhum 70cl',
 		stack = false,
 		close = true,
@@ -5726,6 +6232,7 @@ return {
 	},
 
 	["rice"] = {
+		category = 'food',
 		label = "Riz",
 		weight = 500,
 		--degrade =10080,
@@ -5737,6 +6244,7 @@ return {
 	},
 
 	["rifle-body"] = {
+		category = 'weapon',
 		label = "Armature fusil compact",
 		stack = true,
 		close = true,
@@ -5748,6 +6256,7 @@ return {
 	},
 
 	["rifle-stock"] = {
+		category = 'weapon',
 		label = "Crosse fusil compact",
 		stack = true,
 		close = true,
@@ -5759,6 +6268,7 @@ return {
 	},
 
 	['rockford_hill'] = {
+		category = 'food',
 		label = 'Rockford Hill Réserve',
 		weight = 750,
 		--degrade =20160,
@@ -5770,6 +6280,7 @@ return {
 	},
 
 	['romantic_book'] = {
+		category = 'papers',
 		label = 'Roman d\'amour',
 		weight = 650,
 		stack = true,
@@ -5779,6 +6290,7 @@ return {
 	},
 
 	["rroulette"] = {
+		category = 'food',
 		label = "Russian Roulette",
 		--degrade =14400,
 		stack = false,
@@ -5789,6 +6301,7 @@ return {
 	},
 
 	["sakebottle"] = {
+		category = 'food',
 		label = "Sake",
 		--degrade =14400,
 		stack = false,
@@ -5799,6 +6312,7 @@ return {
 	},
 
 	["salad"] = {
+		category = 'material',
 		label = "Salade",
 		weight = 285,
 		--degrade =4320,
@@ -5811,6 +6325,7 @@ return {
 	},
 
 	["saladechick"] = {
+		category = 'food',
 		label = "La Ensalada Poulet",
 		--degrade =14400,
 		stack = false,
@@ -5821,6 +6336,7 @@ return {
 	},
 
 	["saladveggie"] = {
+		category = 'food',
 		label = "La Ensalada veggie",
 		--degrade =14400,
 		stack = false,
@@ -5831,6 +6347,7 @@ return {
 	},
 
 	["salami"] = {
+		category = 'food',
 		label = "Salami",
 		weight = 280,
 		--degrade =4320,
@@ -5843,6 +6360,7 @@ return {
 	},
 
 	["salmonbites"] = {
+		category = 'material',
 		label = "Saumon",
 		stack = true,
 		close = true,
@@ -5853,6 +6371,7 @@ return {
 	},
 
 	["salmonsalad"] = {
+		category = 'food',
 		label = "La Cumcumber special",
 		stack = true,
 		--degrade =14400,
@@ -5863,6 +6382,7 @@ return {
 	},
 
 	["sambuca"] = {
+		category = 'food',
 		label = "Sambuca",
 		weight = 1000,
 		--degrade =10080,
@@ -5874,6 +6394,7 @@ return {
 	},
 
 	["sauce_salsa"] = {
+		category = 'material',
 		label = "Sauce Salsa",
 		weight = 80,
 		--degrade =10080,
@@ -5885,6 +6406,7 @@ return {
 	},
 
 	["sesameoil"] = {
+		category = 'material',
 		label = "Sésame",
 		weight = 120,
 		--degrade =70080,
@@ -5898,6 +6420,7 @@ return {
 	},
 
 	["shot"] = {
+		category = 'food',
 		label = "Jammer Cerberus",
 		--degrade =14400,
 		stack = true,
@@ -5908,6 +6431,7 @@ return {
 	},
 
 	["shot2"] = {
+		category = 'food',
 		label = "Vodka Candy",
 		--degrade =14400,
 		stack = false,
@@ -5919,6 +6443,7 @@ return {
 	},
 
 	['shot_glass'] = {
+		category = 'misc',
 		label = 'Verre à shot',
 		weight = 50,
 		stack = false,
@@ -5929,6 +6454,7 @@ return {
 	},
 
 	["shotgun_body"] = {
+		category = 'weapon',
 		label = "Crosse pompe",
 		stack = true,
 		close = true,
@@ -5939,6 +6465,7 @@ return {
 	},
 
 	["shotgun_suppressor"] = {
+		category = 'weapon',
 		label = "Silencieux",
 		stack = true,
 		close = true,
@@ -5949,6 +6476,7 @@ return {
 	},
 
 	["simplyorange"] = {
+		category = 'food',
 		label = "Jus d'orange cocktail",
 		weight = 1000,
 		--degrade =10080,
@@ -5961,6 +6489,7 @@ return {
 	},
 
 	["smg-body"] = {
+		category = 'weapon',
 		label = "Canon smg",
 		stack = true,
 		close = true,
@@ -5971,6 +6500,7 @@ return {
 	},
 
 	['sprunk'] = {
+		category = 'food',
 		label = 'Sprunk',
 		weight = 330,
 		stack = true,
@@ -5981,6 +6511,7 @@ return {
 	},
 
 	['sprunk-mockup'] = {
+		category = 'food',
 		label = 'Cannette de Sprunk 33cl',
 		weight = 330,
 		close = true,
@@ -5991,6 +6522,7 @@ return {
 	},
 
 	['sprunklight'] = {
+		category = 'food',
 		label = 'Cannette de Diet Sprunk 33cl',
 		weight = 330,
 		--degrade =20160,
@@ -6001,6 +6533,7 @@ return {
 	},
 
 	["steak_raw"] = {
+		category = 'material',
 		label = "Bifteck",
 		stack = true,
 		close = true,
@@ -6012,6 +6545,7 @@ return {
 	},
 
 	["strawberry"] = {
+		category = 'food',
 		label = "Fraise",
 		weight = 10,
 		--degrade =4320,
@@ -6023,6 +6557,7 @@ return {
 	},
 
 	["sucre"] = {
+		category = 'material',
 		label = "Morceaux de sucre",
 		weight = 1000,
 		--degrade =10080,
@@ -6035,6 +6570,7 @@ return {
 	},
 
 	["syrupglucose"] = {
+		category = 'material',
 		label = "Sirop de glucose",
 		stack = true,
 		close = true,
@@ -6047,6 +6583,7 @@ return {
 	},
 
 	["syrupgrenadine"] = {
+		category = 'material',
 		label = "Sirop de grenadine",
 		weight = 1000,
 		--degrade =10080,
@@ -6058,6 +6595,7 @@ return {
 	},
 
 	["syruppina"] = {
+		category = 'material',
 		label = "Sirop pina Colada",
 		weight = 1000,
 		--degrade =10080,
@@ -6070,6 +6608,7 @@ return {
 	},
 
 	['taco'] = {
+		category = 'food',
 		label = 'Taco',
 		weight = 100,
 		stack = false,
@@ -6078,6 +6617,7 @@ return {
 	},
 
 	["taco2"] = {
+		category = 'food',
 		label = "Le Taco Boeuf",
 		--degrade =14400,
 		stack = false,
@@ -6089,6 +6629,7 @@ return {
 	},
 
 	["tacochick"] = {
+		category = 'food',
 		label = "Le Taco Poulet",
 		--degrade =14400,
 		stack = false,
@@ -6100,6 +6641,7 @@ return {
 	},
 
 	["tacofish"] = {
+		category = 'food',
 		label = "Le Taco crevette",
 		--degrade =14400,
 		stack = false,
@@ -6110,6 +6652,7 @@ return {
 	},
 
 	["tacoporc"] = {
+		category = 'food',
 		label = "Le Taco porc",
 		--degrade =14400,
 		stack = false,
@@ -6120,6 +6663,7 @@ return {
 	},
 
 	["tacoveggie"] = {
+		category = 'food',
 		label = "Le Taco poivron",
 		--degrade =14400,
 		stack = false,
@@ -6130,6 +6674,7 @@ return {
 	},
 
 	["tacovegi"] = {
+		category = 'food',
 		label = "Le Taco tomate",
 		--degrade =14400,
 		stack = false,
@@ -6140,6 +6685,7 @@ return {
 	},
 
 	["tapiocapearls"] = {
+		category = 'material',
 		label = "Perle de tapioca",
 		weight = 10,
 		--degrade =4320,
@@ -6152,6 +6698,7 @@ return {
 	},
 
 	['tequila'] = {
+		category = 'food',
 		label = 'Bouteille de Téquila 70cl',
 		weight = 700,
 		--degrade =20160,
@@ -6163,6 +6710,7 @@ return {
 	},
 
 	['tomato'] = {
+		category = 'material',
 		label = 'Tomate',
 		weight = 130,
 		--degrade =4320,
@@ -6174,6 +6722,7 @@ return {
 	},
 
 	["tomatoes"] = {
+		category = 'material',
 		label = "Tomate",
 		weight = 130,
 		--degrade =4320,
@@ -6185,6 +6734,7 @@ return {
 	},
 
 	['tomatoseed'] = {
+		category = 'material',
 		label = 'Graines de tomate',
 		weight = 2,
 		stack = true,
@@ -6195,6 +6745,7 @@ return {
 	},
 
 	['toothpaste'] = {
+		category = 'medical',
 		label = 'Dentifrice',
 		weight = 120,
 		stack = true,
@@ -6204,6 +6755,7 @@ return {
 	},
 
 	["tortilla"] = {
+		category = 'material',
 		label = "Tortilla",
 		weight = 40,
 		--degrade =10080,
@@ -6216,6 +6768,7 @@ return {
 	},
 
 	['toy-alpaca'] = {
+		category = 'misc',
 		label = "Alpa-Calin",
 		weight = 125,
 		client = {
@@ -6224,6 +6777,7 @@ return {
 	},
 
 	['toy-bear'] = {
+		category = 'misc',
 		label = "Oursami",
 		weight = 125,
 		client = {
@@ -6232,6 +6786,7 @@ return {
 	},
 
 	['toy-camel'] = {
+		category = 'misc',
 		label = "Chamélia",
 		weight = 125,
 		client = {
@@ -6240,6 +6795,7 @@ return {
 	},
 
 	['toy-cow'] = {
+		category = 'misc',
 		label = "Moona",
 		weight = 125,
 		client = {
@@ -6248,6 +6804,7 @@ return {
 	},
 
 	['toy-crocodile'] = {
+		category = 'misc',
 		label = "Aligou",
 		weight = 125,
 		client = {
@@ -6256,6 +6813,7 @@ return {
 	},
 
 	['toy-dog'] = {
+		category = 'misc',
 		label = "Moka",
 		weight = 125,
 		client = {
@@ -6264,6 +6822,7 @@ return {
 	},
 
 	['toy-dolphin'] = {
+		category = 'misc',
 		label = "Sillage",
 		weight = 125,
 		client = {
@@ -6272,6 +6831,7 @@ return {
 	},
 
 	['toy-donkey'] = {
+		category = 'misc',
 		label = "Azzuro",
 		weight = 125,
 		client = {
@@ -6280,6 +6840,7 @@ return {
 	},
 
 	['toy-egg'] = {
+		category = 'misc',
 		label = "Egglet",
 		weight = 200,
 		client = {
@@ -6288,6 +6849,7 @@ return {
 	},
 
 	['toy-elephant'] = {
+		category = 'misc',
 		label = "Pachy",
 		weight = 125,
 		client = {
@@ -6296,6 +6858,7 @@ return {
 	},
 
 	['toy-frog'] = {
+		category = 'misc',
 		label = "Pondy",
 		weight = 125,
 		client = {
@@ -6304,6 +6867,7 @@ return {
 	},
 
 	['toy-giraffe'] = {
+		category = 'misc',
 		label = "Savannah",
 		weight = 125,
 		client = {
@@ -6312,6 +6876,7 @@ return {
 	},
 
 	['toy-hedgehog'] = {
+		category = 'misc',
 		label = "Picou",
 		weight = 125,
 		client = {
@@ -6321,6 +6886,7 @@ return {
 	},
 
 	['toy-kangaroo'] = {
+		category = 'misc',
 		label = "Hopper",
 		weight = 125,
 		client = {
@@ -6329,6 +6895,7 @@ return {
 	},
 
 	['toy-koala'] = {
+		category = 'misc',
 		label = "Snoozy",
 		weight = 125,
 		client = {
@@ -6337,6 +6904,7 @@ return {
 	},
 
 	['toy-lion'] = {
+		category = 'misc',
 		label = "Roary",
 		weight = 125,
 		client = {
@@ -6345,6 +6913,7 @@ return {
 	},
 
 	['toy-orca'] = {
+		category = 'misc',
 		label = "Ruk",
 		weight = 125,
 		client = {
@@ -6353,6 +6922,7 @@ return {
 	},
 
 	['toy-otter'] = {
+		category = 'misc',
 		label = "Binky",
 		weight = 125,
 		client = {
@@ -6361,6 +6931,7 @@ return {
 	},
 
 	['toy-owl'] = {
+		category = 'misc',
 		label = "Zephyr",
 		weight = 125,
 		client = {
@@ -6369,6 +6940,7 @@ return {
 	},
 
 	['toy-panda'] = {
+		category = 'misc',
 		label = "Wubba",
 		weight = 125,
 		client = {
@@ -6377,6 +6949,7 @@ return {
 	},
 
 	['toy-parrot'] = {
+		category = 'misc',
 		label = "Rio",
 		weight = 125,
 		client = {
@@ -6385,6 +6958,7 @@ return {
 	},
 
 	['toy-penguin'] = {
+		category = 'misc',
 		label = "Flake",
 		weight = 125,
 		client = {
@@ -6393,6 +6967,7 @@ return {
 	},
 
 	['toy-rhino'] = {
+		category = 'misc',
 		label = "Thorn",
 		weight = 125,
 		client = {
@@ -6401,6 +6976,7 @@ return {
 	},
 
 	['toy-seahorse'] = {
+		category = 'misc',
 		label = "Seafinn",
 		weight = 125,
 		client = {
@@ -6409,6 +6985,7 @@ return {
 	},
 
 	['toy-sealion'] = {
+		category = 'misc',
 		label = "Misty",
 		weight = 125,
 		client = {
@@ -6417,6 +6994,7 @@ return {
 	},
 
 	['toy-seaturtle'] = {
+		category = 'misc',
 		label = "Slowpoke",
 		weight = 125,
 		client = {
@@ -6426,6 +7004,7 @@ return {
 	},
 
 	['toy-shark'] = {
+		category = 'misc',
 		label = "Shiver",
 		weight = 125,
 		client = {
@@ -6435,6 +7014,7 @@ return {
 	},
 
 	['toy-snowleopard'] = {
+		category = 'misc',
 		label = "Crystal",
 		weight = 125,
 		client = {
@@ -6443,6 +7023,7 @@ return {
 	},
 
 	['toy-stingray'] = {
+		category = 'misc',
 		label = "Pearl",
 		weight = 125,
 		client = {
@@ -6451,6 +7032,7 @@ return {
 	},
 
 	['toy-tiger'] = {
+		category = 'misc',
 		label = "Storm",
 		weight = 125,
 		client = {
@@ -6459,6 +7041,7 @@ return {
 	},
 
 	['toy-unicorn'] = {
+		category = 'misc',
 		label = "Seraphina",
 		weight = 125,
 		client = {
@@ -6468,6 +7051,7 @@ return {
 	},
 
 	['toy-whale'] = {
+		category = 'misc',
 		label = "Echo",
 		weight = 125,
 		client = {
@@ -6476,6 +7060,7 @@ return {
 	},
 
 	["tunameat"] = {
+		category = 'material',
 		label = "Thon",
 		weight = 1000,
 		--degrade =10080,
@@ -6487,6 +7072,7 @@ return {
 	},
 
 	["turkeybreast"] = {
+		category = 'food',
 		label = "BITEcoin",
 		--degrade =14400,
 		stack = false,
@@ -6497,6 +7083,7 @@ return {
 	},
 
 	["uwububbleteablueberry"] = {
+		category = 'food',
 		label = "Bubble Uwu Myrtille",
 		--degrade =14400,
 		stack = false,
@@ -6508,6 +7095,7 @@ return {
 	},
 
 	["uwububbleteamint"] = {
+		category = 'food',
 		label = "Bubble Uwu Menthe",
 		--degrade =14400,
 		stack = false,
@@ -6518,6 +7106,7 @@ return {
 	},
 
 	["uwububbletearose"] = {
+		category = 'food',
 		label = "Bubble Uwu Fraise",
 		--degrade =14400,
 		stack = false,
@@ -6528,6 +7117,7 @@ return {
 	},
 
 	["uwuchocsandy"] = {
+		category = 'food',
 		label = "Uwu Croq",
 		--degrade =14400,
 		stack = false,
@@ -6538,6 +7128,7 @@ return {
 	},
 
 	["uwucupcake"] = {
+		category = 'food',
 		label = "Uwu CupCake",
 		--degrade =14400,
 		stack = false,
@@ -6548,6 +7139,7 @@ return {
 	},
 
 	["uwumintessence"] = {
+		category = 'food',
 		label = "Liqueur de menthe",
 		weight = 700,
 		--degrade =10080,
@@ -6559,6 +7151,7 @@ return {
 	},
 
 	["uwushushi"] = {
+		category = 'food',
 		label = "Uwu Sushi",
 		--degrade =14400,
 		stack = false,
@@ -6569,6 +7162,7 @@ return {
 	},
 
 	["uwuvanillasandy"] = {
+		category = 'food',
 		label = "Uwu Croq vanille",
 		--degrade =14400,
 		stack = false,
@@ -6579,6 +7173,7 @@ return {
 	},
 
 	["uzi_fold_stock"] = {
+		category = 'weapon',
 		label = "Crosse uzi",
 		stack = true,
 		close = true,
@@ -6589,6 +7184,7 @@ return {
 	},
 
 	["vanilla"] = {
+		category = 'material',
 		label = "Vanille",
 		weight = 60,
 		--degrade =10080,
@@ -6601,6 +7197,7 @@ return {
 	},
 
 	["veggiedelite"] = {
+		category = 'food',
 		label = "Veggie",
 		stack = false,
 		close = true,
@@ -6610,6 +7207,7 @@ return {
 	},
 
 	['vine'] = {
+		category = 'food',
 		label = 'Bouteille de vin rouge 75cl',
 		stack = false,
 		close = true,
@@ -6620,6 +7218,7 @@ return {
 	},
 
 	['vinewood_blanc'] = {
+		category = 'food',
 		label = 'Vinewood Sauvignon Blanc',
 		weight = 750,
 		stack = false,
@@ -6630,6 +7229,7 @@ return {
 	},
 
 	['vinewood_red'] = {
+		category = 'food',
 		label = 'Vinewood Red Zinfadel',
 		weight = 750,
 		stack = false,
@@ -6640,6 +7240,7 @@ return {
 	},
 
 	['vinewoodrose'] = {
+		category = 'food',
 		label = 'Bouteille de vin rosé 75cl',
 		stack = false,
 		close = true,
@@ -6650,6 +7251,7 @@ return {
 	},
 
 	['vineyards'] = {
+		category = 'food',
 		label = 'Bouteille de vin blanc 75cl',
 		stack = false,
 		close = true,
@@ -6661,6 +7263,7 @@ return {
 	},
 
 	['vodka'] = {
+		category = 'food',
 		label = "Vodka",
 		weight = 1100,
 		client = {
@@ -6669,6 +7272,7 @@ return {
 	},
 
 	["w-srawchickenwings"] = {
+		category = 'material',
 		label = "Pilon de poulet",
 		weight = 1000,
 		--degrade =4320,
@@ -6679,6 +7283,7 @@ return {
 	},
 
 	["wafflego"] = {
+		category = 'material',
 		label = "Sachet de gauffres",
 		stack = true,
 		close = true,
@@ -6699,6 +7304,7 @@ return {
 	},
 
 	["watermelon_dice"] = {
+		category = 'material',
 		label = "Cube de pastèque",
 		--degrade =4320,
 		stack = true,
@@ -6710,6 +7316,7 @@ return {
 	},
 
 	['weapon_toy'] = {
+		category = 'weapon',
 		label = "Jouet",
 		weight = 125,
 		client = {
@@ -6718,6 +7325,7 @@ return {
 	},
 
 	['wheat'] = {
+		category = 'food',
 		label = 'Blé',
 		weight = 45,
 		dagrade = 4320,
@@ -6729,6 +7337,7 @@ return {
 	},
 
 	['whiskey_glass'] = {
+		category = 'food',
 		label = 'Verre à whisky',
 		weight = 200,
 		stack = false,
@@ -6739,6 +7348,7 @@ return {
 	},
 
 	['whisky'] = {
+		category = 'food',
 		label = 'Bouteille de whisky 70cl',
 		stack = false,
 		close = true,
@@ -6749,6 +7359,7 @@ return {
 	},
 
 	["whiskycoca"] = {
+		category = 'food',
 		label = "Wish cola",
 		--degrade =14400,
 		stack = false,
@@ -6759,6 +7370,7 @@ return {
 	},
 
 	["white_raisin"] = {
+		category = 'material',
 		label = "Raisin blanc",
 		weight = 120,
 		--degrade =4320,
@@ -6770,6 +7382,7 @@ return {
 	},
 
 	["whitechocolatedonut"] = {
+		category = 'food',
 		label = "Donut chocolat blanc",
 		--degrade =7200,
 		stack = false,
@@ -6780,6 +7393,7 @@ return {
 	},
 
 	['wine_glass'] = {
+		category = 'food',
 		label = 'Verre à vin',
 		weight = 200,
 		stack = false,
@@ -6790,6 +7404,7 @@ return {
 	},
 
 	["radio_server"] = {
+		category = 'tech',
 		label = "Radio Server",
 		weight = 1000,
 		stack = false,
@@ -6801,6 +7416,7 @@ return {
 	},
 
 	["hack_chip"] = {
+		category = 'tech',
 		label = "Hack chip",
 		weight = 1000,
 		stack = false,
@@ -6812,6 +7428,7 @@ return {
 	},
 
 	["radio_jammer"] = {
+		category = 'tech',
 		label = "Radio Jammer",
 		weight = 1000,
 		stack = false,
@@ -6823,6 +7440,7 @@ return {
 	},
 
 	["radio_powerbank"] = {
+		category = 'tech',
 		label = "Portable battery",
 		weight = 1000,
 		stack = false,
@@ -6834,6 +7452,7 @@ return {
 	},
 
 	["radio_red"] = {
+		category = 'tech',
 		label = "Color frame red",
 		weight = 1000,
 		stack = false,
@@ -6841,6 +7460,7 @@ return {
 		consume = 0,
 	},
 	["radio_blue"] = {
+		category = 'tech',
 		label = "Color frame blue",
 		weight = 1000,
 		stack = false,
@@ -6848,6 +7468,7 @@ return {
 		consume = 0,
 	},
 	["radio_purple"] = {
+		category = 'tech',
 		label = "Color frame purple",
 		weight = 1000,
 		stack = false,
@@ -6855,6 +7476,7 @@ return {
 		consume = 0,
 	},
 	["radio_pink"] = {
+		category = 'tech',
 		label = "Color frame pink",
 		weight = 1000,
 		stack = false,
@@ -6862,6 +7484,7 @@ return {
 		consume = 0,
 	},
 	["radio_lightblue"] = {
+		category = 'tech',
 		label = "Color frame lightblue",
 		weight = 1000,
 		stack = false,
@@ -6869,6 +7492,7 @@ return {
 		consume = 0,
 	},
 	["radio_orange"] = {
+		category = 'tech',
 		label = "Color frame orange",
 		weight = 1000,
 		stack = false,
@@ -6876,6 +7500,7 @@ return {
 		consume = 0,
 	},
 	["radio_yellow"] = {
+		category = 'tech',
 		label = "Color frame yellow",
 		weight = 1000,
 		stack = false,
@@ -6883,6 +7508,7 @@ return {
 		consume = 0,
 	},
 	["radio_green"] = {
+		category = 'tech',
 		label = "Color frame green",
 		weight = 1000,
 		stack = false,
@@ -6890,6 +7516,7 @@ return {
 		consume = 0,
 	},
 	["radio_white"] = {
+		category = 'tech',
 		label = "Color frame white",
 		weight = 1000,
 		stack = false,
@@ -6897,6 +7524,7 @@ return {
 		consume = 0,
 	},
 	["radio_grey"] = {
+		category = 'tech',
 		label = "Color frame grey",
 		weight = 1000,
 		stack = false,
@@ -6905,6 +7533,7 @@ return {
 	},
 
 	["bat_low"] = {
+		category = 'tech',
 		label = "Cheap battery",
 		weight = 1000,
 		stack = false,
@@ -6912,6 +7541,7 @@ return {
 		consume = 0,
 	},
 	["bat_medium"] = {
+		category = 'tech',
 		label = "Common battery",
 		weight = 1000,
 		stack = false,
@@ -6919,6 +7549,7 @@ return {
 		consume = 0,
 	},
 	["bat_high"] = {
+		category = 'tech',
 		label = "Premium battery",
 		weight = 1000,
 		stack = false,
@@ -6927,6 +7558,7 @@ return {
 	},
 
 	["chip_5g"] = {
+		category = 'tech',
 		label = "5G Chip",
 		weight = 1000,
 		stack = false,
@@ -6934,6 +7566,7 @@ return {
 		consume = 0,
 	},
 	["chip_ghost"] = {
+		category = 'tech',
 		label = "Ghost Chip",
 		weight = 1000,
 		stack = false,
@@ -6941,6 +7574,7 @@ return {
 		consume = 0,
 	},
 	["chip_antihack"] = {
+		category = 'tech',
 		label = "Antihack Chip",
 		weight = 1000,
 		stack = false,
@@ -6949,6 +7583,7 @@ return {
 	},
 
 	["mic_walkie"] = {
+		category = 'tech',
 		label = "Talkie Shoulder Microphone",
 		weight = 1000,
 		stack = false,
@@ -6957,6 +7592,7 @@ return {
 	},
 
 	["radio_monitor"] = {
+		category = 'tech',
 		label = "Hospital monitor",
 		weight = 1000,
 		stack = false,
@@ -6965,6 +7601,7 @@ return {
 	},
 
 	["radio_server_bat"] = {
+		category = 'tech',
 		label = "Car battery",
 		weight = 1000,
 		stack = false,
@@ -6973,6 +7610,7 @@ return {
 	},
 
 	["radio_cables"] = {
+		category = 'tech',
 		label = "Radio Jammer",
 		weight = 1000,
 		stack = false,
@@ -6981,6 +7619,7 @@ return {
 	},
 
 	["radio_tool"] = {
+		category = 'tech',
 		label = "Radio tools",
 		weight = 1000,
 		stack = false,
@@ -6992,6 +7631,7 @@ return {
 	},
 
 	["radio_broken"] = {
+		category = 'tech',
 		label = "Broken radio",
 		weight = 1000,
 		stack = false,
@@ -7000,6 +7640,7 @@ return {
 	},
 
 	["chip_waterproof"] = {
+		category = 'tech',
 		label = "Waterproof radio",
 		weight = 1000,
 		stack = false,
@@ -7008,6 +7649,7 @@ return {
 	},
 
 	['broccoli'] = {
+		category = 'material',
 		label = 'Brocoli',
 		weight = 300,
 		stack = true,
@@ -7019,6 +7661,7 @@ return {
 	},
 
 	['pepper'] = {
+		category = 'material',
 		label = 'Poivron',
 		weight = 175,
 		stack = true,
@@ -7030,6 +7673,7 @@ return {
 	},
 
 	['carrot'] = {
+		category = 'material',
 		label = 'Carotte',
 		weight = 125,
 		stack = true,
@@ -7041,6 +7685,7 @@ return {
 	},
 
 	["cucumber"] = {
+		category = 'material',
 		label = "Concombre ",
 		weight = 200,
 		--degrade =4320,
@@ -7053,6 +7698,7 @@ return {
 	},
 
 	['eggplant'] = {
+		category = 'material',
 		label = 'Aubergine',
 		weight = 400,
 		stack = true,
@@ -7064,6 +7710,7 @@ return {
 	},
 
 	['pumpkin'] = {
+		category = 'material',
 		label = 'Citrouille',
 		weight = 2500,
 		stack = true,
@@ -7075,6 +7722,7 @@ return {
 	},
 
 	['sugarbeet'] = {
+		category = 'material',
 		label = 'Betterave sucrière',
 		weight = 750,
 		stack = true,
@@ -7086,6 +7734,7 @@ return {
 	},
 
 	['tomato_seed'] = {
+		category = 'material',
 		label = 'Graines de tomate',
 		weight = 2,
 		stack = true,
@@ -7099,6 +7748,7 @@ return {
 	},
 
 	['potato_seed'] = {
+		category = 'material',
 		label = 'Plants de pomme de terre',
 		weight = 2,
 		stack = true,
@@ -7112,6 +7762,7 @@ return {
 	},
 
 	['broccoli_seed'] = {
+		category = 'material',
 		label = 'Graines de brocoli',
 		weight = 2,
 		stack = true,
@@ -7125,6 +7776,7 @@ return {
 	},
 
 	['carrot_seed'] = {
+		category = 'material',
 		label = 'Graines de carotte',
 		weight = 2,
 		stack = true,
@@ -7138,6 +7790,7 @@ return {
 	},
 
 	['cucumber_seed'] = {
+		category = 'material',
 		label = 'Graines de concombre',
 		weight = 2,
 		stack = true,
@@ -7151,6 +7804,7 @@ return {
 	},
 
 	['eggplant_seed'] = {
+		category = 'material',
 		label = "Graines d'aubergine",
 		weight = 2,
 		stack = true,
@@ -7164,6 +7818,7 @@ return {
 	},
 
 	['pumpkin_seed'] = {
+		category = 'material',
 		label = 'Graines de citrouille',
 		weight = 2,
 		stack = true,
@@ -7177,6 +7832,7 @@ return {
 	},
 
 	['sugarbeet_seed'] = {
+		category = 'material',
 		label = 'Graines de betterave',
 		weight = 2,
 		stack = true,
@@ -7190,6 +7846,7 @@ return {
 	},
 
 	['capsicum_seed'] = {
+		category = 'material',
 		label = 'Graines de poivron',
 		weight = 2,
 		stack = true,
@@ -7203,6 +7860,7 @@ return {
 	},
 
 	['drill'] = {
+		category = 'drugs',
 		label = 'Perceuse',
 		weight = 2500,
 		stack = false,
@@ -7213,6 +7871,7 @@ return {
 
 	},
 	['dildo'] = {
+		category = 'misc',
 		label = 'Ding dong',
 		weight = 100,
 		stack = true,
@@ -7226,6 +7885,7 @@ return {
 	},
 
 	['weed_seed'] = {
+		category = 'drugs',
 		label = 'Graine de weed',
 		weight = 100,
 		stack = true,
@@ -7240,6 +7900,7 @@ return {
 	},
 
 	['coca_seed'] = {
+		category = 'drugs',
 		label = 'Graines de coca',
 		weight = 100,
 		stack = true,
@@ -7254,6 +7915,7 @@ return {
 	},
 
 	['instantphoto'] = {
+		category = 'misc',
 		label = 'Instantané',
 		stack = false,
 		description = 'Une photo instantanée prise dans un photomaton.',
@@ -7264,6 +7926,7 @@ return {
 	},
 
 	['teddy-bear'] = {
+		category = 'misc',
 		label = 'Charmant nounours',
 		weight = 500,
 		stack = true,
@@ -7278,6 +7941,7 @@ return {
 	},
 
 	['cooler'] = {
+		category = 'misc',
 		label = 'Glacière',
 		weight = 2500,
 		stack = true,
@@ -7303,6 +7967,7 @@ return {
 
 	-- -- Cannes à pêche --
 	["fishing_rod"] = {
+		category = 'material',
 		label = "Canne à pêche",
 		weight = 1500,
 		stack = false,
@@ -7317,6 +7982,7 @@ return {
 	},
 
 	["fishing_rod_pro"] = {
+		category = 'material',
 		label = "Canne à pêche pro",
 		weight = 1200,
 		stack = false,
@@ -7331,6 +7997,7 @@ return {
 	},
 
 	["fishing_rod_carbon"] = {
+		category = 'material',
 		label = "Canne carbone",
 		weight = 900,
 		stack = false,
@@ -7346,6 +8013,7 @@ return {
 
 	-- --- Appâts ---
 	["bait_worm"] = {
+		category = 'material',
 		label = "Ver de terre",
 		weight = 50,
 		stack = true,
@@ -7356,6 +8024,7 @@ return {
 	},
 
 	["bait_lure"] = {
+		category = 'material',
 		label = "Leurre",
 		weight = 30,
 		stack = true,
@@ -7366,6 +8035,7 @@ return {
 	},
 
 	["bait_shrimp"] = {
+		category = 'material',
 		label = "Crevette (appât)",
 		weight = 40,
 		stack = true,
@@ -7376,6 +8046,7 @@ return {
 	},
 
 	["bait_minnow"] = {
+		category = 'material',
 		label = "Vairon (appât vivant)",
 		weight = 60,
 		stack = true,
@@ -7387,6 +8058,7 @@ return {
 
 	-- --- Outils de farm d'appâts ---
 	["wormspowder"] = {
+		category = 'medical',
 		label = "Poudre à vers",
 		weight = 200,
 		stack = false,
@@ -7401,6 +8073,7 @@ return {
 	},
 
 	["minnowstrap"] = {
+		category = 'material',
 		label = "Nasse à vairons",
 		weight = 800,
 		stack = false,
@@ -7416,6 +8089,7 @@ return {
 
 	-- --- Poissons ---
 	["salmon"] = {
+		category = 'material',
 		label = "Saumon",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7425,6 +8099,7 @@ return {
 	},
 
 	["catfish"] = {
+		category = 'material',
 		label = "Poisson chat",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7434,6 +8109,7 @@ return {
 	},
 
 	["perch"] = {
+		category = 'material',
 		label = "Perche",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7443,6 +8119,7 @@ return {
 	},
 
 	["crappy"] = {
+		category = 'material',
 		label = "Crapet",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7452,6 +8129,7 @@ return {
 	},
 
 	["trout"] = {
+		category = 'material',
 		label = "Truite",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7461,6 +8139,7 @@ return {
 	},
 
 	["sardine"] = {
+		category = 'material',
 		label = "Sardine",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7470,6 +8149,7 @@ return {
 	},
 
 	["shark"] = {
+		category = 'material',
 		label = "Requineau",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = false,
@@ -7479,6 +8159,7 @@ return {
 	},
 
 	["fishing-sockeye-salmon"] = {
+		category = 'material',
 		label = "Saumon rouge",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7488,6 +8169,7 @@ return {
 	},
 
 	["fishing-mackerel"] = {
+		category = 'material',
 		label = "Maquereau",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7497,6 +8179,7 @@ return {
 	},
 
 	["snapper"] = {
+		category = 'material',
 		label = "Vivaneau",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7506,6 +8189,7 @@ return {
 	},
 
 	["pike"] = {
+		category = 'material',
 		label = "Brochet",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7515,6 +8199,7 @@ return {
 	},
 
 	["mahifish"] = {
+		category = 'material',
 		label = "Mahi-mahi",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = false,
@@ -7525,6 +8210,7 @@ return {
 	},
 
 	["coralfish"] = {
+		category = 'material',
 		label = "Poisson corail",
 		degrade = 480, -- fraîcheur (minutes, 8h) + compat glacière
 		stack = true,
@@ -7534,6 +8220,7 @@ return {
 	},
 
 	['sea-bass'] = {
+		category = 'material',
 		label = 'Bar commun',
 		stack = true,
 		degrade = 480,
@@ -7545,6 +8232,7 @@ return {
 	},
 
 	['mullet'] = {
+		category = 'material',
 		label = 'Mulet',
 		stack = true,
 		degrade = 480,
@@ -7555,6 +8243,7 @@ return {
 	},
 
 	['rockfish'] = {
+		category = 'material',
 		label = 'Sébaste',
 		stack = true,
 		degrade = 480,
@@ -7565,6 +8254,7 @@ return {
 	},
 
 	['moray'] = {
+		category = 'material',
 		label = 'Murène',
 		stack = true,
 		degrade = 480,
@@ -7575,6 +8265,7 @@ return {
 	},
 
 	['swordfish'] = {
+		category = 'material',
 		label = 'Espadon juvénile',
 		degrade = 480,
 		stack = true,
@@ -7585,6 +8276,7 @@ return {
 	},
 
 	['largemouthbass'] = {
+		category = 'material',
 		label = 'Achigan à grande bouche',
 		degrade = 480,
 		stack = true,
@@ -7595,6 +8287,7 @@ return {
 	},
 
 	['bluegill'] = {
+		category = 'material',
 		label = 'Perche soleil',
 		degrade = 480,
 		stack = true,
@@ -7605,6 +8298,7 @@ return {
 	},
 
 	['r_common_carp'] = {
+		category = 'material',
 		label = 'Carpe commune',
 		degrade = 480,
 		stack = true,
@@ -7616,6 +8310,7 @@ return {
 
 	-- --- Déchets (repêchés à la ligne) ---
 	["old_boot"] = {
+		category = 'misc',
 		label = "Vieille botte",
 		weight = 800,
 		stack = true,
@@ -7626,6 +8321,7 @@ return {
 	},
 
 	["rusty_can"] = {
+		category = 'material',
 		label = "Canette rouillée",
 		weight = 200,
 		stack = true,
@@ -7636,6 +8332,7 @@ return {
 	},
 
 	["old_tire"] = {
+		category = 'tools',
 		label = "Vieux pneu",
 		weight = 9000,
 		stack = true,
@@ -7646,6 +8343,7 @@ return {
 	},
 
 	["seaweed_clump"] = {
+		category = 'material',
 		label = "Paquet d'algues",
 		weight = 400,
 		stack = true,
@@ -7657,6 +8355,7 @@ return {
 
 	-- --- Divers ---
 	["fishmap"] = {
+		category = 'misc',
 		label = "Carte des zones de pêche",
 		stack = true,
 		close = true,
@@ -7669,6 +8368,7 @@ return {
 	-- ── EVIDENCE ──────────────────────────────────────────────────────────────────
 
 	['instant_camera'] = {
+		category = 'tools',
 		label       = 'Appareil photo instantané',
 		weight      = 0,
 		stack       = false,
@@ -7680,6 +8380,7 @@ return {
 	},
 
 	['photo'] = {
+		category = 'tools',
 		label       = 'Photo',
 		weight      = 0,
 		stack       = false,
@@ -7691,6 +8392,7 @@ return {
 	},
 
 	['evidence_a'] = {
+		category = 'tools',
 		label       = 'Preuve : Balle',
 		weight      = 0,
 		stack       = false,
@@ -7702,6 +8404,7 @@ return {
 	},
 
 	['evidence_az'] = {
+		category = 'tools',
 		label       = 'Preuve',
 		weight      = 0,
 		stack       = false,
@@ -7713,6 +8416,7 @@ return {
 	},
 
 	['evidence_b'] = {
+		category = 'tools',
 		label       = 'Preuve : Véhicule',
 		weight      = 0,
 		stack       = false,
@@ -7724,6 +8428,7 @@ return {
 	},
 
 	['evidence_n'] = {
+		category = 'tools',
 		label       = 'Preuve : Impact',
 		weight      = 0,
 		stack       = false,
@@ -7735,6 +8440,7 @@ return {
 	},
 
 	['evidence_ne'] = {
+		category = 'tools',
 		label       = 'Preuve : Empreinte',
 		weight      = 0,
 		stack       = false,
@@ -7746,6 +8452,7 @@ return {
 	},
 
 	['evidence_r'] = {
+		category = 'tools',
 		label       = 'Preuve : Sang',
 		weight      = 0,
 		stack       = false,
@@ -7757,6 +8464,7 @@ return {
 	},
 
 	['evidence_ro'] = {
+		category = 'tools',
 		label       = 'Preuve',
 		weight      = 0,
 		stack       = false,
@@ -7768,6 +8476,7 @@ return {
 	},
 
 	['evidence_v'] = {
+		category = 'tools',
 		label       = 'Preuve : Drogue',
 		weight      = 0,
 		stack       = false,
@@ -7779,6 +8488,7 @@ return {
 	},
 
 	['report_evidence'] = {
+		category = 'tools',
 		label       = 'Rapport de preuves',
 		weight      = 0,
 		stack       = false,
@@ -7792,6 +8502,7 @@ return {
 	-- ── EQUIPMENT ─────────────────────────────────────────────────────────────────
 
 	['k9'] = {
+		category = 'tools',
 		label       = 'Sifflet K9',
 		weight      = 0,
 		stack       = false,
@@ -7803,6 +8514,7 @@ return {
 	},
 
 	['lspd_badge'] = {
+		category = 'tools',
 		label       = 'Badge de police',
 		weight      = 0,
 		stack       = false,
@@ -7815,6 +8527,7 @@ return {
 	},
 
 	['bcsd_badge'] = {
+		category = 'tools',
 		label       = 'Badge de shérif',
 		weight      = 0,
 		stack       = false,
@@ -7826,6 +8539,7 @@ return {
 	},
 
 	['police_cad'] = {
+		category = 'tools',
 		label       = 'Tablette de police',
 		weight      = 0,
 		stack       = false,
@@ -7837,6 +8551,7 @@ return {
 	},
 
 	['megaphone'] = {
+		category = 'tools',
 		label       = 'Mégaphone',
 		weight      = 0,
 		stack       = false,
@@ -7849,6 +8564,7 @@ return {
 
 
 	['redwood_pack'] = {
+		category = 'misc',
 		label = 'Paquet de cigarettes Redwood',
 		stack = false,
 		weight = 50,
@@ -7860,6 +8576,7 @@ return {
 	},
 
 	['cigsredwood1'] = {
+		category = 'drugs',
 		label = 'Paquet Redwood Original',
 		stack = false,
 		weight = 50,
@@ -7870,6 +8587,7 @@ return {
 	},
 
 	['classic_lighter'] = {
+		category = 'drugs',
 		label = 'Briquet classique',
 		stack = false,
 		weight = 250,
@@ -7881,6 +8599,7 @@ return {
 	},
 
 	['gold_lighter'] = {
+		category = 'drugs',
 		label = 'Briquet doré',
 		stack = false,
 		weight = 600,
@@ -7892,6 +8611,7 @@ return {
 	},
 
 	['cherry_liquid'] = {
+		category = 'drugs',
 		label = 'Liquide cerise',
 		stack = false,
 		weight = 250,
@@ -7902,6 +8622,7 @@ return {
 	},
 
 	['blueberry_liquid'] = {
+		category = 'drugs',
 		label = 'Liquide myrtille',
 		stack = false,
 		weight = 250,
@@ -7912,6 +8633,7 @@ return {
 	},
 
 	['cig_redwood'] = {
+		category = 'drugs',
 		label = 'Cigarette Redwood',
 		stack = true,
 		weight = 20,
@@ -7923,6 +8645,7 @@ return {
 	},
 
 	['cig_marlboro'] = {
+		category = 'drugs',
 		label = 'Cigarette Redwood Original',
 		stack = true,
 		weight = 20,
@@ -7934,6 +8657,7 @@ return {
 	},
 
 	['og_kush_weed'] = {
+		category = 'drugs',
 		label = 'Weed Og Kush',
 		stack = true,
 		weight = 1,
@@ -7944,6 +8668,7 @@ return {
 	},
 
 	['banana_kush_weed'] = {
+		category = 'drugs',
 		label = 'Weed Banana Kush',
 		stack = true,
 		weight = 1,
@@ -7954,6 +8679,7 @@ return {
 	},
 
 	['purple_haze_weed'] = {
+		category = 'drugs',
 		label = 'Weed Purple Haze',
 		stack = true,
 		weight = 1,
@@ -7964,6 +8690,7 @@ return {
 	},
 
 	['blue_dream_weed'] = {
+		category = 'drugs',
 		label = 'Weed Blue Dream',
 		stack = true,
 		weight = 1,
@@ -7974,6 +8701,7 @@ return {
 	},
 
 	['og_kush_joint'] = {
+		category = 'drugs',
 		label = 'Joint Og Kush',
 		stack = true,
 		weight = 1,
@@ -7985,6 +8713,7 @@ return {
 	},
 
 	['banana_kush_joint'] = {
+		category = 'drugs',
 		label = 'Joint Banana Kush',
 		stack = true,
 		weight = 1,
@@ -7996,6 +8725,7 @@ return {
 	},
 
 	['purple_haze_joint'] = {
+		category = 'drugs',
 		label = 'Joint Purple Haze',
 		stack = true,
 		weight = 1,
@@ -8007,6 +8737,7 @@ return {
 	},
 
 	['blue_dream_joint'] = {
+		category = 'drugs',
 		label = 'Joint Blue Dream',
 		stack = true,
 		weight = 1,
@@ -8018,6 +8749,7 @@ return {
 	},
 
 	['ocb_paper'] = {
+		category = 'drugs',
 		label = 'Papier à rouler LS',
 		stack = false,
 		weight = 20,
@@ -8029,6 +8761,7 @@ return {
 	},
 
 	['raw_paper'] = {
+		category = 'drugs',
 		label = 'Papier à rouler Raw',
 		stack = false,
 		weight = 20,
@@ -8040,6 +8773,7 @@ return {
 	},
 
 	['cigar_cuban'] = {
+		category = 'drugs',
 		label = 'Cigare cubain',
 		stack = true,
 		weight = 100,
@@ -8052,6 +8786,7 @@ return {
 
 
 	['cigar_redwood'] = {
+		category = 'drugs',
 		label = 'Cigare Redwood',
 		stack = true,
 		weight = 100,
@@ -8063,6 +8798,7 @@ return {
 	},
 
 	['bong'] = {
+		category = 'drugs',
 		label = 'Bong',
 		stack = false,
 		weight = 150,
@@ -8074,6 +8810,7 @@ return {
 	},
 
 	['vape'] = {
+		category = 'drugs',
 		label = 'Cigarette électronique',
 		stack = false,
 		weight = 100,
@@ -8085,6 +8822,7 @@ return {
 	},
 
 	['puff_vape'] = {
+		category = 'drugs',
 		label = 'Vape jetable',
 		stack = false,
 		weight = 100,
@@ -8096,6 +8834,7 @@ return {
 	},
 
 	['classic_hookah'] = {
+		category = 'drugs',
 		label = 'Chicha',
 		stack = false,
 		weight = 1000,
@@ -8107,6 +8846,7 @@ return {
 	},
 
 	['hookah_wooden_coals'] = {
+		category = 'drugs',
 		label = 'Charbons en bois',
 		stack = true,
 		weight = 50,
@@ -8117,6 +8857,7 @@ return {
 	},
 
 	['hookah_coconut_coals'] = {
+		category = 'drugs',
 		label = 'Charbons de coco',
 		stack = true,
 		weight = 50,
@@ -8127,6 +8868,7 @@ return {
 	},
 
 	['hookah_bamboo_coals'] = {
+		category = 'drugs',
 		label = 'Charbons de bambou',
 		stack = true,
 		weight = 50,
@@ -8137,6 +8879,7 @@ return {
 	},
 
 	['hookah_blueberry_tobacco'] = {
+		category = 'drugs',
 		label = 'Tabac à chicha myrtille',
 		stack = true,
 		weight = 100,
@@ -8147,6 +8890,7 @@ return {
 	},
 
 	['hookah_raspberry_tobacco'] = {
+		category = 'drugs',
 		label = 'Tabac à chicha framboise',
 		stack = true,
 		weight = 100,
@@ -8157,6 +8901,7 @@ return {
 	},
 
 	['hookah_blackberry_tobacco'] = {
+		category = 'drugs',
 		label = 'Tabac à chicha mûre',
 		stack = true,
 		weight = 100,
@@ -8167,6 +8912,7 @@ return {
 	},
 
 	['hookah_cherry_tobacco'] = {
+		category = 'drugs',
 		label = 'Tabac à chicha cerise',
 		stack = true,
 		weight = 100,
@@ -8177,6 +8923,7 @@ return {
 	},
 
 	['redwood_cherry_chew'] = {
+		category = 'drugs',
 		label = 'Tabac à chiquer cerise',
 		stack = false,
 		weight = 100,
@@ -8188,6 +8935,7 @@ return {
 	},
 
 	['redwood_mint_chew'] = {
+		category = 'drugs',
 		label = 'Tabac à chiquer menthe',
 		stack = false,
 		weight = 100,
@@ -8199,6 +8947,7 @@ return {
 	},
 
 	['redwood_blueberry_chew'] = {
+		category = 'drugs',
 		label = 'Tabac à chiquer myrtille',
 		stack = false,
 		weight = 100,
@@ -8210,6 +8959,7 @@ return {
 	},
 
 	['redwood_vanilla_chew'] = {
+		category = 'drugs',
 		label = 'Tabac à chiquer vanille',
 		stack = false,
 		weight = 100,
@@ -8221,6 +8971,7 @@ return {
 	},
 
 	['redwood_strawberry_chew'] = {
+		category = 'drugs',
 		label = 'Tabac à chiquer fraise',
 		stack = false,
 		weight = 100,
@@ -8232,6 +8983,7 @@ return {
 	},
 
 	["phone_black"] = {
+		category = 'tech',
 		label = "Black Phone",
 		weight = 1,
 		stack = true,
@@ -8239,6 +8991,7 @@ return {
 	},
 
 	["beer"] = {
+		category = 'food',
 		label = "Beer",
 		weight = 1,
 		stack = true,
@@ -8246,6 +8999,7 @@ return {
 	},
 
 	["phone_green"] = {
+		category = 'tech',
 		label = "Green Phone",
 		weight = 1,
 		stack = true,
@@ -8253,6 +9007,7 @@ return {
 	},
 
 	["phone_orange"] = {
+		category = 'tech',
 		label = "Orange Phone",
 		weight = 1,
 		stack = true,
@@ -8260,6 +9015,7 @@ return {
 	},
 
 	["phone_pink"] = {
+		category = 'tech',
 		label = "Pink Phone",
 		weight = 1,
 		stack = true,
@@ -8267,6 +9023,7 @@ return {
 	},
 
 	["phone_purple"] = {
+		category = 'tech',
 		label = "Purple Phone",
 		weight = 1,
 		stack = true,
@@ -8274,6 +9031,7 @@ return {
 	},
 
 	["phone_red"] = {
+		category = 'tech',
 		label = "Red Phone",
 		weight = 1,
 		stack = true,
@@ -8281,6 +9039,7 @@ return {
 	},
 
 	["phone_yellow"] = {
+		category = 'tech',
 		label = "Yellow Phone",
 		weight = 1,
 		stack = true,
@@ -8288,6 +9047,7 @@ return {
 	},
 
 	["pizza_ham"] = {
+		category = 'food',
 		label = "Pizza Ham",
 		weight = 1,
 		stack = true,
@@ -8295,6 +9055,7 @@ return {
 	},
 
 	["coffee"] = {
+		category = 'food',
 		label = "Coffee",
 		weight = 1,
 		stack = true,
@@ -8302,6 +9063,7 @@ return {
 	},
 
 	["sandwich"] = {
+		category = 'food',
 		label = "Sandwich",
 		weight = 1,
 		stack = true,
@@ -8309,6 +9071,7 @@ return {
 	},
 
 	["taco_chicken"] = {
+		category = 'food',
 		label = "Chicken Taco",
 		weight = 1,
 		stack = true,
@@ -8316,6 +9079,7 @@ return {
 	},
 
 	["wine"] = {
+		category = 'food',
 		label = "Wine",
 		weight = 1,
 		stack = true,
@@ -8323,6 +9087,7 @@ return {
 	},
 
 	["meth"] = {
+		category = 'drugs',
 		label = "Meth",
 		weight = 1,
 		stack = true,
@@ -8330,6 +9095,7 @@ return {
 	},
 
 	["blackberry_ale"] = {
+		category = 'food',
 		label = "Blackberry Ale",
 		weight = 1,
 		stack = true,
@@ -8337,6 +9103,7 @@ return {
 	},
 
 	["repairkit"] = {
+		category = 'tools',
 		label = "Repair Kit",
 		weight = 3,
 		stack = true,
@@ -8344,6 +9111,7 @@ return {
 	},
 
 	["phone_blue"] = {
+		category = 'tech',
 		label = "Blue Phone",
 		weight = 1,
 		stack = true,
