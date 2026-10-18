@@ -74,8 +74,17 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
       </div>
       <div className="tools">
         {(variant === 'player' ? CATEGORY_TABS : CATEGORY_TABS.slice(0, 1)).map((t) => (
-          <button key={t.id} className={`tab${tab === t.id ? ' on' : ''}`} onClick={() => setTab(t.id)}>
-            {t.label}
+          <button
+            key={t.id}
+            className={`tab${tab === t.id ? ' on' : ''}`}
+            title={t.label}
+            aria-label={t.label}
+            onClick={() => setTab(t.id)}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d={t.icon} />
+            </svg>
+            {tab === t.id && <span>{t.label}</span>}
           </button>
         ))}
         <input className="search" placeholder="Rechercher" value={query} onChange={(e) => setQuery(e.target.value)} />
