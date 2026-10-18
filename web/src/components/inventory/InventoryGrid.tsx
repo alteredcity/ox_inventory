@@ -30,6 +30,8 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
   const isBusy = useAppSelector((state) => state.inventory.isBusy);
   const [tab, setTab] = useState('all');
   const [query, setQuery] = useState('');
+  // Compteur de changements d'onglet : remonte la grille pour rejouer l'animation d'entree (pas a l'ouverture).
+  const [tabChanges, setTabChanges] = useState(0);
   const { cols, rows } = useFit();
 
   const weight = useMemo(
@@ -79,7 +81,11 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
             className={`tab${tab === t.id ? ' on' : ''}`}
             title={t.label}
             aria-label={t.label}
-            onClick={() => setTab(t.id)}
+            onClick={() => {
+              if (t.id === tab) return;
+              setTab(t.id);
+              setTabChanges((n) => n + 1);
+            }}
           >
             <svg className="ico-fallback" viewBox="0 0 24 24" aria-hidden="true">
               <path d={t.icon} />
@@ -94,7 +100,7 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
         {empty ? (
           <p className="nothing">Aucun inventaire a proximite</p>
         ) : (
-          <div className="grid">
+          <div key={tabChanges} className={`grid${tabChanges ? ' tab-anim' : ''}`}>
             {visible.map((item: Slot) => (
               <InventorySlot
                 key={`${inventory.type}-${inventory.id}-${item.slot}`}

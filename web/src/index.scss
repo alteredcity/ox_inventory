@@ -197,6 +197,12 @@ button:disabled {
   flex: none;
 }
 
+@keyframes tab-label-in {
+  from {
+    opacity: 0;
+  }
+}
+
 // Onglets en icones : seul l'onglet actif affiche son libelle (le titre natif sert d'infobulle)
 .tab {
   display: flex;
@@ -209,6 +215,7 @@ button:disabled {
   background: transparent;
   color: var(--muted);
   cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 
   // Font Awesome charge (classe fa-on posee par index.html) : icone FA, sinon SVG de repli
   .ico-fa {
@@ -246,6 +253,10 @@ button:disabled {
     border-color: var(--accent);
     color: #06121f;
     padding: 0.4rem 0.9rem;
+
+    span {
+      animation: tab-label-in 0.2s ease-out;
+    }
   }
 }
 
@@ -310,6 +321,33 @@ button:disabled {
   gap: var(--gap);
   align-content: start;
   padding-right: 0.2rem;
+}
+
+// Changement d'onglet : les cases entrent en fondu avec un leger decalage (les 30 premieres, le reste d'un bloc)
+@keyframes slot-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem);
+  }
+}
+
+.grid.tab-anim > .slot {
+  animation: slot-in 0.22s ease-out backwards;
+
+  @for $i from 1 through 30 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{($i - 1) * 12}ms;
+    }
+  }
+  &:nth-child(n + 31) {
+    animation-delay: 360ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grid.tab-anim > .slot {
+    animation: none;
+  }
 }
 
 .slot {
