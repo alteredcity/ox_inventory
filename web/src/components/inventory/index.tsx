@@ -5,7 +5,7 @@ import InventoryHotbar from './InventoryHotbar';
 import { useAppDispatch, useAppSelector } from '../../store';
 import { fetchNui } from '../../utils/fetchNui';
 import { refreshSlots, setAdditionalMetadata, setupInventory } from '../../store/inventory';
-import { setCategories, setEquipment } from '../../store/ui';
+import { setCategories, setEquipment, setIconTheme } from '../../store/ui';
 import type { CategoryTab } from '../../config/categories';
 import type { EquipmentSlot } from '../../typings/ui';
 import { useExitListener } from '../../hooks/useExitListener';
@@ -59,6 +59,7 @@ const Inventory: React.FC = () => {
   useNuiEvent<EquipmentSlot[] | null>('setEquipment', (data) => dispatch(setEquipment(data)));
   // Categories d'objets (data/categories.lua), envoyees par client.lua apres `init`
   useNuiEvent<CategoryTab[] | null>('setCategories', (data) => dispatch(setCategories(data)));
+  useNuiEvent<string | null>('setIconTheme', (data) => dispatch(setIconTheme(data)));
 
   return (
     <>

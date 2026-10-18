@@ -1509,22 +1509,18 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 
 	-- Categories d'objets (onglets) : data/categories.lua, modifiable sans recompiler l'UI
 	local catConfig = lib.load('data.categories')
-	local naturalTheme = catConfig.theme == 'natural'
 	local tabs = {}
 	for i, c in ipairs(catConfig.categories) do
-		local icon = c.icon
-		if naturalTheme and c.natural and not icon:find('fa-duotone', 1, true) then
-			icon = icon:gsub('fa%-solid', 'fa-duotone fa-solid', 1)
-		end
 		tabs[i] = {
 			id = c.id,
 			label = c.label,
-			icon = icon,
-			primary = naturalTheme and c.natural and c.natural[1] or nil,
-			secondary = naturalTheme and c.natural and c.natural[2] or nil,
+			icon = c.icon,
+			primary = c.natural and c.natural[1] or nil,
+			secondary = c.natural and c.natural[2] or nil,
 		}
 	end
 	SendNUIMessage({ action = 'setCategories', data = tabs })
+	SendNUIMessage({ action = 'setIconTheme', data = catConfig.theme })
 
 	PlayerData.loaded = true
 

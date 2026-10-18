@@ -5,6 +5,7 @@ import { getCategory, getItemLabel, getTotalWeight, isSlotWithItem } from '../..
 import { useAppSelector } from '../../store';
 import { useFit } from '../../hooks/useFit';
 import { RIGHT_PANEL_ID_PREFIXES, RIGHT_PANEL_TITLES } from '../../config/ui';
+import { selectIconTheme } from '../../store/ui';
 
 type Props = {
   inventory: Inventory;
@@ -29,6 +30,7 @@ const fmtKg = (grams: number) => (grams / 1000).toLocaleString('fr-FR', { maximu
 const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
   const isBusy = useAppSelector((state) => state.inventory.isBusy);
   const categories = useAppSelector((state) => state.ui.categories);
+  const natural = useAppSelector(selectIconTheme) === 'natural';
   const [tab, setTab] = useState('all');
   const [query, setQuery] = useState('');
   // Compteur de changements d'onglet : remonte la grille pour rejouer l'animation d'entree (pas a l'ouverture).
@@ -89,9 +91,9 @@ const InventoryGrid: React.FC<Props> = ({ inventory, variant, children }) => {
             }}
           >
             <i
-              className={`ico-fa ${t.icon}`}
+              className={`ico-fa ${natural && t.primary && !t.icon.includes('fa-duotone') ? t.icon.replace('fa-solid', 'fa-duotone fa-solid') : t.icon}`}
               style={
-                t.primary
+                natural && t.primary
                   ? ({ '--fa-primary-color': t.primary, '--fa-secondary-color': t.secondary, '--fa-secondary-opacity': 0.85 } as React.CSSProperties)
                   : undefined
               }

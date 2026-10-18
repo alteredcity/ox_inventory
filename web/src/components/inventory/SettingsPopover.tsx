@@ -1,6 +1,6 @@
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../store';
-import { selectPrefs, setPrefs } from '../../store/ui';
+import { selectIconTheme, selectPrefs, setPrefs } from '../../store/ui';
 import { THEME_COLORS } from '../../config/ui';
 import { DEFAULT_PREFS } from '../../utils/prefs';
 
@@ -8,6 +8,7 @@ import { DEFAULT_PREFS } from '../../utils/prefs';
 const SettingsPopover: React.FC = () => {
   const dispatch = useAppDispatch();
   const prefs = useAppSelector(selectPrefs);
+  const iconTheme = useAppSelector(selectIconTheme);
 
   return (
     <div className="settings" role="dialog" aria-label="Reglages">
@@ -29,6 +30,27 @@ const SettingsPopover: React.FC = () => {
             onClick={() => dispatch(setPrefs({ layout: 'simple' }))}
           >
             Simple
+          </button>
+        </div>
+      </div>
+      <div className="set-group">
+        <span>Icones</span>
+        <div className="seg" role="radiogroup" aria-label="Icones">
+          <button
+            className={iconTheme === 'basic' ? 'on' : ''}
+            role="radio"
+            aria-checked={iconTheme === 'basic'}
+            onClick={() => dispatch(setPrefs({ iconTheme: 'basic' }))}
+          >
+            GTA
+          </button>
+          <button
+            className={iconTheme === 'natural' ? 'on' : ''}
+            role="radio"
+            aria-checked={iconTheme === 'natural'}
+            onClick={() => dispatch(setPrefs({ iconTheme: 'natural' }))}
+          >
+            Realiste
           </button>
         </div>
       </div>

@@ -34,6 +34,8 @@ export type Prefs = {
   layout: 'mannequin' | 'simple';
   /** Affiche le bloc de description de l'objet sous la grille du joueur. */
   infoBottom: boolean;
+  /** Theme des icones de categorie ; null = celui du serveur (data/categories.lua). */
+  iconTheme: 'basic' | 'natural' | null;
 };
 
 export type SelectedSlot = { inventory: string; slot: number } | null;

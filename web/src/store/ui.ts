@@ -12,6 +12,8 @@ interface UiState {
   settingsOpen: boolean;
   /** Categories (onglets) : defaut de config/categories.ts, remplace par data/categories.lua via `setCategories`. */
   categories: CategoryTab[];
+  /** Theme d'icones par defaut du serveur (data/categories.lua), surcharge par prefs.iconTheme. */
+  serverIconTheme: 'basic' | 'natural';
 }
 
 const initialState: UiState = {
@@ -21,6 +23,7 @@ const initialState: UiState = {
   prefs: loadPrefs(),
   settingsOpen: false,
   categories: CATEGORY_TABS,
+  serverIconTheme: 'natural',
 };
 
 export const uiSlice = createSlice({
@@ -40,6 +43,9 @@ export const uiSlice = createSlice({
       const list = Array.isArray(action.payload) ? action.payload.filter((c) => c && c.id && c.label) : [];
       state.categories = list.length > 0 ? list : CATEGORY_TABS;
     },
+    setIconTheme(state, action: PayloadAction<string | null>) {
+      state.serverIconTheme = action.payload === 'basic' ? 'basic' : 'natural';
+    },
     setPrefs(state, action: PayloadAction<Partial<Prefs>>) {
       state.prefs = { ...state.prefs, ...action.payload };
       savePrefs(state.prefs);
@@ -50,9 +56,10 @@ export const uiSlice = createSlice({
   },
 });
 
-export const { selectSlot, hoverSlot, setEquipment, setCategories, setPrefs, toggleSettings } = uiSlice.actions;
+export const { selectSlot, hoverSlot, setEquipment, setCategories, setIconTheme, setPrefs, toggleSettings } = uiSlice.actions;
 export const selectSelected = (state: RootState) => state.ui.selected;
 export const selectCategories = (state: RootState) => state.ui.categories;
+export const selectIconTheme = (state: RootState) => state.ui.prefs.iconTheme ?? state.ui.serverIconTheme;
 export const selectPrefs = (state: RootState) => state.ui.prefs;
 
 export default uiSlice.reducer;

@@ -6,6 +6,7 @@ export const DEFAULT_PREFS: Prefs = {
   itemNotify: true,
   layout: 'mannequin',
   infoBottom: true,
+  iconTheme: null,
 };
 
 // localStorage peut etre indisponible ou vide (fenetre privee, donnees effacees) : toujours avec repli.
@@ -26,6 +27,7 @@ export const loadPrefs = (): Prefs => {
       itemNotify: data?.itemNotify !== false,
       layout: data?.layout === 'simple' ? 'simple' : 'mannequin',
       infoBottom: data?.infoBottom !== false,
+      iconTheme: data?.iconTheme === 'basic' || data?.iconTheme === 'natural' ? data.iconTheme : null,
     };
   } catch {
     return { ...DEFAULT_PREFS };

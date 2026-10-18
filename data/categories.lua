@@ -11,9 +11,10 @@
 --         (le duotone, 'fa-duotone fa-solid fa-gun', n'est dispo que si le kit l'inclut)
 -- natural : (theme 'natural') { couleur principale, couleur secondaire } du duotone, en hexa
 --
--- theme : 'basic'   = icones monochromes (couleur du texte), telles que definies par `icon`
---         'natural' = icones duotone en couleurs naturelles (le style `fa-duotone` est ajoute
---                     automatiquement si `icon` n'est que `fa-solid`)
+-- theme : theme par defaut des icones ; chaque joueur peut le changer dans les reglages de l'inventaire
+--         'basic'   = icones monochromes "GTA like" (couleur du texte), telles que definies par `icon`
+--         'natural' = icones duotone en couleurs naturelles ("realiste") ; le style `fa-duotone`
+--                     est ajoute automatiquement si `icon` n'est que `fa-solid`
 return {
 	theme = 'natural',
 	categories = {
