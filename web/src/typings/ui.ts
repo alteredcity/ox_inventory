@@ -36,6 +36,12 @@ export type Prefs = {
   infoBottom: boolean;
   /** Theme des icones de categorie ; null = celui du serveur (data/categories.lua). */
   iconTheme: 'basic' | 'natural' | null;
+  /** Noms d'objets epingles : etoile sur le slot, en tete des vues triees, jamais jetes par accident. */
+  favorites: string[];
+  /** Ordre d'affichage du panneau joueur ('slot' = ordre reel des emplacements). */
+  sort: SortMode;
 };
+
+export type SortMode = 'slot' | 'category' | 'name' | 'weight';
 
 export type SelectedSlot = { inventory: string; slot: number } | null;

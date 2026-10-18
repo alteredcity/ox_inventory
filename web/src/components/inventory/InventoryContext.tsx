@@ -6,7 +6,8 @@ import { fetchNui } from '../../utils/fetchNui';
 import { Locale } from '../../store/locale';
 import { isSlotWithItem } from '../../helpers';
 import { setClipboard } from '../../utils/setClipboard';
-import { useAppSelector } from '../../store';
+import { useAppDispatch, useAppSelector } from '../../store';
+import { setPrefs } from '../../store/ui';
 import React from 'react';
 import { Menu, MenuItem } from '../utils/menu/Menu';
 
@@ -38,6 +39,9 @@ interface GroupedButtons extends Array<Group> {}
 const InventoryContext: React.FC = () => {
   const contextMenu = useAppSelector((state) => state.contextMenu);
   const item = contextMenu.item;
+  const dispatch = useAppDispatch();
+  const favorites = useAppSelector((state) => state.ui.prefs.favorites);
+  const isFavorite = !!item && favorites.includes(item.name);
 
   const handleClick = (data: DataProps) => {
     if (!item) return;
@@ -48,6 +52,9 @@ const InventoryContext: React.FC = () => {
         break;
       case 'give':
         onGive({ name: item.name, slot: item.slot });
+        break;
+      case 'favorite':
+        dispatch(setPrefs({ favorites: isFavorite ? favorites.filter((n) => n !== item.name) : [...favorites, item.name] }));
         break;
       case 'drop':
         isSlotWithItem(item) && onDrop({ item: item, inventory: 'player' });
@@ -97,7 +104,11 @@ const InventoryContext: React.FC = () => {
       <Menu>
         <MenuItem onClick={() => handleClick({ action: 'use' })} label={Locale.ui_use || 'Use'} />
         <MenuItem onClick={() => handleClick({ action: 'give' })} label={Locale.ui_give || 'Give'} />
-        <MenuItem onClick={() => handleClick({ action: 'drop' })} label={Locale.ui_drop || 'Drop'} />
+        <MenuItem
+          onClick={() => handleClick({ action: 'favorite' })}
+          label={isFavorite ? 'Retirer des favoris' : 'Epingler en favori'}
+        />
+        {!isFavorite && <MenuItem onClick={() => handleClick({ action: 'drop' })} label={Locale.ui_drop || 'Drop'} />}
         {item && item.name.toUpperCase().startsWith('WEAPON_') && (
           <MenuItem onClick={() => handleClick({ action: 'throw' })} label={Locale.ui_throw || 'Lancer'} />
         )}

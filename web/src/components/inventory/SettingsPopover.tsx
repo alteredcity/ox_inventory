@@ -109,7 +109,7 @@ const SettingsPopover: React.FC = () => {
           onChange={(e) => dispatch(setPrefs({ itemNotify: e.target.checked }))}
         />
       </label>
-      <button className="btn" onClick={() => dispatch(setPrefs(DEFAULT_PREFS))}>
+      <button className="btn" onClick={() => dispatch(setPrefs({ ...DEFAULT_PREFS, favorites: prefs.favorites }))}>
         Reinitialiser
       </button>
     </div>

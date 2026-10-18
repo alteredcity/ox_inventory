@@ -7,6 +7,8 @@ export const DEFAULT_PREFS: Prefs = {
   layout: 'mannequin',
   infoBottom: true,
   iconTheme: null,
+  favorites: [],
+  sort: 'slot',
 };
 
 // localStorage peut etre indisponible ou vide (fenetre privee, donnees effacees) : toujours avec repli.
@@ -27,6 +29,8 @@ export const loadPrefs = (): Prefs => {
       itemNotify: data?.itemNotify !== false,
       layout: data?.layout === 'simple' ? 'simple' : 'mannequin',
       infoBottom: data?.infoBottom !== false,
+      favorites: Array.isArray(data?.favorites) ? data.favorites.filter((n: unknown) => typeof n === 'string') : [],
+      sort: ['category', 'name', 'weight'].includes(data?.sort) ? data.sort : 'slot',
       iconTheme: data?.iconTheme === 'basic' || data?.iconTheme === 'natural' ? data.iconTheme : null,
     };
   } catch {

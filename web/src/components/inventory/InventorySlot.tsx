@@ -36,10 +36,12 @@ interface SlotProps {
   hotkey?: number;
   /** Variante compacte : ni nom ni poids (hotbar du panneau central). */
   compact?: boolean;
+  /** Objet recu recemment : repere discret. */
+  fresh?: boolean;
 }
 
 const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> = (
-  { item, inventoryId, inventoryType, inventoryGroups, hotkey, compact },
+  { item, inventoryId, inventoryType, inventoryGroups, hotkey, compact, fresh },
   ref
 ) => {
   const manager = useDragDropManager();
@@ -48,6 +50,8 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
   const selected = useAppSelector(
     (state) => state.ui.selected?.inventory === inventoryType && state.ui.selected?.slot === item.slot
   );
+
+  const favorite = useAppSelector((state) => !!item.name && state.ui.prefs.favorites.includes(item.name));
 
   const canDrag = useCallback(() => {
     return canPurchaseItem(item, { type: inventoryType, groups: inventoryGroups }) && canCraftItem(item, inventoryType);
@@ -133,6 +137,8 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
     if (timerRef.current) clearTimeout(timerRef.current);
     if (isSlotWithItem(item)) dispatch(selectSlot({ inventory: inventoryType, slot: item.slot }));
     if (event.ctrlKey && isSlotWithItem(item) && inventoryType !== 'shop' && inventoryType !== 'crafting') {
+      // un favori n'est jamais envoye hors de l'inventaire joueur par un ctrl+clic accidentel
+      if (favorite && inventoryType === 'player') return;
       onDrop({ item: item, inventory: inventoryType });
     } else if (event.altKey && isSlotWithItem(item) && inventoryType === 'player') {
       onUse(item);
@@ -158,6 +164,8 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
   if (unavailable) classes.push('unavailable');
   if (compact) classes.push('compact');
   if (key !== undefined) classes.push('hotkey');
+  if (fresh) classes.push('fresh');
+  if (favorite) classes.push('fav');
 
   return (
     <div ref={refs} onContextMenu={handleContext} onClick={handleClick} className={classes.join(' ')} data-r={rarity}>
@@ -166,7 +174,8 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
         <div
           className="item-slot-wrapper"
           style={badges.length ? ({ '--nb': badges.length } as React.CSSProperties) : undefined}
-          onMouseEnter={() => {
+          onMouseEnter={(e) => {
+            e.currentTarget.closest('.slot')?.classList.remove('fresh');
             dispatch(hoverSlot({ inventory: inventoryType, slot: item.slot }));
             timerRef.current = window.setTimeout(() => {
               dispatch(openTooltip({ item, inventoryType }));
@@ -181,6 +190,7 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
             }
           }}
         >
+          {favorite && !compact && <i className="star" aria-hidden="true">★</i>}
           {!compact && <span className="name">{getItemLabel(item)}</span>}
           <ItemIcon item={item} />
           {badges.length > 0 && (
